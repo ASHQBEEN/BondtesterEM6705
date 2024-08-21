@@ -357,8 +357,10 @@ rbStretchTest.Checked ? new StretchTest() : new ShearTest();
 
         private void BondTestForm_FormClosed(object sender, FormClosedEventArgs e)
         {
+            CloseCam();
             StopTest();
             port.Close();
+            
         }
 
         private void btnTare_Click(object sender, EventArgs e) 
@@ -535,6 +537,19 @@ Board.StopAxisEmg(selectedTestAxis);
             }
         }
 
+        private void CloseCam()
+        {
+            //capture.Pause();
+            //cbEnCross.Checked = false;
+            if(capture != null)
+                capture.Dispose();
+            capture = null;
+            if (pictureBox1.Image != null) pictureBox1.Image.Dispose();
+            pictureBox1.Image = null;
+            camIsActive = false;
+            btnOpenCam.Text = "Начать просмотр";
+        }
+
         private void btnOpenCam_Click(object sender, EventArgs e)
         {
             if (camIsActive)
@@ -542,16 +557,7 @@ Board.StopAxisEmg(selectedTestAxis);
                 try
                 {
                     if (capture != null)
-                    {
-                        //capture.Pause();
-                        //cbEnCross.Checked = false;
-                        capture.Dispose();
-                        capture = null;
-                        if (pictureBox1.Image != null) pictureBox1.Image.Dispose();
-                        pictureBox1.Image = null;
-                        camIsActive = false;
-                        btnOpenCam.Text = "Начать просмотр";
-                    }
+                        CloseCam();
                 }
 
                 catch (Exception ex)
