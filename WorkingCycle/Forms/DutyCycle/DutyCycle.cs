@@ -607,7 +607,7 @@ Board.StopAxisEmg(selectedTestAxis);
                 Mat m = new Mat();
                 capture.Retrieve(m);
                 pictureBox1.Image = m.ToImage<Bgr, byte>().Flip(Emgu.CV.CvEnum.FlipType.Horizontal).ToBitmap();
-
+                Update();
                 //}
                 //catch (Exception ex)
                 //{
