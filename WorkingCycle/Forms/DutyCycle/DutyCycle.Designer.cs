@@ -92,7 +92,6 @@
             timerBasing = new System.Windows.Forms.Timer(components);
             outsTimer = new System.Windows.Forms.Timer(components);
             calibrationTimer = new System.Windows.Forms.Timer(components);
-            btnGain = new Button();
             tableLayoutPanel1.SuspendLayout();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
@@ -183,7 +182,6 @@
             // 
             // operatorPanel
             // 
-            operatorPanel.Controls.Add(btnGain);
             operatorPanel.Controls.Add(groupBox2);
             operatorPanel.Controls.Add(groupBox1);
             operatorPanel.Controls.Add(label1);
@@ -748,7 +746,7 @@
             // 
             // btnOpenCam
             // 
-            btnOpenCam.Location = new Point(135, 837);
+            btnOpenCam.Location = new Point(126, 833);
             btnOpenCam.Name = "btnOpenCam";
             btnOpenCam.Size = new Size(87, 41);
             btnOpenCam.TabIndex = 0;
@@ -761,7 +759,7 @@
             // 
             cmbCams.DropDownStyle = ComboBoxStyle.DropDownList;
             cmbCams.FormattingEnabled = true;
-            cmbCams.Location = new Point(320, 859);
+            cmbCams.Location = new Point(320, 845);
             cmbCams.Name = "cmbCams";
             cmbCams.Size = new Size(121, 23);
             cmbCams.TabIndex = 1;
@@ -769,7 +767,7 @@
             // 
             // btnResetErrors
             // 
-            btnResetErrors.Location = new Point(42, 833);
+            btnResetErrors.Location = new Point(33, 829);
             btnResetErrors.Name = "btnResetErrors";
             btnResetErrors.Size = new Size(87, 49);
             btnResetErrors.TabIndex = 0;
@@ -780,7 +778,7 @@
             // 
             // btnUpdateCamList
             // 
-            btnUpdateCamList.Location = new Point(227, 833);
+            btnUpdateCamList.Location = new Point(218, 829);
             btnUpdateCamList.Name = "btnUpdateCamList";
             btnUpdateCamList.Size = new Size(87, 53);
             btnUpdateCamList.TabIndex = 0;
@@ -802,16 +800,6 @@
             // 
             calibrationTimer.Interval = 1000;
             calibrationTimer.Tick += calibrationTimer_Tick;
-            // 
-            // btnGain
-            // 
-            btnGain.Location = new Point(320, 833);
-            btnGain.Name = "btnGain";
-            btnGain.Size = new Size(121, 23);
-            btnGain.TabIndex = 21;
-            btnGain.Text = "Усиление камеры";
-            btnGain.UseVisualStyleBackColor = true;
-            btnGain.Click += btnGain_Click;
             // 
             // DutyCycleForm
             // 
@@ -923,6 +911,5 @@
         private GroupBox groupBox6;
         private CheckBox cbBoundSet;
         private Label label1;
-        private Button btnGain;
     }
 }

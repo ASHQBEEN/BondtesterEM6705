@@ -8,7 +8,6 @@ using Emgu.CV;
 using Emgu.CV.Structure;
 using ScottPlot;
 using ScottPlot.Plottables;
-using System.Diagnostics;
 using static DutyCycle.Scripts.KeyboardControls;
 
 
@@ -174,7 +173,7 @@ namespace DutyCycle.Forms.DutyCycle
 
         private void btnStartTest_Click(object sender, EventArgs e)
         {
-            if (!basingOnStartUpDone)
+            if (!basingOnStartUpDone) 
             {
                 DialogResult result = MessageBox.Show(
 "Перед началом испытаний необходимо выполнить базирование. Выполнить базирование приводов?",
@@ -185,7 +184,7 @@ MessageBoxIcon.Information);
                 if (result == DialogResult.Yes)
                     Basing();
                 return;
-            }
+            } 
 
             testInProgress = true;
 
@@ -361,10 +360,10 @@ rbStretchTest.Checked ? new StretchTest() : new ShearTest();
             CloseCam();
             StopTest();
             port.Close();
-
+            
         }
 
-        private void btnTare_Click(object sender, EventArgs e)
+        private void btnTare_Click(object sender, EventArgs e) 
         {
             testTimer.Stop();
             Thread.Sleep(DATA_INTERVAL);
@@ -542,7 +541,7 @@ Board.StopAxisEmg(selectedTestAxis);
         {
             //capture.Pause();
             //cbEnCross.Checked = false;
-            if (capture != null)
+            if(capture != null)
                 capture.Dispose();
             capture = null;
             if (pictureBox1.Image != null) pictureBox1.Image.Dispose();
@@ -695,23 +694,6 @@ Board.StopAxisEmg(selectedTestAxis);
             btnOpenCam.Visible = !btnOpenCam.Visible;
             btnUpdateCamList.Visible = !btnUpdateCamList.Visible;
             cmbCams.Visible = !cmbCams.Visible;
-        }
-
-        private void btnGain_Click(object sender, EventArgs e)
-        {
-            // Укажите путь к файлу, который нужно открыть
-            string filePath = @"CameraSettings\CameraSettings.exe";
-
-            try
-            {
-                // Открываем файл
-                Process.Start(filePath);
-            }
-            catch (Exception ex)
-            {
-                // Обработка ошибок, если файл не найден или произошла другая ошибка
-                MessageBox.Show($"Не удалось открыть файл: {ex.Message}");
-            }
         }
     }
 }
