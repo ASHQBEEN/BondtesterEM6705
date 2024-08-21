@@ -32,7 +32,7 @@ namespace DutyCycle.Logic
                     if (CheckReboundInProgress(axisIndex)) break;
                     ResetPosition(axisIndex); break;
                 case 5:
-                    FinilizeBasing();
+                    EndBasing();
                     if (axisIndex == 2)
                         AxisZBasingDone = true;
                     break;

@@ -25,7 +25,6 @@ namespace DutyCycle.Logic
 
         private static List<Action> preconditionMethods = [];
         private static List<Action> postconditionMethods = [];
-        private static List<Action> finalMethods = [];
 
         private static Action basingAction = () => { };
 
@@ -40,7 +39,6 @@ namespace DutyCycle.Logic
 
             preconditionMethods = pre;
             postconditionMethods = post;
-            finalMethods = final;
 
             ChooseStrategy(x, y, z);
 
@@ -57,9 +55,9 @@ namespace DutyCycle.Logic
             board.StopGroupMovement();
             board.BoardEmgStop();
 
-            ExecutePostcontitions();
-
             isInProgress = false;
+
+            ExecutePostcontitions();
         }
 
         private static void ChooseStrategy(double? x = null, double? y = null, double z = 0)
@@ -121,9 +119,8 @@ namespace DutyCycle.Logic
             state++;
         }
 
-        private static void FinilizeBasing()
+        private static void EndBasing()
         {
-            foreach (var method in finalMethods) method.Invoke();
             state = 0;
             Stop();
         }

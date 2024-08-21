@@ -697,8 +697,7 @@ MessageBoxButtons.YesNo,
 MessageBoxIcon.Information);
                 if (result == DialogResult.Yes)
                 {
-                    Basing.Start([DisableInterface, () => board.BoardSetHighVelocity(parameters.BasingVelocities)], [],
-                        [() => Basing.Start([], [Tare, EnableInterface], [], pos[0], pos[1], pos[2])]);
+                    Basing.Start([DisableInterface, () => board.BoardSetHighVelocity(parameters.BasingVelocities)], [() => Basing.Start([DisableInterface, () => board.BoardSetHighVelocity(parameters.BasingVelocities)], [Tare, EnableInterface], [], pos[0], pos[1], pos[2]), Tare, EnableInterface], []);
                 }
             }
             else

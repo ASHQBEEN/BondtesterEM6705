@@ -53,7 +53,7 @@ namespace DutyCycle.Logic
                     if (CheckReboundInProgress(3)) break;
                     ResetPosition(3); break;
                 case 17:
-                    FinilizeBasing();
+                    EndBasing();
                     BasingOnStartUpDone = true;
                     break;
             }

@@ -27,7 +27,7 @@ namespace DutyCycle.Logic
                     if (CheckReboundInProgress(2)) break; //STA_AX_PTP_MOT
                     state++; break;
                     case 5:
-                    FinilizeBasing();
+                    EndBasing();
                     break;
             }
         }
