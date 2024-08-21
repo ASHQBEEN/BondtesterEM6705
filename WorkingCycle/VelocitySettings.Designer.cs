@@ -178,7 +178,6 @@
             button3 = new Button();
             groupBox1 = new GroupBox();
             label7 = new Label();
-            oneAxisTimer = new System.Windows.Forms.Timer(components);
             cbMemCfg = new CheckBox();
             btnLoadCfg = new Button();
             ((System.ComponentModel.ISupportInitialize)ndSlowVel0).BeginInit();
@@ -1772,10 +1771,6 @@
             label7.TabIndex = 2;
             label7.Text = "Параметры приводов";
             // 
-            // oneAxisTimer
-            // 
-            oneAxisTimer.Tick += oneAxisTimer_Tick;
-            // 
             // cbMemCfg
             // 
             cbMemCfg.AutoSize = true;
@@ -2091,7 +2086,6 @@
         private Button btnBasing1;
         private Button btnBasing2;
         private Button btnBasing3;
-        private System.Windows.Forms.Timer oneAxisTimer;
         private CheckBox cbMemCfg;
         private Button btnLoadCfg;
     }

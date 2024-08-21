@@ -1,6 +1,7 @@
 ﻿using ashqTech;
 using DutyCycle.Forms.DutyCycle;
 using DutyCycle.Models.Machine;
+using DutyCycle.Logic;
 
 namespace DutyCycle
 {
@@ -59,9 +60,7 @@ namespace DutyCycle
             velocitySettings.Dock = DockStyle.Fill;
             velocitySettings.Show();
             velocitySettings?.Activate();
-            KeyDown -= velocitySettings.StopSoloAxisBasingBySpaceKey;
-            KeyDown += velocitySettings.StopSoloAxisBasingBySpaceKey;
-            Singleton.GetInstance().AxisZBasingDone = false;
+            Basing.AxisZBasingDone = false;
         }
 
         private void btnWorkerMenu_Click(object sender, EventArgs e)
@@ -165,18 +164,6 @@ namespace DutyCycle
         private void MainMenu_FormClosed(object sender, FormClosedEventArgs e)
         {
             board.CloseBoard();
-        }
-
-        private void btnVel_Click(object sender, EventArgs e)
-        {
-            velocitySettings ??= new();
-            velocitySettings.MdiParent = this;
-            velocitySettings.Dock = DockStyle.Fill;
-            velocitySettings.Show();
-            velocitySettings?.Activate();
-            KeyDown -= velocitySettings.StopSoloAxisBasingBySpaceKey;
-            KeyDown += velocitySettings.StopSoloAxisBasingBySpaceKey;
-            Singleton.GetInstance().AxisZBasingDone = false;
         }
 
         private void pbMinimize_Click(object sender, EventArgs e)

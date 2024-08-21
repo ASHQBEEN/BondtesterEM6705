@@ -1,6 +1,7 @@
 ﻿using ashqTech;
 using DirectShowLib;
 using DutyCycle.Csv;
+using DutyCycle.Logic;
 using DutyCycle.Models;
 using DutyCycle.Models.BondTest;
 using DutyCycle.Models.Machine;
@@ -75,7 +76,6 @@ namespace DutyCycle.Forms.DutyCycle
             rbBreakTest.Checked = true;
             UpdateMaximumVelocity();
             LoadTestVelocities();
-            toTestPointTimer.Tick += ToTestPointTimerTick;
 
             UpdateCamerasList();
         }
@@ -172,9 +172,39 @@ namespace DutyCycle.Forms.DutyCycle
             tbTestResult.Text = test.Result.ToString();
         }
 
+        #region Basing and Dialogues
+
+        public void StartBasing(object sender, EventArgs e)
+        {
+            DialogResult result = MessageBox.Show(
+    "Вы уверены, что хотите совершить базирование?",
+    "Подтверждение базирования",
+    MessageBoxButtons.YesNo,
+    MessageBoxIcon.Information);
+
+            if (result == DialogResult.Yes)
+                StartBasing();
+        }
+
+        public void BasingOnStartUp()
+        {
+            DialogResult result = MessageBox.Show(
+    "Совершить базирование при первом запуске?",
+    "Подтверждение базирования",
+    MessageBoxButtons.YesNo,
+    MessageBoxIcon.Information);
+
+            if (result == DialogResult.Yes)
+                StartBasing();
+        }
+
+        public void StartBasing() => Basing.Start([DisableInterface, () => board.BoardSetHighVelocity(parameters.BasingVelocities)], [EnableInterface], []);
+
+        #endregion
+
         private void btnStartTest_Click(object sender, EventArgs e)
         {
-            if (!basingOnStartUpDone)
+            if (!Basing.BasingOnStartUpDone)
             {
                 DialogResult result = MessageBox.Show(
 "Перед началом испытаний необходимо выполнить базирование. Выполнить базирование приводов?",
@@ -183,7 +213,7 @@ MessageBoxButtons.YesNo,
 MessageBoxIcon.Information);
 
                 if (result == DialogResult.Yes)
-                    Basing();
+                    StartBasing();
                 return;
             }
 
@@ -387,9 +417,6 @@ rbStretchTest.Checked ? new StretchTest() : new ShearTest();
                     if (testValues.Count == 0)
                         test.TerminateTest();
                 }
-
-                if (basingTickerState != 0)
-                    BasingStop();
             }
         }
 
@@ -648,7 +675,29 @@ Board.StopAxisEmg(selectedTestAxis);
 
         private void btnMoveToTestPoint_Click(object sender, EventArgs e)
         {
-            BasingBeforeFirstTestPoint();
+            double[] pos = new double[3];
+            if (rbBreakTest.Checked)
+                pos = testConditions.TestPoints.Break;
+            else if (rbStretchTest.Checked)
+                pos = testConditions.TestPoints.Stretch;
+            else if (rbShearTest.Checked)
+                pos = testConditions.TestPoints.Shear;
+
+            if (!Basing.BasingOnStartUpDone)
+            {
+                DialogResult result = MessageBox.Show(
+"Перед началом испытаний необходимо выполнить базирование. Выполнить базирование приводов?",
+"Подтверждение базирования",
+MessageBoxButtons.YesNo,
+MessageBoxIcon.Information);
+                if (result == DialogResult.Yes)
+                {
+                    Basing.Start([DisableInterface, () => board.BoardSetHighVelocity(parameters.BasingVelocities)], [EnableInterface],
+                        [() => Basing.Start([DisableInterface, () => board.BoardSetHighVelocity(parameters.BasingVelocities)], [], [EnableInterface], pos[0], pos[1], pos[2])]);
+                }
+            }
+            else
+                Basing.Start([DisableInterface, () => board.BoardSetHighVelocity(parameters.BasingVelocities)], [], [EnableInterface], pos[0], pos[1], pos[2]);
         }
 
 

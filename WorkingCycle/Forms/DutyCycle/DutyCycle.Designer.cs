@@ -90,7 +90,6 @@
             cmbCams = new ComboBox();
             btnResetErrors = new Button();
             btnUpdateCamList = new Button();
-            timerBasing = new System.Windows.Forms.Timer(components);
             outsTimer = new System.Windows.Forms.Timer(components);
             calibrationTimer = new System.Windows.Forms.Timer(components);
             tableLayoutPanel1.SuspendLayout();
@@ -800,10 +799,6 @@
             btnUpdateCamList.Visible = false;
             btnUpdateCamList.Click += btnUpdateCamList_Click;
             // 
-            // timerBasing
-            // 
-            timerBasing.Tick += BasingTimerTick;
-            // 
             // outsTimer
             // 
             outsTimer.Enabled = true;
@@ -895,7 +890,6 @@
         private ComboBox cmbReferenceWeights;
         private Button btnLockUpperBond;
         private Button btnHome;
-        private System.Windows.Forms.Timer timerBasing;
         private ComboBox cmbCams;
         private Button btnOpenCam;
         private Button btnUpdateCamList;

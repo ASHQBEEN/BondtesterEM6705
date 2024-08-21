@@ -1,5 +1,6 @@
 ﻿using ashqTech;
 using DutyCycle.Models.Machine;
+using DutyCycle.Logic;
 using static DutyCycle.Scripts.KeyboardControls;
 
 namespace DutyCycle
@@ -58,7 +59,7 @@ namespace DutyCycle
                 EventHandler ehResetError = (o, ea) => board.ResetAxisError(index);
                 btnsResetError[i].Click += ehResetError;
 
-                EventHandler ehBasing = (o, ea) => AxisBasing(index);
+                EventHandler ehBasing = (o, ea) => StartBasing(index);
                 btnsBasing[i].Click += ehBasing;
             }
         }
@@ -190,7 +191,7 @@ MessageBoxIcon.Information);
 
             foreach (var btn in btnsBasingWithoutZ)
             {
-                if (Singleton.GetInstance().AxisZBasingDone)
+                if (Basing.AxisZBasingDone)
                     btn.Enabled = true;
                 else
                     btn.Enabled = false;
@@ -236,19 +237,6 @@ MessageBoxIcon.Information);
         }
         #endregion
 
-
-        #region one axis basing
-
-        private int oneAxisBasing = 0;
-        private readonly double basingDistance = 1000;
-        private readonly int ticksBeforeStop = 10000;
-        private readonly int phiBasingDistance = 200;
-
-        private const ushort STATE_HOMING = (ushort)AxisState.STA_AX_HOMING;
-        private const ushort STATE_MOVING = (ushort)AxisState.STA_AX_PTP_MOT;
-
-        private int startTime;
-
         private void EnableInterface()
         {
             tableLayoutPanel1.Enabled = true;
@@ -261,115 +249,11 @@ MessageBoxIcon.Information);
             KeyboardControl.blockControls = true;
         }
 
-        private Action<int> action;
-
-        private void AxisBasing(int axisIndex)
+        private void StartBasing(int index)
         {
             var parameters = Singleton.GetInstance().Parameters;
-            board.BoardSetHighVelocity(parameters.BasingVelocities);
-            startTime = Environment.TickCount;
-            basingAxisIndex = axisIndex;
-            if (axisIndex == 3)
-                action = new Action<int>(BasingPhiAxisTick);
-            else
-                action = new Action<int>(BasingAnAxisTick);
-            oneAxisTimer.Start();
-            DisableInterface();
-            oneAxisBasing++;
+            Basing.Start([DisableInterface, () => board.BoardSetHighVelocity(parameters.BasingVelocities)], [EnableInterface], [], index);
         }
-
-        private void BasingPhiAxisTick(int axisIndex)
-        {
-            switch (oneAxisBasing)
-            {
-                case 1:
-                    board.StartAxisContinuousMovement(axisIndex, 1);
-                    oneAxisBasing++;
-                    break;
-                case 2:
-                    if (Environment.TickCount - startTime > ticksBeforeStop)
-                    {
-                        oneAxisBasing = 0;
-                        EnableInterface();
-                        board.BoardEmgStop();
-                        MessageBox.Show($"Не удалось обнаружить датчик ИП для оси {axisIndex}");
-                        break;
-                    }
-                    if (board.GetDiBit(3, 1) == 1) break;
-                    oneAxisBasing++;
-                    board.StopAxisEmg(3);
-                    break;
-                case 3:
-                    board.AxisMoveRelative(axisIndex, phiBasingDistance);
-                    oneAxisBasing++;
-                    break;
-                case 4:
-                    if (board.GetAxisState(axisIndex) == STATE_MOVING) break;
-                    board.ResetCommandPosition(axisIndex);
-                    board.ResetActPosition(axisIndex);
-                    oneAxisBasing = 0;
-                    break;
-            }
-        }
-
-        private void BasingAnAxisTick(int axisIndex)
-        {
-            switch (oneAxisBasing)
-            {
-                case 1:
-                    board.AxisMoveHome(axisIndex, 1, 1);
-                    oneAxisBasing++;
-                    break;
-                case 2:
-                    if (Environment.TickCount - startTime > ticksBeforeStop)
-                    {
-                        oneAxisBasing = 0;
-                        EnableInterface();
-                        board.BoardEmgStop();
-                        MessageBox.Show($"Не удалось обнаружить датчик ИП для оси {axisIndex}");
-                        break;
-                    }
-                    if (board.GetAxisState(axisIndex) == STATE_HOMING) break;
-                    oneAxisBasing++;
-                    break;
-                case 3:
-                    board.AxisMoveRelative(axisIndex, basingDistance);
-                    oneAxisBasing++;
-                    break;
-                case 4:
-                    if (board.GetAxisState(axisIndex) == STATE_MOVING) break;
-                    board.ResetCommandPosition(axisIndex);
-                    board.ResetActPosition(axisIndex);
-                    oneAxisBasing = 0;
-                    if (axisIndex == 2)
-                        Singleton.GetInstance().AxisZBasingDone = true;
-                    break;
-            }
-        }
-
-        private int basingAxisIndex;
-
-        private void oneAxisTimer_Tick(object sender, EventArgs e)
-        {
-            if (oneAxisBasing == 0)
-            {
-                EnableInterface();
-                board.BoardEmgStop();
-                oneAxisTimer.Stop();
-            }
-            action(basingAxisIndex);
-        }
-
-
-        public void StopSoloAxisBasingBySpaceKey(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Space)
-            {
-                if (oneAxisBasing != 0)
-                    oneAxisBasing = 0;
-            }
-        }
-        #endregion
 
         private void btnLoadCfg_Click(object sender, EventArgs e)
         {

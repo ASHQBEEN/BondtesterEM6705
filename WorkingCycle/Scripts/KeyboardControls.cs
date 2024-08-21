@@ -1,4 +1,5 @@
 ﻿using ashqTech;
+using DutyCycle.Logic;
 using DutyCycle.Models.Machine;
 using System.Diagnostics;
 using System.Runtime.InteropServices;
@@ -32,12 +33,14 @@ namespace DutyCycle.Scripts
 
             private static nint HookCallback(int nCode, nint wParam, nint lParam)
             {
+                Keys key = (Keys)Marshal.ReadInt32(lParam);
+                if (key == Keys.Space) Basing.Stop();
+
                 if (blockControls) return nint.Zero;
 
                 //Нажата ли клавиша передвижения
                 if (nCode >= 0)
                 {
-                    Keys key = (Keys)Marshal.ReadInt32(lParam);
                     int axisIndex;
 
                     //Соответсвие оси определённой клавише
