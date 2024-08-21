@@ -695,6 +695,7 @@ Board.StopAxisEmg(selectedTestAxis);
             btnOpenCam.Visible = !btnOpenCam.Visible;
             btnUpdateCamList.Visible = !btnUpdateCamList.Visible;
             cmbCams.Visible = !cmbCams.Visible;
+            btnGain.Visible = !btnGain.Visible;
         }
 
         private void btnGain_Click(object sender, EventArgs e)

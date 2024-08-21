@@ -36,6 +36,7 @@
             tbForceData = new TextBox();
             pictureBox1 = new PictureBox();
             operatorPanel = new Panel();
+            btnGain = new Button();
             groupBox2 = new GroupBox();
             groupBox6 = new GroupBox();
             btnStartTest = new Button();
@@ -92,7 +93,6 @@
             timerBasing = new System.Windows.Forms.Timer(components);
             outsTimer = new System.Windows.Forms.Timer(components);
             calibrationTimer = new System.Windows.Forms.Timer(components);
-            btnGain = new Button();
             tableLayoutPanel1.SuspendLayout();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
@@ -198,6 +198,17 @@
             tableLayoutPanel1.SetRowSpan(operatorPanel, 2);
             operatorPanel.Size = new Size(472, 890);
             operatorPanel.TabIndex = 2;
+            // 
+            // btnGain
+            // 
+            btnGain.Location = new Point(320, 833);
+            btnGain.Name = "btnGain";
+            btnGain.Size = new Size(121, 23);
+            btnGain.TabIndex = 21;
+            btnGain.Text = "Усиление камеры";
+            btnGain.UseVisualStyleBackColor = true;
+            btnGain.Visible = false;
+            btnGain.Click += btnGain_Click;
             // 
             // groupBox2
             // 
@@ -802,16 +813,6 @@
             // 
             calibrationTimer.Interval = 1000;
             calibrationTimer.Tick += calibrationTimer_Tick;
-            // 
-            // btnGain
-            // 
-            btnGain.Location = new Point(320, 833);
-            btnGain.Name = "btnGain";
-            btnGain.Size = new Size(121, 23);
-            btnGain.TabIndex = 21;
-            btnGain.Text = "Усиление камеры";
-            btnGain.UseVisualStyleBackColor = true;
-            btnGain.Click += btnGain_Click;
             // 
             // DutyCycleForm
             // 
