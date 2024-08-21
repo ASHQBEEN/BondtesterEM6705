@@ -247,7 +247,7 @@
             // 
             // btnMoveToStart
             // 
-            btnMoveToStart.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point, 204);
+            btnMoveToStart.Font = new Font("Segoe UI", 10F, FontStyle.Bold, GraphicsUnit.Point, 204);
             btnMoveToStart.Location = new Point(16, 92);
             btnMoveToStart.Name = "btnMoveToStart";
             btnMoveToStart.Size = new Size(105, 50);

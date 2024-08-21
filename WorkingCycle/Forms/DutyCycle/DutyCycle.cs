@@ -198,7 +198,7 @@ namespace DutyCycle.Forms.DutyCycle
                 StartBasing();
         }
 
-        public void StartBasing() => Basing.Start([DisableInterface, () => board.BoardSetHighVelocity(parameters.BasingVelocities)], [EnableInterface], []);
+        public void StartBasing() => Basing.Start([DisableInterface, () => board.BoardSetHighVelocity(parameters.BasingVelocities)], [Tare, EnableInterface], []);
 
         #endregion
 
@@ -394,13 +394,18 @@ rbStretchTest.Checked ? new StretchTest() : new ShearTest();
 
         }
 
-        private void btnTare_Click(object sender, EventArgs e)
+        private void Tare()
         {
             testTimer.Stop();
             Thread.Sleep(DATA_INTERVAL);
             //очистка буфера: port.port.DiscardInBuffer(); + DiscardOutBuffer()
             port.TareScale();
             testTimer.Start();
+        }
+
+        private void btnTare_Click(object sender, EventArgs e)
+        {
+            Tare();
         }
 
         private bool IsForceBoundReached() => cbBoundSet.Checked &&
@@ -692,12 +697,12 @@ MessageBoxButtons.YesNo,
 MessageBoxIcon.Information);
                 if (result == DialogResult.Yes)
                 {
-                    Basing.Start([DisableInterface, () => board.BoardSetHighVelocity(parameters.BasingVelocities)], [EnableInterface],
-                        [() => Basing.Start([DisableInterface, () => board.BoardSetHighVelocity(parameters.BasingVelocities)], [], [EnableInterface], pos[0], pos[1], pos[2])]);
+                    Basing.Start([DisableInterface, () => board.BoardSetHighVelocity(parameters.BasingVelocities)], [],
+                        [() => Basing.Start([], [Tare, EnableInterface], [], pos[0], pos[1], pos[2])]);
                 }
             }
             else
-                Basing.Start([DisableInterface, () => board.BoardSetHighVelocity(parameters.BasingVelocities)], [], [EnableInterface], pos[0], pos[1], pos[2]);
+                Basing.Start([DisableInterface, () => board.BoardSetHighVelocity(parameters.BasingVelocities)], [Tare, EnableInterface], [], pos[0], pos[1], pos[2]);
         }
 
 
