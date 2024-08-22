@@ -547,7 +547,7 @@ Board.StopAxisEmg(selectedTestAxis);
         }
 
         #region Camera
-        private VideoCapture capture = null;
+        private VideoCapture? capture;
         private DsDevice[] webCams = null;
         bool camIsActive = false;
         int selectedCamID = new();
@@ -559,9 +559,7 @@ Board.StopAxisEmg(selectedTestAxis);
                 webCams = DsDevice.GetDevicesOfCat(FilterCategory.VideoInputDevice);
                 cmbCams.Items.Clear();
                 for (int i = 0; i < webCams.Length; i++)
-                {
                     cmbCams.Items.Add(webCams[i].Name);
-                }
                 cmbCams.SelectedIndex = 0;
             }
             catch (Exception ex)
@@ -574,10 +572,9 @@ Board.StopAxisEmg(selectedTestAxis);
         {
             //capture.Pause();
             //cbEnCross.Checked = false;
-            if (capture != null)
-                capture.Dispose();
+            capture?.Dispose();
             capture = null;
-            if (pictureBox1.Image != null) pictureBox1.Image.Dispose();
+            pictureBox1.Image?.Dispose();
             pictureBox1.Image = null;
             camIsActive = false;
             btnOpenCam.Text = "Начать просмотр";
@@ -592,7 +589,6 @@ Board.StopAxisEmg(selectedTestAxis);
                     if (capture != null)
                         CloseCam();
                 }
-
                 catch (Exception ex)
                 {
                     MessageBox.Show(ex.Message, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -603,17 +599,11 @@ Board.StopAxisEmg(selectedTestAxis);
                 try
                 {
                     if (webCams.Length == 0)
-                    {
                         throw new Exception("Нет доступных камер");
-                    }
                     else if (cmbCams.SelectedItem == null)
-                    {
                         throw new Exception("Необходимо выбрать камеру");
-                    }
                     else if (capture != null)
-                    {
                         capture.Start();
-                    }
                     else
                     {
                         selectedCamID = cmbCams.SelectedIndex;
@@ -631,17 +621,17 @@ Board.StopAxisEmg(selectedTestAxis);
             }
         }
 
-        private void Capture_ImageGrabbed(object sender, EventArgs e)
+        private void Capture_ImageGrabbed(object? sender, EventArgs? e)
         {
             using (Image<Gray, Single> image = new Image<Gray, Single>(1000, 800))
             {
                 //try
                 //{
                 Mat m = new Mat();
-                capture.Retrieve(m);
+                capture?.Retrieve(m);
                 pictureBox1.Image = m.ToImage<Bgr, byte>().Flip(Emgu.CV.CvEnum.FlipType.Horizontal).ToBitmap();
                 //UPDATE IS BUGGED IN DEBUG MODE
-                Update();
+                //Update();
                 //}
                 //catch (Exception ex)
                 //{
@@ -650,10 +640,7 @@ Board.StopAxisEmg(selectedTestAxis);
             }
         }
 
-        private void btnUpdateCamList_Click(object sender, EventArgs e)
-        {
-            UpdateCamerasList();
-        }
+        private void btnUpdateCamList_Click(object sender, EventArgs e) => UpdateCamerasList();
         #endregion
 
         #region Servo
