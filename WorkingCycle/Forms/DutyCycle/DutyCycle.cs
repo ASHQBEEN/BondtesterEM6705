@@ -116,8 +116,6 @@ namespace DutyCycle.Forms.DutyCycle
 
         private void testTimer_Tick(object sender, EventArgs e)
         {
-            Update();
-
             port.ReadTestValue();
             testValue = port.TestValue;
             tbForceData.Text = testValue.ToString();
@@ -642,6 +640,8 @@ Board.StopAxisEmg(selectedTestAxis);
                 Mat m = new Mat();
                 capture.Retrieve(m);
                 pictureBox1.Image = m.ToImage<Bgr, byte>().Flip(Emgu.CV.CvEnum.FlipType.Horizontal).ToBitmap();
+                //UPDATE IS BUGGED IN DEBUG MODE
+                Update();
                 //}
                 //catch (Exception ex)
                 //{
