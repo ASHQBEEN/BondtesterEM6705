@@ -701,8 +701,6 @@ MessageBoxIcon.Information);
             board.SetGroupDec(1000000);
         }
 
-        private void btnResetErrors_Click(object sender, EventArgs e) => board.BoardResetErrors();
-
         private void outsTimer_Tick(object sender, EventArgs e)
         {
             const int phiAxis = 3;
@@ -740,7 +738,6 @@ MessageBoxIcon.Information);
 
         private void label1_Click(object sender, EventArgs e)
         {
-            btnResetErrors.Visible = !btnResetErrors.Visible;
             btnOpenCam.Visible = !btnOpenCam.Visible;
             btnUpdateCamList.Visible = !btnUpdateCamList.Visible;
             cmbCams.Visible = !cmbCams.Visible;

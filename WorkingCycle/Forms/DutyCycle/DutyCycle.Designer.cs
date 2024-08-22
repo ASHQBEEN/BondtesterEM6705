@@ -88,7 +88,6 @@
             lblTestId = new Label();
             btnOpenCam = new Button();
             cmbCams = new ComboBox();
-            btnResetErrors = new Button();
             btnUpdateCamList = new Button();
             outsTimer = new System.Windows.Forms.Timer(components);
             calibrationTimer = new System.Windows.Forms.Timer(components);
@@ -190,7 +189,6 @@
             operatorPanel.Controls.Add(groupBox4);
             operatorPanel.Controls.Add(btnOpenCam);
             operatorPanel.Controls.Add(cmbCams);
-            operatorPanel.Controls.Add(btnResetErrors);
             operatorPanel.Controls.Add(btnUpdateCamList);
             operatorPanel.Location = new Point(587, 3);
             operatorPanel.Name = "operatorPanel";
@@ -777,17 +775,6 @@
             cmbCams.TabIndex = 1;
             cmbCams.Visible = false;
             // 
-            // btnResetErrors
-            // 
-            btnResetErrors.Location = new Point(42, 833);
-            btnResetErrors.Name = "btnResetErrors";
-            btnResetErrors.Size = new Size(87, 49);
-            btnResetErrors.TabIndex = 0;
-            btnResetErrors.Text = "Сброс ошибок";
-            btnResetErrors.UseVisualStyleBackColor = true;
-            btnResetErrors.Visible = false;
-            btnResetErrors.Click += btnResetErrors_Click;
-            // 
             // btnUpdateCamList
             // 
             btnUpdateCamList.Location = new Point(227, 833);
@@ -899,7 +886,6 @@
         private GroupBox groupBox2;
         private GroupBox groupBox1;
         private Label lblTestValues;
-        private Button btnResetErrors;
         private TextBox tbForceData;
         private Panel panel1;
         private Button btnLockLowerBond;
