@@ -1,6 +1,6 @@
 ﻿namespace DutyCycle.Forms
 {
-    partial class VelocitySettings
+    partial class DriverSettings
     {
         /// <summary>
         /// Required designer variable.
@@ -84,6 +84,14 @@
             label11 = new Label();
             label12 = new Label();
             tableLayoutPanel1 = new TableLayoutPanel();
+            panel73 = new Panel();
+            ndVelLow3 = new NumericUpDown();
+            panel72 = new Panel();
+            ndVelLow2 = new NumericUpDown();
+            panel71 = new Panel();
+            ndVelLow1 = new NumericUpDown();
+            panel70 = new Panel();
+            ndVelLow0 = new NumericUpDown();
             panel59 = new Panel();
             label6 = new Label();
             panel49 = new Panel();
@@ -174,6 +182,8 @@
             btnBasing2 = new Button();
             panel68 = new Panel();
             btnBasing3 = new Button();
+            panel69 = new Panel();
+            label13 = new Label();
             driverFixateTimer = new System.Windows.Forms.Timer(components);
             button3 = new Button();
             groupBox1 = new GroupBox();
@@ -205,6 +215,14 @@
             panel3.SuspendLayout();
             panel4.SuspendLayout();
             tableLayoutPanel1.SuspendLayout();
+            panel73.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)ndVelLow3).BeginInit();
+            panel72.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)ndVelLow2).BeginInit();
+            panel71.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)ndVelLow1).BeginInit();
+            panel70.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)ndVelLow0).BeginInit();
             panel59.SuspendLayout();
             panel49.SuspendLayout();
             panel5.SuspendLayout();
@@ -275,6 +293,7 @@
             panel66.SuspendLayout();
             panel67.SuspendLayout();
             panel68.SuspendLayout();
+            panel69.SuspendLayout();
             groupBox1.SuspendLayout();
             SuspendLayout();
             // 
@@ -283,144 +302,144 @@
             ndSlowVel0.Increment = new decimal(new int[] { 100, 0, 0, 0 });
             ndSlowVel0.Location = new Point(42, 5);
             ndSlowVel0.Maximum = new decimal(new int[] { 300000, 0, 0, 0 });
-            ndSlowVel0.Minimum = new decimal(new int[] { 10, 0, 0, 0 });
+            ndSlowVel0.Minimum = new decimal(new int[] { 30, 0, 0, 0 });
             ndSlowVel0.Name = "ndSlowVel0";
             ndSlowVel0.Size = new Size(120, 23);
             ndSlowVel0.TabIndex = 0;
             ndSlowVel0.ThousandsSeparator = true;
-            ndSlowVel0.Value = new decimal(new int[] { 10, 0, 0, 0 });
+            ndSlowVel0.Value = new decimal(new int[] { 30, 0, 0, 0 });
             // 
             // ndSlowVel1
             // 
             ndSlowVel1.Increment = new decimal(new int[] { 100, 0, 0, 0 });
             ndSlowVel1.Location = new Point(42, 5);
             ndSlowVel1.Maximum = new decimal(new int[] { 300000, 0, 0, 0 });
-            ndSlowVel1.Minimum = new decimal(new int[] { 10, 0, 0, 0 });
+            ndSlowVel1.Minimum = new decimal(new int[] { 30, 0, 0, 0 });
             ndSlowVel1.Name = "ndSlowVel1";
             ndSlowVel1.Size = new Size(120, 23);
             ndSlowVel1.TabIndex = 0;
             ndSlowVel1.ThousandsSeparator = true;
-            ndSlowVel1.Value = new decimal(new int[] { 10, 0, 0, 0 });
+            ndSlowVel1.Value = new decimal(new int[] { 30, 0, 0, 0 });
             // 
             // ndSlowVel2
             // 
             ndSlowVel2.Increment = new decimal(new int[] { 100, 0, 0, 0 });
             ndSlowVel2.Location = new Point(42, 5);
             ndSlowVel2.Maximum = new decimal(new int[] { 300000, 0, 0, 0 });
-            ndSlowVel2.Minimum = new decimal(new int[] { 10, 0, 0, 0 });
+            ndSlowVel2.Minimum = new decimal(new int[] { 30, 0, 0, 0 });
             ndSlowVel2.Name = "ndSlowVel2";
             ndSlowVel2.Size = new Size(120, 23);
             ndSlowVel2.TabIndex = 0;
             ndSlowVel2.ThousandsSeparator = true;
-            ndSlowVel2.Value = new decimal(new int[] { 10, 0, 0, 0 });
+            ndSlowVel2.Value = new decimal(new int[] { 30, 0, 0, 0 });
             // 
             // ndSlowVel3
             // 
             ndSlowVel3.Increment = new decimal(new int[] { 100, 0, 0, 0 });
             ndSlowVel3.Location = new Point(42, 5);
             ndSlowVel3.Maximum = new decimal(new int[] { 300000, 0, 0, 0 });
-            ndSlowVel3.Minimum = new decimal(new int[] { 10, 0, 0, 0 });
+            ndSlowVel3.Minimum = new decimal(new int[] { 30, 0, 0, 0 });
             ndSlowVel3.Name = "ndSlowVel3";
             ndSlowVel3.Size = new Size(120, 23);
             ndSlowVel3.TabIndex = 0;
             ndSlowVel3.ThousandsSeparator = true;
-            ndSlowVel3.Value = new decimal(new int[] { 10, 0, 0, 0 });
+            ndSlowVel3.Value = new decimal(new int[] { 30, 0, 0, 0 });
             // 
             // ndFastVel0
             // 
             ndFastVel0.Increment = new decimal(new int[] { 500, 0, 0, 0 });
             ndFastVel0.Location = new Point(42, 5);
             ndFastVel0.Maximum = new decimal(new int[] { 300000, 0, 0, 0 });
-            ndFastVel0.Minimum = new decimal(new int[] { 10, 0, 0, 0 });
+            ndFastVel0.Minimum = new decimal(new int[] { 30, 0, 0, 0 });
             ndFastVel0.Name = "ndFastVel0";
             ndFastVel0.Size = new Size(120, 23);
             ndFastVel0.TabIndex = 0;
             ndFastVel0.ThousandsSeparator = true;
-            ndFastVel0.Value = new decimal(new int[] { 10, 0, 0, 0 });
+            ndFastVel0.Value = new decimal(new int[] { 30, 0, 0, 0 });
             // 
             // ndFastVel1
             // 
             ndFastVel1.Increment = new decimal(new int[] { 500, 0, 0, 0 });
             ndFastVel1.Location = new Point(42, 5);
             ndFastVel1.Maximum = new decimal(new int[] { 300000, 0, 0, 0 });
-            ndFastVel1.Minimum = new decimal(new int[] { 10, 0, 0, 0 });
+            ndFastVel1.Minimum = new decimal(new int[] { 30, 0, 0, 0 });
             ndFastVel1.Name = "ndFastVel1";
             ndFastVel1.Size = new Size(120, 23);
             ndFastVel1.TabIndex = 0;
             ndFastVel1.ThousandsSeparator = true;
-            ndFastVel1.Value = new decimal(new int[] { 10, 0, 0, 0 });
+            ndFastVel1.Value = new decimal(new int[] { 30, 0, 0, 0 });
             // 
             // ndFastVel2
             // 
             ndFastVel2.Increment = new decimal(new int[] { 500, 0, 0, 0 });
             ndFastVel2.Location = new Point(42, 5);
             ndFastVel2.Maximum = new decimal(new int[] { 300000, 0, 0, 0 });
-            ndFastVel2.Minimum = new decimal(new int[] { 10, 0, 0, 0 });
+            ndFastVel2.Minimum = new decimal(new int[] { 30, 0, 0, 0 });
             ndFastVel2.Name = "ndFastVel2";
             ndFastVel2.Size = new Size(120, 23);
             ndFastVel2.TabIndex = 0;
             ndFastVel2.ThousandsSeparator = true;
-            ndFastVel2.Value = new decimal(new int[] { 10, 0, 0, 0 });
+            ndFastVel2.Value = new decimal(new int[] { 30, 0, 0, 0 });
             // 
             // ndFastVel3
             // 
             ndFastVel3.Increment = new decimal(new int[] { 500, 0, 0, 0 });
             ndFastVel3.Location = new Point(42, 5);
             ndFastVel3.Maximum = new decimal(new int[] { 300000, 0, 0, 0 });
-            ndFastVel3.Minimum = new decimal(new int[] { 10, 0, 0, 0 });
+            ndFastVel3.Minimum = new decimal(new int[] { 30, 0, 0, 0 });
             ndFastVel3.Name = "ndFastVel3";
             ndFastVel3.Size = new Size(120, 23);
             ndFastVel3.TabIndex = 0;
             ndFastVel3.ThousandsSeparator = true;
-            ndFastVel3.Value = new decimal(new int[] { 10, 0, 0, 0 });
+            ndFastVel3.Value = new decimal(new int[] { 30, 0, 0, 0 });
             // 
             // ndDrVel0
             // 
             ndDrVel0.Increment = new decimal(new int[] { 1000, 0, 0, 0 });
             ndDrVel0.Location = new Point(42, 5);
             ndDrVel0.Maximum = new decimal(new int[] { 300000, 0, 0, 0 });
-            ndDrVel0.Minimum = new decimal(new int[] { 10, 0, 0, 0 });
+            ndDrVel0.Minimum = new decimal(new int[] { 30, 0, 0, 0 });
             ndDrVel0.Name = "ndDrVel0";
             ndDrVel0.Size = new Size(120, 23);
             ndDrVel0.TabIndex = 0;
             ndDrVel0.ThousandsSeparator = true;
-            ndDrVel0.Value = new decimal(new int[] { 10, 0, 0, 0 });
+            ndDrVel0.Value = new decimal(new int[] { 30, 0, 0, 0 });
             // 
             // ndDrVel1
             // 
             ndDrVel1.Increment = new decimal(new int[] { 1000, 0, 0, 0 });
             ndDrVel1.Location = new Point(42, 5);
             ndDrVel1.Maximum = new decimal(new int[] { 300000, 0, 0, 0 });
-            ndDrVel1.Minimum = new decimal(new int[] { 10, 0, 0, 0 });
+            ndDrVel1.Minimum = new decimal(new int[] { 30, 0, 0, 0 });
             ndDrVel1.Name = "ndDrVel1";
             ndDrVel1.Size = new Size(120, 23);
             ndDrVel1.TabIndex = 0;
             ndDrVel1.ThousandsSeparator = true;
-            ndDrVel1.Value = new decimal(new int[] { 10, 0, 0, 0 });
+            ndDrVel1.Value = new decimal(new int[] { 30, 0, 0, 0 });
             // 
             // ndDrVel2
             // 
             ndDrVel2.Increment = new decimal(new int[] { 1000, 0, 0, 0 });
             ndDrVel2.Location = new Point(42, 5);
             ndDrVel2.Maximum = new decimal(new int[] { 300000, 0, 0, 0 });
-            ndDrVel2.Minimum = new decimal(new int[] { 10, 0, 0, 0 });
+            ndDrVel2.Minimum = new decimal(new int[] { 30, 0, 0, 0 });
             ndDrVel2.Name = "ndDrVel2";
             ndDrVel2.Size = new Size(120, 23);
             ndDrVel2.TabIndex = 0;
             ndDrVel2.ThousandsSeparator = true;
-            ndDrVel2.Value = new decimal(new int[] { 10, 0, 0, 0 });
+            ndDrVel2.Value = new decimal(new int[] { 30, 0, 0, 0 });
             // 
             // ndDrVel3
             // 
             ndDrVel3.Increment = new decimal(new int[] { 1000, 0, 0, 0 });
             ndDrVel3.Location = new Point(42, 5);
             ndDrVel3.Maximum = new decimal(new int[] { 300000, 0, 0, 0 });
-            ndDrVel3.Minimum = new decimal(new int[] { 10, 0, 0, 0 });
+            ndDrVel3.Minimum = new decimal(new int[] { 30, 0, 0, 0 });
             ndDrVel3.Name = "ndDrVel3";
             ndDrVel3.Size = new Size(120, 23);
             ndDrVel3.TabIndex = 0;
             ndDrVel3.ThousandsSeparator = true;
-            ndDrVel3.Value = new decimal(new int[] { 10, 0, 0, 0 });
+            ndDrVel3.Value = new decimal(new int[] { 30, 0, 0, 0 });
             // 
             // ndAcc0
             // 
@@ -839,69 +858,75 @@
             tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 20F));
             tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 20F));
             tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 20F));
-            tableLayoutPanel1.Controls.Add(panel59, 0, 10);
-            tableLayoutPanel1.Controls.Add(panel49, 0, 8);
+            tableLayoutPanel1.Controls.Add(panel73, 4, 1);
+            tableLayoutPanel1.Controls.Add(panel72, 3, 1);
+            tableLayoutPanel1.Controls.Add(panel71, 2, 1);
+            tableLayoutPanel1.Controls.Add(panel70, 1, 1);
+            tableLayoutPanel1.Controls.Add(panel59, 0, 11);
+            tableLayoutPanel1.Controls.Add(panel49, 0, 9);
             tableLayoutPanel1.Controls.Add(panel5, 1, 0);
             tableLayoutPanel1.Controls.Add(panel6, 2, 0);
             tableLayoutPanel1.Controls.Add(panel7, 3, 0);
             tableLayoutPanel1.Controls.Add(panel8, 4, 0);
             tableLayoutPanel1.Controls.Add(panel9, 0, 0);
-            tableLayoutPanel1.Controls.Add(panel10, 0, 1);
-            tableLayoutPanel1.Controls.Add(panel11, 1, 1);
-            tableLayoutPanel1.Controls.Add(panel12, 2, 1);
-            tableLayoutPanel1.Controls.Add(panel13, 3, 1);
-            tableLayoutPanel1.Controls.Add(panel14, 4, 1);
-            tableLayoutPanel1.Controls.Add(panel15, 0, 2);
-            tableLayoutPanel1.Controls.Add(panel16, 1, 2);
-            tableLayoutPanel1.Controls.Add(panel17, 2, 2);
-            tableLayoutPanel1.Controls.Add(panel18, 3, 2);
-            tableLayoutPanel1.Controls.Add(panel19, 4, 2);
-            tableLayoutPanel1.Controls.Add(panel20, 0, 3);
-            tableLayoutPanel1.Controls.Add(panel21, 1, 3);
-            tableLayoutPanel1.Controls.Add(panel22, 2, 3);
-            tableLayoutPanel1.Controls.Add(panel23, 3, 3);
-            tableLayoutPanel1.Controls.Add(panel24, 4, 3);
-            tableLayoutPanel1.Controls.Add(panel25, 0, 4);
-            tableLayoutPanel1.Controls.Add(panel26, 1, 4);
-            tableLayoutPanel1.Controls.Add(panel27, 2, 4);
-            tableLayoutPanel1.Controls.Add(panel28, 3, 4);
-            tableLayoutPanel1.Controls.Add(panel29, 4, 4);
-            tableLayoutPanel1.Controls.Add(panel30, 0, 5);
-            tableLayoutPanel1.Controls.Add(panel31, 1, 5);
-            tableLayoutPanel1.Controls.Add(panel32, 2, 5);
-            tableLayoutPanel1.Controls.Add(panel33, 3, 5);
-            tableLayoutPanel1.Controls.Add(panel34, 4, 5);
-            tableLayoutPanel1.Controls.Add(panel35, 0, 6);
-            tableLayoutPanel1.Controls.Add(panel36, 1, 6);
-            tableLayoutPanel1.Controls.Add(panel37, 2, 6);
-            tableLayoutPanel1.Controls.Add(panel38, 3, 6);
-            tableLayoutPanel1.Controls.Add(panel39, 4, 6);
-            tableLayoutPanel1.Controls.Add(panel40, 0, 7);
-            tableLayoutPanel1.Controls.Add(panel41, 1, 7);
-            tableLayoutPanel1.Controls.Add(panel42, 2, 7);
-            tableLayoutPanel1.Controls.Add(panel43, 3, 7);
-            tableLayoutPanel1.Controls.Add(panel44, 4, 7);
-            tableLayoutPanel1.Controls.Add(panel50, 1, 8);
-            tableLayoutPanel1.Controls.Add(panel51, 2, 8);
-            tableLayoutPanel1.Controls.Add(panel52, 3, 8);
-            tableLayoutPanel1.Controls.Add(panel53, 4, 8);
-            tableLayoutPanel1.Controls.Add(panel54, 0, 9);
-            tableLayoutPanel1.Controls.Add(panel55, 1, 9);
-            tableLayoutPanel1.Controls.Add(panel56, 2, 9);
-            tableLayoutPanel1.Controls.Add(panel57, 3, 9);
-            tableLayoutPanel1.Controls.Add(panel58, 4, 9);
-            tableLayoutPanel1.Controls.Add(panel60, 1, 10);
-            tableLayoutPanel1.Controls.Add(panel61, 2, 10);
-            tableLayoutPanel1.Controls.Add(panel62, 3, 10);
-            tableLayoutPanel1.Controls.Add(panel63, 4, 10);
-            tableLayoutPanel1.Controls.Add(panel64, 0, 11);
-            tableLayoutPanel1.Controls.Add(panel65, 1, 11);
-            tableLayoutPanel1.Controls.Add(panel66, 2, 11);
-            tableLayoutPanel1.Controls.Add(panel67, 3, 11);
-            tableLayoutPanel1.Controls.Add(panel68, 4, 11);
-            tableLayoutPanel1.Location = new Point(12, 184);
+            tableLayoutPanel1.Controls.Add(panel10, 0, 2);
+            tableLayoutPanel1.Controls.Add(panel11, 1, 2);
+            tableLayoutPanel1.Controls.Add(panel12, 2, 2);
+            tableLayoutPanel1.Controls.Add(panel13, 3, 2);
+            tableLayoutPanel1.Controls.Add(panel14, 4, 2);
+            tableLayoutPanel1.Controls.Add(panel15, 0, 3);
+            tableLayoutPanel1.Controls.Add(panel16, 1, 3);
+            tableLayoutPanel1.Controls.Add(panel17, 2, 3);
+            tableLayoutPanel1.Controls.Add(panel18, 3, 3);
+            tableLayoutPanel1.Controls.Add(panel19, 4, 3);
+            tableLayoutPanel1.Controls.Add(panel20, 0, 4);
+            tableLayoutPanel1.Controls.Add(panel21, 1, 4);
+            tableLayoutPanel1.Controls.Add(panel22, 2, 4);
+            tableLayoutPanel1.Controls.Add(panel23, 3, 4);
+            tableLayoutPanel1.Controls.Add(panel24, 4, 4);
+            tableLayoutPanel1.Controls.Add(panel25, 0, 5);
+            tableLayoutPanel1.Controls.Add(panel26, 1, 5);
+            tableLayoutPanel1.Controls.Add(panel27, 2, 5);
+            tableLayoutPanel1.Controls.Add(panel28, 3, 5);
+            tableLayoutPanel1.Controls.Add(panel29, 4, 5);
+            tableLayoutPanel1.Controls.Add(panel30, 0, 6);
+            tableLayoutPanel1.Controls.Add(panel31, 1, 6);
+            tableLayoutPanel1.Controls.Add(panel32, 2, 6);
+            tableLayoutPanel1.Controls.Add(panel33, 3, 6);
+            tableLayoutPanel1.Controls.Add(panel34, 4, 6);
+            tableLayoutPanel1.Controls.Add(panel35, 0, 7);
+            tableLayoutPanel1.Controls.Add(panel36, 1, 7);
+            tableLayoutPanel1.Controls.Add(panel37, 2, 7);
+            tableLayoutPanel1.Controls.Add(panel38, 3, 7);
+            tableLayoutPanel1.Controls.Add(panel39, 4, 7);
+            tableLayoutPanel1.Controls.Add(panel40, 0, 8);
+            tableLayoutPanel1.Controls.Add(panel41, 1, 8);
+            tableLayoutPanel1.Controls.Add(panel42, 2, 8);
+            tableLayoutPanel1.Controls.Add(panel43, 3, 8);
+            tableLayoutPanel1.Controls.Add(panel44, 4, 8);
+            tableLayoutPanel1.Controls.Add(panel50, 1, 9);
+            tableLayoutPanel1.Controls.Add(panel51, 2, 9);
+            tableLayoutPanel1.Controls.Add(panel52, 3, 9);
+            tableLayoutPanel1.Controls.Add(panel53, 4, 9);
+            tableLayoutPanel1.Controls.Add(panel54, 0, 10);
+            tableLayoutPanel1.Controls.Add(panel55, 1, 10);
+            tableLayoutPanel1.Controls.Add(panel56, 2, 10);
+            tableLayoutPanel1.Controls.Add(panel57, 3, 10);
+            tableLayoutPanel1.Controls.Add(panel58, 4, 10);
+            tableLayoutPanel1.Controls.Add(panel60, 1, 11);
+            tableLayoutPanel1.Controls.Add(panel61, 2, 11);
+            tableLayoutPanel1.Controls.Add(panel62, 3, 11);
+            tableLayoutPanel1.Controls.Add(panel63, 4, 11);
+            tableLayoutPanel1.Controls.Add(panel64, 0, 12);
+            tableLayoutPanel1.Controls.Add(panel65, 1, 12);
+            tableLayoutPanel1.Controls.Add(panel66, 2, 12);
+            tableLayoutPanel1.Controls.Add(panel67, 3, 12);
+            tableLayoutPanel1.Controls.Add(panel68, 4, 12);
+            tableLayoutPanel1.Controls.Add(panel69, 0, 1);
+            tableLayoutPanel1.Location = new Point(12, 84);
             tableLayoutPanel1.Name = "tableLayoutPanel1";
-            tableLayoutPanel1.RowCount = 12;
+            tableLayoutPanel1.RowCount = 13;
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 38F));
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 38F));
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 38F));
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 38F));
@@ -914,13 +939,93 @@
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 38F));
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 38F));
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 38F));
-            tableLayoutPanel1.Size = new Size(1042, 491);
+            tableLayoutPanel1.Size = new Size(1042, 529);
             tableLayoutPanel1.TabIndex = 4;
+            // 
+            // panel73
+            // 
+            panel73.Controls.Add(ndVelLow3);
+            panel73.Location = new Point(836, 43);
+            panel73.Name = "panel73";
+            panel73.Size = new Size(200, 32);
+            panel73.TabIndex = 62;
+            // 
+            // ndVelLow3
+            // 
+            ndVelLow3.Increment = new decimal(new int[] { 100, 0, 0, 0 });
+            ndVelLow3.Location = new Point(42, 6);
+            ndVelLow3.Maximum = new decimal(new int[] { 300000, 0, 0, 0 });
+            ndVelLow3.Minimum = new decimal(new int[] { 20, 0, 0, 0 });
+            ndVelLow3.Name = "ndVelLow3";
+            ndVelLow3.Size = new Size(120, 23);
+            ndVelLow3.TabIndex = 0;
+            ndVelLow3.ThousandsSeparator = true;
+            ndVelLow3.Value = new decimal(new int[] { 20, 0, 0, 0 });
+            // 
+            // panel72
+            // 
+            panel72.Controls.Add(ndVelLow2);
+            panel72.Location = new Point(628, 43);
+            panel72.Name = "panel72";
+            panel72.Size = new Size(200, 32);
+            panel72.TabIndex = 61;
+            // 
+            // ndVelLow2
+            // 
+            ndVelLow2.Increment = new decimal(new int[] { 100, 0, 0, 0 });
+            ndVelLow2.Location = new Point(42, 6);
+            ndVelLow2.Maximum = new decimal(new int[] { 300000, 0, 0, 0 });
+            ndVelLow2.Minimum = new decimal(new int[] { 20, 0, 0, 0 });
+            ndVelLow2.Name = "ndVelLow2";
+            ndVelLow2.Size = new Size(120, 23);
+            ndVelLow2.TabIndex = 0;
+            ndVelLow2.ThousandsSeparator = true;
+            ndVelLow2.Value = new decimal(new int[] { 20, 0, 0, 0 });
+            // 
+            // panel71
+            // 
+            panel71.Controls.Add(ndVelLow1);
+            panel71.Location = new Point(420, 43);
+            panel71.Name = "panel71";
+            panel71.Size = new Size(200, 32);
+            panel71.TabIndex = 60;
+            // 
+            // ndVelLow1
+            // 
+            ndVelLow1.Increment = new decimal(new int[] { 100, 0, 0, 0 });
+            ndVelLow1.Location = new Point(42, 6);
+            ndVelLow1.Maximum = new decimal(new int[] { 300000, 0, 0, 0 });
+            ndVelLow1.Minimum = new decimal(new int[] { 20, 0, 0, 0 });
+            ndVelLow1.Name = "ndVelLow1";
+            ndVelLow1.Size = new Size(120, 23);
+            ndVelLow1.TabIndex = 0;
+            ndVelLow1.ThousandsSeparator = true;
+            ndVelLow1.Value = new decimal(new int[] { 20, 0, 0, 0 });
+            // 
+            // panel70
+            // 
+            panel70.Controls.Add(ndVelLow0);
+            panel70.Location = new Point(212, 43);
+            panel70.Name = "panel70";
+            panel70.Size = new Size(200, 32);
+            panel70.TabIndex = 59;
+            // 
+            // ndVelLow0
+            // 
+            ndVelLow0.Increment = new decimal(new int[] { 100, 0, 0, 0 });
+            ndVelLow0.Location = new Point(42, 6);
+            ndVelLow0.Maximum = new decimal(new int[] { 300000, 0, 0, 0 });
+            ndVelLow0.Minimum = new decimal(new int[] { 20, 0, 0, 0 });
+            ndVelLow0.Name = "ndVelLow0";
+            ndVelLow0.Size = new Size(120, 23);
+            ndVelLow0.TabIndex = 0;
+            ndVelLow0.ThousandsSeparator = true;
+            ndVelLow0.Value = new decimal(new int[] { 20, 0, 0, 0 });
             // 
             // panel59
             // 
             panel59.Controls.Add(label6);
-            panel59.Location = new Point(4, 416);
+            panel59.Location = new Point(4, 455);
             panel59.Name = "panel59";
             panel59.Size = new Size(200, 32);
             panel59.TabIndex = 6;
@@ -938,7 +1043,7 @@
             // 
             panel49.Controls.Add(label4);
             panel49.Dock = DockStyle.Fill;
-            panel49.Location = new Point(4, 338);
+            panel49.Location = new Point(4, 377);
             panel49.Name = "panel49";
             panel49.Size = new Size(201, 32);
             panel49.TabIndex = 6;
@@ -1011,7 +1116,7 @@
             // 
             panel10.Controls.Add(lblSlowVel);
             panel10.Dock = DockStyle.Fill;
-            panel10.Location = new Point(4, 43);
+            panel10.Location = new Point(4, 82);
             panel10.Name = "panel10";
             panel10.Size = new Size(201, 32);
             panel10.TabIndex = 5;
@@ -1020,7 +1125,7 @@
             // 
             panel11.Controls.Add(ndSlowVel0);
             panel11.Dock = DockStyle.Fill;
-            panel11.Location = new Point(212, 43);
+            panel11.Location = new Point(212, 82);
             panel11.Name = "panel11";
             panel11.Size = new Size(201, 32);
             panel11.TabIndex = 6;
@@ -1029,7 +1134,7 @@
             // 
             panel12.Controls.Add(ndSlowVel1);
             panel12.Dock = DockStyle.Fill;
-            panel12.Location = new Point(420, 43);
+            panel12.Location = new Point(420, 82);
             panel12.Name = "panel12";
             panel12.Size = new Size(201, 32);
             panel12.TabIndex = 7;
@@ -1038,7 +1143,7 @@
             // 
             panel13.Controls.Add(ndSlowVel2);
             panel13.Dock = DockStyle.Fill;
-            panel13.Location = new Point(628, 43);
+            panel13.Location = new Point(628, 82);
             panel13.Name = "panel13";
             panel13.Size = new Size(201, 32);
             panel13.TabIndex = 8;
@@ -1047,7 +1152,7 @@
             // 
             panel14.Controls.Add(ndSlowVel3);
             panel14.Dock = DockStyle.Fill;
-            panel14.Location = new Point(836, 43);
+            panel14.Location = new Point(836, 82);
             panel14.Name = "panel14";
             panel14.Size = new Size(202, 32);
             panel14.TabIndex = 9;
@@ -1056,7 +1161,7 @@
             // 
             panel15.Controls.Add(lblFastVel);
             panel15.Dock = DockStyle.Fill;
-            panel15.Location = new Point(4, 82);
+            panel15.Location = new Point(4, 121);
             panel15.Name = "panel15";
             panel15.Size = new Size(201, 32);
             panel15.TabIndex = 10;
@@ -1065,7 +1170,7 @@
             // 
             panel16.Controls.Add(ndFastVel0);
             panel16.Dock = DockStyle.Fill;
-            panel16.Location = new Point(212, 82);
+            panel16.Location = new Point(212, 121);
             panel16.Name = "panel16";
             panel16.Size = new Size(201, 32);
             panel16.TabIndex = 11;
@@ -1074,7 +1179,7 @@
             // 
             panel17.Controls.Add(ndFastVel1);
             panel17.Dock = DockStyle.Fill;
-            panel17.Location = new Point(420, 82);
+            panel17.Location = new Point(420, 121);
             panel17.Name = "panel17";
             panel17.Size = new Size(201, 32);
             panel17.TabIndex = 12;
@@ -1083,7 +1188,7 @@
             // 
             panel18.Controls.Add(ndFastVel2);
             panel18.Dock = DockStyle.Fill;
-            panel18.Location = new Point(628, 82);
+            panel18.Location = new Point(628, 121);
             panel18.Name = "panel18";
             panel18.Size = new Size(201, 32);
             panel18.TabIndex = 13;
@@ -1092,7 +1197,7 @@
             // 
             panel19.Controls.Add(ndFastVel3);
             panel19.Dock = DockStyle.Fill;
-            panel19.Location = new Point(836, 82);
+            panel19.Location = new Point(836, 121);
             panel19.Name = "panel19";
             panel19.Size = new Size(202, 32);
             panel19.TabIndex = 14;
@@ -1101,7 +1206,7 @@
             // 
             panel20.Controls.Add(lblDrVel);
             panel20.Dock = DockStyle.Fill;
-            panel20.Location = new Point(4, 121);
+            panel20.Location = new Point(4, 160);
             panel20.Name = "panel20";
             panel20.Size = new Size(201, 32);
             panel20.TabIndex = 15;
@@ -1110,7 +1215,7 @@
             // 
             panel21.Controls.Add(ndDrVel0);
             panel21.Dock = DockStyle.Fill;
-            panel21.Location = new Point(212, 121);
+            panel21.Location = new Point(212, 160);
             panel21.Name = "panel21";
             panel21.Size = new Size(201, 32);
             panel21.TabIndex = 16;
@@ -1119,7 +1224,7 @@
             // 
             panel22.Controls.Add(ndDrVel1);
             panel22.Dock = DockStyle.Fill;
-            panel22.Location = new Point(420, 121);
+            panel22.Location = new Point(420, 160);
             panel22.Name = "panel22";
             panel22.Size = new Size(201, 32);
             panel22.TabIndex = 17;
@@ -1128,7 +1233,7 @@
             // 
             panel23.Controls.Add(ndDrVel2);
             panel23.Dock = DockStyle.Fill;
-            panel23.Location = new Point(628, 121);
+            panel23.Location = new Point(628, 160);
             panel23.Name = "panel23";
             panel23.Size = new Size(201, 32);
             panel23.TabIndex = 18;
@@ -1137,7 +1242,7 @@
             // 
             panel24.Controls.Add(ndDrVel3);
             panel24.Dock = DockStyle.Fill;
-            panel24.Location = new Point(836, 121);
+            panel24.Location = new Point(836, 160);
             panel24.Name = "panel24";
             panel24.Size = new Size(202, 32);
             panel24.TabIndex = 19;
@@ -1146,7 +1251,7 @@
             // 
             panel25.Controls.Add(lblAcc);
             panel25.Dock = DockStyle.Fill;
-            panel25.Location = new Point(4, 160);
+            panel25.Location = new Point(4, 199);
             panel25.Name = "panel25";
             panel25.Size = new Size(201, 32);
             panel25.TabIndex = 20;
@@ -1155,7 +1260,7 @@
             // 
             panel26.Controls.Add(ndAcc0);
             panel26.Dock = DockStyle.Fill;
-            panel26.Location = new Point(212, 160);
+            panel26.Location = new Point(212, 199);
             panel26.Name = "panel26";
             panel26.Size = new Size(201, 32);
             panel26.TabIndex = 21;
@@ -1164,7 +1269,7 @@
             // 
             panel27.Controls.Add(ndAcc1);
             panel27.Dock = DockStyle.Fill;
-            panel27.Location = new Point(420, 160);
+            panel27.Location = new Point(420, 199);
             panel27.Name = "panel27";
             panel27.Size = new Size(201, 32);
             panel27.TabIndex = 22;
@@ -1173,7 +1278,7 @@
             // 
             panel28.Controls.Add(ndAcc2);
             panel28.Dock = DockStyle.Fill;
-            panel28.Location = new Point(628, 160);
+            panel28.Location = new Point(628, 199);
             panel28.Name = "panel28";
             panel28.Size = new Size(201, 32);
             panel28.TabIndex = 23;
@@ -1182,7 +1287,7 @@
             // 
             panel29.Controls.Add(ndAcc3);
             panel29.Dock = DockStyle.Fill;
-            panel29.Location = new Point(836, 160);
+            panel29.Location = new Point(836, 199);
             panel29.Name = "panel29";
             panel29.Size = new Size(202, 32);
             panel29.TabIndex = 24;
@@ -1191,7 +1296,7 @@
             // 
             panel30.Controls.Add(lblMaxCoord);
             panel30.Dock = DockStyle.Fill;
-            panel30.Location = new Point(4, 199);
+            panel30.Location = new Point(4, 238);
             panel30.Name = "panel30";
             panel30.Size = new Size(201, 32);
             panel30.TabIndex = 25;
@@ -1200,7 +1305,7 @@
             // 
             panel31.Controls.Add(ndMaxCoord0);
             panel31.Dock = DockStyle.Fill;
-            panel31.Location = new Point(212, 199);
+            panel31.Location = new Point(212, 238);
             panel31.Name = "panel31";
             panel31.Size = new Size(201, 32);
             panel31.TabIndex = 26;
@@ -1209,7 +1314,7 @@
             // 
             panel32.Controls.Add(ndMaxCoord1);
             panel32.Dock = DockStyle.Fill;
-            panel32.Location = new Point(420, 199);
+            panel32.Location = new Point(420, 238);
             panel32.Name = "panel32";
             panel32.Size = new Size(201, 32);
             panel32.TabIndex = 27;
@@ -1218,7 +1323,7 @@
             // 
             panel33.Controls.Add(ndMaxCoord2);
             panel33.Dock = DockStyle.Fill;
-            panel33.Location = new Point(628, 199);
+            panel33.Location = new Point(628, 238);
             panel33.Name = "panel33";
             panel33.Size = new Size(201, 32);
             panel33.TabIndex = 28;
@@ -1227,7 +1332,7 @@
             // 
             panel34.Controls.Add(ndMaxCoord3);
             panel34.Dock = DockStyle.Fill;
-            panel34.Location = new Point(836, 199);
+            panel34.Location = new Point(836, 238);
             panel34.Name = "panel34";
             panel34.Size = new Size(202, 32);
             panel34.TabIndex = 29;
@@ -1236,7 +1341,7 @@
             // 
             panel35.Controls.Add(lblJerk);
             panel35.Dock = DockStyle.Fill;
-            panel35.Location = new Point(4, 238);
+            panel35.Location = new Point(4, 277);
             panel35.Name = "panel35";
             panel35.Size = new Size(201, 32);
             panel35.TabIndex = 30;
@@ -1245,7 +1350,7 @@
             // 
             panel36.Controls.Add(panel1);
             panel36.Dock = DockStyle.Fill;
-            panel36.Location = new Point(212, 238);
+            panel36.Location = new Point(212, 277);
             panel36.Name = "panel36";
             panel36.Size = new Size(201, 32);
             panel36.TabIndex = 31;
@@ -1254,7 +1359,7 @@
             // 
             panel37.Controls.Add(panel2);
             panel37.Dock = DockStyle.Fill;
-            panel37.Location = new Point(420, 238);
+            panel37.Location = new Point(420, 277);
             panel37.Name = "panel37";
             panel37.Size = new Size(201, 32);
             panel37.TabIndex = 32;
@@ -1263,7 +1368,7 @@
             // 
             panel38.Controls.Add(panel3);
             panel38.Dock = DockStyle.Fill;
-            panel38.Location = new Point(628, 238);
+            panel38.Location = new Point(628, 277);
             panel38.Name = "panel38";
             panel38.Size = new Size(201, 32);
             panel38.TabIndex = 33;
@@ -1272,7 +1377,7 @@
             // 
             panel39.Controls.Add(panel4);
             panel39.Dock = DockStyle.Fill;
-            panel39.Location = new Point(836, 238);
+            panel39.Location = new Point(836, 277);
             panel39.Name = "panel39";
             panel39.Size = new Size(202, 32);
             panel39.TabIndex = 34;
@@ -1285,7 +1390,7 @@
             panel40.Controls.Add(pictureBox2);
             panel40.Controls.Add(label1);
             panel40.Dock = DockStyle.Fill;
-            panel40.Location = new Point(4, 277);
+            panel40.Location = new Point(4, 316);
             panel40.Name = "panel40";
             panel40.Size = new Size(201, 54);
             panel40.TabIndex = 35;
@@ -1341,7 +1446,7 @@
             // 
             panel41.Controls.Add(panel45);
             panel41.Dock = DockStyle.Fill;
-            panel41.Location = new Point(212, 277);
+            panel41.Location = new Point(212, 316);
             panel41.Name = "panel41";
             panel41.Size = new Size(201, 54);
             panel41.TabIndex = 36;
@@ -1378,7 +1483,7 @@
             // 
             panel42.Controls.Add(panel46);
             panel42.Dock = DockStyle.Fill;
-            panel42.Location = new Point(420, 277);
+            panel42.Location = new Point(420, 316);
             panel42.Name = "panel42";
             panel42.Size = new Size(201, 54);
             panel42.TabIndex = 37;
@@ -1415,7 +1520,7 @@
             // 
             panel43.Controls.Add(panel47);
             panel43.Dock = DockStyle.Fill;
-            panel43.Location = new Point(628, 277);
+            panel43.Location = new Point(628, 316);
             panel43.Name = "panel43";
             panel43.Size = new Size(201, 54);
             panel43.TabIndex = 38;
@@ -1452,7 +1557,7 @@
             // 
             panel44.Controls.Add(panel48);
             panel44.Dock = DockStyle.Fill;
-            panel44.Location = new Point(836, 277);
+            panel44.Location = new Point(836, 316);
             panel44.Name = "panel44";
             panel44.Size = new Size(202, 54);
             panel44.TabIndex = 39;
@@ -1489,7 +1594,7 @@
             // 
             panel50.Controls.Add(tbActPos0);
             panel50.Dock = DockStyle.Fill;
-            panel50.Location = new Point(212, 338);
+            panel50.Location = new Point(212, 377);
             panel50.Name = "panel50";
             panel50.Size = new Size(201, 32);
             panel50.TabIndex = 40;
@@ -1498,7 +1603,7 @@
             // 
             panel51.Controls.Add(tbActPos1);
             panel51.Dock = DockStyle.Fill;
-            panel51.Location = new Point(420, 338);
+            panel51.Location = new Point(420, 377);
             panel51.Name = "panel51";
             panel51.Size = new Size(201, 32);
             panel51.TabIndex = 41;
@@ -1507,7 +1612,7 @@
             // 
             panel52.Controls.Add(tbActPos2);
             panel52.Dock = DockStyle.Fill;
-            panel52.Location = new Point(628, 338);
+            panel52.Location = new Point(628, 377);
             panel52.Name = "panel52";
             panel52.Size = new Size(201, 32);
             panel52.TabIndex = 42;
@@ -1516,7 +1621,7 @@
             // 
             panel53.Controls.Add(tbActPos3);
             panel53.Dock = DockStyle.Fill;
-            panel53.Location = new Point(836, 338);
+            panel53.Location = new Point(836, 377);
             panel53.Name = "panel53";
             panel53.Size = new Size(202, 32);
             panel53.TabIndex = 43;
@@ -1525,7 +1630,7 @@
             // 
             panel54.Controls.Add(label5);
             panel54.Dock = DockStyle.Fill;
-            panel54.Location = new Point(4, 377);
+            panel54.Location = new Point(4, 416);
             panel54.Name = "panel54";
             panel54.Size = new Size(201, 32);
             panel54.TabIndex = 44;
@@ -1543,7 +1648,7 @@
             // 
             panel55.Controls.Add(tbState0);
             panel55.Dock = DockStyle.Fill;
-            panel55.Location = new Point(212, 377);
+            panel55.Location = new Point(212, 416);
             panel55.Name = "panel55";
             panel55.Size = new Size(201, 32);
             panel55.TabIndex = 45;
@@ -1552,7 +1657,7 @@
             // 
             panel56.Controls.Add(tbState1);
             panel56.Dock = DockStyle.Fill;
-            panel56.Location = new Point(420, 377);
+            panel56.Location = new Point(420, 416);
             panel56.Name = "panel56";
             panel56.Size = new Size(201, 32);
             panel56.TabIndex = 46;
@@ -1561,7 +1666,7 @@
             // 
             panel57.Controls.Add(tbState2);
             panel57.Dock = DockStyle.Fill;
-            panel57.Location = new Point(628, 377);
+            panel57.Location = new Point(628, 416);
             panel57.Name = "panel57";
             panel57.Size = new Size(201, 32);
             panel57.TabIndex = 47;
@@ -1570,7 +1675,7 @@
             // 
             panel58.Controls.Add(tbState3);
             panel58.Dock = DockStyle.Fill;
-            panel58.Location = new Point(836, 377);
+            panel58.Location = new Point(836, 416);
             panel58.Name = "panel58";
             panel58.Size = new Size(202, 32);
             panel58.TabIndex = 48;
@@ -1578,7 +1683,7 @@
             // panel60
             // 
             panel60.Controls.Add(btnResetErrors0);
-            panel60.Location = new Point(212, 416);
+            panel60.Location = new Point(212, 455);
             panel60.Name = "panel60";
             panel60.Size = new Size(200, 32);
             panel60.TabIndex = 49;
@@ -1595,7 +1700,7 @@
             // panel61
             // 
             panel61.Controls.Add(btnResetErrors1);
-            panel61.Location = new Point(420, 416);
+            panel61.Location = new Point(420, 455);
             panel61.Name = "panel61";
             panel61.Size = new Size(200, 32);
             panel61.TabIndex = 50;
@@ -1612,7 +1717,7 @@
             // panel62
             // 
             panel62.Controls.Add(btnResetErrors2);
-            panel62.Location = new Point(628, 416);
+            panel62.Location = new Point(628, 455);
             panel62.Name = "panel62";
             panel62.Size = new Size(200, 32);
             panel62.TabIndex = 51;
@@ -1629,7 +1734,7 @@
             // panel63
             // 
             panel63.Controls.Add(btnResetErrors3);
-            panel63.Location = new Point(836, 416);
+            panel63.Location = new Point(836, 455);
             panel63.Name = "panel63";
             panel63.Size = new Size(200, 32);
             panel63.TabIndex = 52;
@@ -1647,7 +1752,7 @@
             // 
             panel64.Controls.Add(label8);
             panel64.Dock = DockStyle.Fill;
-            panel64.Location = new Point(4, 455);
+            panel64.Location = new Point(4, 494);
             panel64.Name = "panel64";
             panel64.Size = new Size(201, 32);
             panel64.TabIndex = 53;
@@ -1665,7 +1770,7 @@
             // 
             panel65.Controls.Add(btnBasing0);
             panel65.Dock = DockStyle.Fill;
-            panel65.Location = new Point(212, 455);
+            panel65.Location = new Point(212, 494);
             panel65.Name = "panel65";
             panel65.Size = new Size(201, 32);
             panel65.TabIndex = 54;
@@ -1684,7 +1789,7 @@
             // 
             panel66.Controls.Add(btnBasing1);
             panel66.Dock = DockStyle.Fill;
-            panel66.Location = new Point(420, 455);
+            panel66.Location = new Point(420, 494);
             panel66.Name = "panel66";
             panel66.Size = new Size(201, 32);
             panel66.TabIndex = 55;
@@ -1703,7 +1808,7 @@
             // 
             panel67.Controls.Add(btnBasing2);
             panel67.Dock = DockStyle.Fill;
-            panel67.Location = new Point(628, 455);
+            panel67.Location = new Point(628, 494);
             panel67.Name = "panel67";
             panel67.Size = new Size(201, 32);
             panel67.TabIndex = 56;
@@ -1721,7 +1826,7 @@
             // 
             panel68.Controls.Add(btnBasing3);
             panel68.Dock = DockStyle.Fill;
-            panel68.Location = new Point(836, 455);
+            panel68.Location = new Point(836, 494);
             panel68.Name = "panel68";
             panel68.Size = new Size(202, 32);
             panel68.TabIndex = 57;
@@ -1735,6 +1840,23 @@
             btnBasing3.TabIndex = 5;
             btnBasing3.Text = "Выполнить";
             btnBasing3.UseVisualStyleBackColor = true;
+            // 
+            // panel69
+            // 
+            panel69.Controls.Add(label13);
+            panel69.Location = new Point(4, 43);
+            panel69.Name = "panel69";
+            panel69.Size = new Size(200, 32);
+            panel69.TabIndex = 58;
+            // 
+            // label13
+            // 
+            label13.AutoSize = true;
+            label13.Location = new Point(51, 7);
+            label13.Name = "label13";
+            label13.Size = new Size(99, 15);
+            label13.TabIndex = 2;
+            label13.Text = "Начальная, мк/c";
             // 
             // driverFixateTimer
             // 
@@ -1765,7 +1887,7 @@
             // 
             label7.AutoSize = true;
             label7.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 204);
-            label7.Location = new Point(432, 140);
+            label7.Location = new Point(432, 40);
             label7.Name = "label7";
             label7.Size = new Size(183, 21);
             label7.TabIndex = 2;
@@ -1791,11 +1913,11 @@
             btnLoadCfg.UseVisualStyleBackColor = true;
             btnLoadCfg.Click += btnLoadCfg_Click;
             // 
-            // VelocitySettings
+            // DriverSettings
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1062, 896);
+            ClientSize = new Size(1066, 896);
             Controls.Add(cbMemCfg);
             Controls.Add(btnLoadCfg);
             Controls.Add(label7);
@@ -1804,8 +1926,8 @@
             Controls.Add(tableLayoutPanel1);
             Controls.Add(btnSetParams);
             FormBorderStyle = FormBorderStyle.None;
-            Name = "VelocitySettings";
-            Text = "VelocitySettings";
+            Name = "DriverSettings";
+            Text = "DriverSettings";
             Load += VelocitySettings_Load;
             ((System.ComponentModel.ISupportInitialize)ndSlowVel0).EndInit();
             ((System.ComponentModel.ISupportInitialize)ndSlowVel1).EndInit();
@@ -1836,6 +1958,14 @@
             panel4.ResumeLayout(false);
             panel4.PerformLayout();
             tableLayoutPanel1.ResumeLayout(false);
+            panel73.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)ndVelLow3).EndInit();
+            panel72.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)ndVelLow2).EndInit();
+            panel71.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)ndVelLow1).EndInit();
+            panel70.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)ndVelLow0).EndInit();
             panel59.ResumeLayout(false);
             panel59.PerformLayout();
             panel49.ResumeLayout(false);
@@ -1930,6 +2060,8 @@
             panel66.ResumeLayout(false);
             panel67.ResumeLayout(false);
             panel68.ResumeLayout(false);
+            panel69.ResumeLayout(false);
+            panel69.PerformLayout();
             groupBox1.ResumeLayout(false);
             ResumeLayout(false);
             PerformLayout();
@@ -2088,5 +2220,15 @@
         private Button btnBasing3;
         private CheckBox cbMemCfg;
         private Button btnLoadCfg;
+        private Panel panel73;
+        private NumericUpDown ndVelLow3;
+        private Panel panel72;
+        private NumericUpDown ndVelLow2;
+        private Panel panel71;
+        private NumericUpDown ndVelLow1;
+        private Panel panel70;
+        private NumericUpDown ndVelLow0;
+        private Panel panel69;
+        private Label label13;
     }
 }

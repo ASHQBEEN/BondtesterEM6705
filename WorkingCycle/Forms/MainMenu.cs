@@ -10,7 +10,7 @@ namespace DutyCycle.Forms
         private bool isWorkerMenuExpanded = false;
         private DutyCycleForm dutyCycle;
         private Board board;
-        private VelocitySettings velocitySettings;
+        private DriverSettings velocitySettings;
 
         PictureBox[] pbNeg;
         PictureBox[] pbPos;

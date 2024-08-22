@@ -5,9 +5,8 @@ using static DutyCycle.Scripts.KeyboardControls;
 
 namespace DutyCycle.Forms
 {
-    public partial class VelocitySettings : Form
+    public partial class DriverSettings : Form
     {
-
         private readonly NumericUpDown[] ndSlowVel;
         private readonly NumericUpDown[] ndFastVel;
         private readonly NumericUpDown[] ndDrVel;
@@ -22,11 +21,12 @@ namespace DutyCycle.Forms
         private readonly Button[] btnsBasing;
         private readonly Button[] btnsBasingWithoutZ;
         private readonly Button[] btnsResetError;
+        private readonly NumericUpDown[] ndVelLow;
 
         private Board board = Singleton.GetInstance().Board;
         private int axesCount = Singleton.GetInstance().Board.AxesCount;
 
-        public VelocitySettings()
+        public DriverSettings()
         {
             InitializeComponent();
 
@@ -46,6 +46,7 @@ namespace DutyCycle.Forms
             btnsBasing = [btnBasing0, btnBasing1, btnBasing2, btnBasing3];
             btnsBasingWithoutZ = [btnBasing0, btnBasing1, btnBasing3];
             btnsResetError = [btnResetErrors0, btnResetErrors1, btnResetErrors2, btnResetErrors3];
+            ndVelLow = [ndVelLow0, ndVelLow1, ndVelLow2, ndVelLow3];
 
             for (int i = 0; i < 4; i++)
             {
@@ -54,6 +55,8 @@ namespace DutyCycle.Forms
                 ndFastVel[i].ValueChanged += ehFastToSlow;
                 EventHandler ehDrToFast = (o, ea) => ndFastVel[index].Maximum = ndDrVel[index].Value;
                 ndDrVel[i].ValueChanged += ehDrToFast;
+                EventHandler ehSlowToLow = (o, ea) => ndVelLow[index].Maximum = ndSlowVel[index].Value - 1;
+                ndSlowVel[i].ValueChanged += ehSlowToLow;
                 EventHandler ehFixateDrivers = (o, ea) => FixateDriver(index);
                 btnsFixate[i].Click += ehFixateDrivers;
                 EventHandler ehResetError = (o, ea) => board.ResetAxisError(index);
@@ -76,11 +79,12 @@ namespace DutyCycle.Forms
 
             for (int i = 0; i < axesCount; i++)
             {
-                ndSlowVel[i].Text = Convert.ToString(parameters.SlowVelocity[i]);
-                ndFastVel[i].Text = Convert.ToString(parameters.FastVelocity[i]);
-                ndAcc[i].Text = Convert.ToString(parameters.Acceleration[i]);
-                ndDrVel[i].Text = Convert.ToString(parameters.DriverVelocity[i]);
-                ndMaxCoord[i].Text = Convert.ToString(parameters.MaxCoordinate[i]);
+                ndSlowVel[i].Value = (decimal)parameters.SlowVelocity[i];
+                ndFastVel[i].Value = (decimal)parameters.FastVelocity[i];
+                ndAcc[i].Value = (decimal)parameters.Acceleration[i];
+                ndDrVel[i].Value = (decimal)parameters.DriverVelocity[i];
+                ndMaxCoord[i].Value = (decimal)parameters.MaxCoordinate[i];
+                ndVelLow[i].Value = (decimal)parameters.LowVelocity[i];
                 if (parameters.Jerk[i] == 0) rbT[i].Checked = true;
                 else rbS[i].Checked = true;
             }
@@ -137,6 +141,7 @@ MessageBoxIcon.Information);
             double[] velManFast = new double[axesCount];
             double[] velManSlow = new double[axesCount];
             double[] maxCoord = new double[axesCount];
+            double[] velLow = new double[axesCount];
 
             for (int i = 0; i < axesCount; i++)
             {
@@ -147,6 +152,7 @@ MessageBoxIcon.Information);
                 velManSlow[i] = Convert.ToDouble(ndSlowVel[i].Value);
                 velManFast[i] = Convert.ToDouble(ndFastVel[i].Value);
                 maxCoord[i] = Convert.ToDouble(ndMaxCoord[i].Value);
+                velLow[i] = Convert.ToDouble(ndVelLow[i].Value);
             }
 
             parameters.Jerk = jerk;
@@ -155,6 +161,7 @@ MessageBoxIcon.Information);
             parameters.FastVelocity = velManFast;
             parameters.DriverVelocity = velDr;
             parameters.MaxCoordinate = maxCoord;
+            parameters.LowVelocity = velLow;
 
             parameters.ParametersBeenSet = true;
         }
