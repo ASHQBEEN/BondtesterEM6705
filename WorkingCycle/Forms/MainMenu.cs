@@ -80,7 +80,6 @@ namespace DutyCycle.Forms
             dutyCycle?.Activate();
             KeyDown -= dutyCycle.StopBySpaceKey;
             KeyDown += dutyCycle.StopBySpaceKey;
-            dutyCycle?.Update();
         }
 
         private void posTimer_Tick(object sender, EventArgs e)

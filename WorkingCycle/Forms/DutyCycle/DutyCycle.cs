@@ -10,6 +10,7 @@ using Emgu.CV.Structure;
 using ScottPlot;
 using ScottPlot.Plottables;
 using System.Diagnostics;
+using System.Windows.Forms;
 using static DutyCycle.Scripts.KeyboardControls;
 
 
@@ -630,13 +631,12 @@ Board.StopAxisEmg(selectedTestAxis);
                 Mat m = new Mat();
                 capture?.Retrieve(m);
                 pictureBox1.Image = m.ToImage<Bgr, byte>().Flip(Emgu.CV.CvEnum.FlipType.Horizontal).ToBitmap();
-                //UPDATE IS BUGGED IN DEBUG MODE
-                //Update();
                 //}
                 //catch (Exception ex)
                 //{
                 //    MessageBox.Show(ex.Message, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 //}
+                Invoke(new Action(Update));
             }
         }
 
