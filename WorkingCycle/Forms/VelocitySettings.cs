@@ -3,7 +3,7 @@ using DutyCycle.Models.Machine;
 using DutyCycle.Logic;
 using static DutyCycle.Scripts.KeyboardControls;
 
-namespace DutyCycle
+namespace DutyCycle.Forms
 {
     public partial class VelocitySettings : Form
     {
@@ -58,7 +58,6 @@ namespace DutyCycle
                 btnsFixate[i].Click += ehFixateDrivers;
                 EventHandler ehResetError = (o, ea) => board.ResetAxisError(index);
                 btnsResetError[i].Click += ehResetError;
-
                 EventHandler ehBasing = (o, ea) => StartBasing(index);
                 btnsBasing[i].Click += ehBasing;
             }

@@ -3,7 +3,7 @@ using DutyCycle.Forms.DutyCycle;
 using DutyCycle.Models.Machine;
 using DutyCycle.Logic;
 
-namespace DutyCycle
+namespace DutyCycle.Forms
 {
     public partial class MainMenu : Form
     {

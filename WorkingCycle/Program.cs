@@ -1,3 +1,5 @@
+using DutyCycle.Forms;
+
 using static DutyCycle.Scripts.KeyboardControls;
 
 namespace DutyCycle

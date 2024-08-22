@@ -1,4 +1,4 @@
-﻿namespace DutyCycle
+﻿namespace DutyCycle.Forms
 {
     partial class MainMenu
     {
