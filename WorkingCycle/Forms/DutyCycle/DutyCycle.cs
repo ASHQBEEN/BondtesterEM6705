@@ -640,6 +640,7 @@ Board.StopAxisEmg(selectedTestAxis);
                 Mat m = new Mat();
                 capture.Retrieve(m);
                 pictureBox1.Image = m.ToImage<Bgr, byte>().Flip(Emgu.CV.CvEnum.FlipType.Horizontal).ToBitmap();
+                //UPDATE IS BUGGED IN DEBUG MODE
                 Update();
                 //}
                 //catch (Exception ex)
@@ -697,13 +698,21 @@ MessageBoxButtons.YesNo,
 MessageBoxIcon.Information);
                 if (result == DialogResult.Yes)
                 {
-                    Basing.Start([DisableInterface, () => board.BoardSetHighVelocity(parameters.BasingVelocities)], [() => Basing.Start([DisableInterface, () => board.BoardSetHighVelocity(parameters.BasingVelocities)], [Tare, EnableInterface], [], pos[0], pos[1], pos[2]), Tare, EnableInterface], []);
+                    Basing.Start([DisableInterface, () => board.BoardSetHighVelocity(parameters.BasingVelocities)], [() => Basing.Start([DisableInterface, SetupXYGroup], [Tare, EnableInterface], [], pos[0], pos[1], pos[2]), Tare, EnableInterface], []);
                 }
             }
             else
                 Basing.Start([DisableInterface, () => board.BoardSetHighVelocity(parameters.BasingVelocities)], [Tare, EnableInterface], [], pos[0], pos[1], pos[2]);
         }
 
+        private void SetupXYGroup()
+        {
+            board.AddToGroup(0);
+            board.AddToGroup(1);
+            board.SetGroupDriveSpeed(Singleton.GetInstance().Parameters.BasingVelocities[0]);
+            board.SetGroupAcc(1000000);
+            board.SetGroupDec(1000000);
+        }
 
         private void btnResetErrors_Click(object sender, EventArgs e) => board.BoardResetErrors();
 

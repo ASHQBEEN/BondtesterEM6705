@@ -24,12 +24,6 @@ namespace DutyCycle.Forms
 
             InitializeDriver();
 
-            board.AddToGroup(0);
-            board.AddToGroup(1);
-            board.SetGroupDriveSpeed(Singleton.GetInstance().Parameters.BasingVelocities[0]);
-            board.SetGroupAcc(1000000);
-            board.SetGroupDec(1000000);
-
             InitializeComponent();
 
             CollapseSubMenusOnStartup();
