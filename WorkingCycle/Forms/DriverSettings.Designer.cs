@@ -70,10 +70,6 @@
             lblAcc = new Label();
             lblMaxCoord = new Label();
             lblJerk = new Label();
-            tbActPos3 = new TextBox();
-            tbActPos1 = new TextBox();
-            tbActPos2 = new TextBox();
-            tbActPos0 = new TextBox();
             adjustmentsTimer = new System.Windows.Forms.Timer(components);
             tbState1 = new TextBox();
             tbState2 = new TextBox();
@@ -94,8 +90,6 @@
             ndVelLow0 = new NumericUpDown();
             panel59 = new Panel();
             label6 = new Label();
-            panel49 = new Panel();
-            label4 = new Label();
             panel5 = new Panel();
             panel6 = new Panel();
             panel7 = new Panel();
@@ -154,10 +148,6 @@
             panel48 = new Panel();
             pbOut43 = new PictureBox();
             btnFixate3 = new Button();
-            panel50 = new Panel();
-            panel51 = new Panel();
-            panel52 = new Panel();
-            panel53 = new Panel();
             panel54 = new Panel();
             label5 = new Label();
             panel55 = new Panel();
@@ -224,7 +214,6 @@
             panel70.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)ndVelLow0).BeginInit();
             panel59.SuspendLayout();
-            panel49.SuspendLayout();
             panel5.SuspendLayout();
             panel6.SuspendLayout();
             panel7.SuspendLayout();
@@ -275,10 +264,6 @@
             panel44.SuspendLayout();
             panel48.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pbOut43).BeginInit();
-            panel50.SuspendLayout();
-            panel51.SuspendLayout();
-            panel52.SuspendLayout();
-            panel53.SuspendLayout();
             panel54.SuspendLayout();
             panel55.SuspendLayout();
             panel56.SuspendLayout();
@@ -730,43 +715,6 @@
             lblJerk.TabIndex = 2;
             lblJerk.Text = "Плавность";
             // 
-            // tbActPos3
-            // 
-            tbActPos3.Font = new Font("Segoe UI", 9F);
-            tbActPos3.Location = new Point(42, 5);
-            tbActPos3.Name = "tbActPos3";
-            tbActPos3.ReadOnly = true;
-            tbActPos3.Size = new Size(120, 23);
-            tbActPos3.TabIndex = 2;
-            // 
-            // tbActPos1
-            // 
-            tbActPos1.Font = new Font("Segoe UI", 9F);
-            tbActPos1.Location = new Point(42, 5);
-            tbActPos1.Name = "tbActPos1";
-            tbActPos1.ReadOnly = true;
-            tbActPos1.Size = new Size(120, 23);
-            tbActPos1.TabIndex = 2;
-            // 
-            // tbActPos2
-            // 
-            tbActPos2.Font = new Font("Segoe UI", 9F);
-            tbActPos2.Location = new Point(42, 5);
-            tbActPos2.Name = "tbActPos2";
-            tbActPos2.ReadOnly = true;
-            tbActPos2.Size = new Size(120, 23);
-            tbActPos2.TabIndex = 2;
-            // 
-            // tbActPos0
-            // 
-            tbActPos0.Font = new Font("Segoe UI", 9F);
-            tbActPos0.Location = new Point(42, 5);
-            tbActPos0.Margin = new Padding(3, 7, 3, 3);
-            tbActPos0.Name = "tbActPos0";
-            tbActPos0.ReadOnly = true;
-            tbActPos0.Size = new Size(120, 23);
-            tbActPos0.TabIndex = 2;
-            // 
             // adjustmentsTimer
             // 
             adjustmentsTimer.Enabled = true;
@@ -862,8 +810,7 @@
             tableLayoutPanel1.Controls.Add(panel72, 3, 1);
             tableLayoutPanel1.Controls.Add(panel71, 2, 1);
             tableLayoutPanel1.Controls.Add(panel70, 1, 1);
-            tableLayoutPanel1.Controls.Add(panel59, 0, 11);
-            tableLayoutPanel1.Controls.Add(panel49, 0, 9);
+            tableLayoutPanel1.Controls.Add(panel59, 0, 10);
             tableLayoutPanel1.Controls.Add(panel5, 1, 0);
             tableLayoutPanel1.Controls.Add(panel6, 2, 0);
             tableLayoutPanel1.Controls.Add(panel7, 3, 0);
@@ -904,28 +851,24 @@
             tableLayoutPanel1.Controls.Add(panel42, 2, 8);
             tableLayoutPanel1.Controls.Add(panel43, 3, 8);
             tableLayoutPanel1.Controls.Add(panel44, 4, 8);
-            tableLayoutPanel1.Controls.Add(panel50, 1, 9);
-            tableLayoutPanel1.Controls.Add(panel51, 2, 9);
-            tableLayoutPanel1.Controls.Add(panel52, 3, 9);
-            tableLayoutPanel1.Controls.Add(panel53, 4, 9);
-            tableLayoutPanel1.Controls.Add(panel54, 0, 10);
-            tableLayoutPanel1.Controls.Add(panel55, 1, 10);
-            tableLayoutPanel1.Controls.Add(panel56, 2, 10);
-            tableLayoutPanel1.Controls.Add(panel57, 3, 10);
-            tableLayoutPanel1.Controls.Add(panel58, 4, 10);
-            tableLayoutPanel1.Controls.Add(panel60, 1, 11);
-            tableLayoutPanel1.Controls.Add(panel61, 2, 11);
-            tableLayoutPanel1.Controls.Add(panel62, 3, 11);
-            tableLayoutPanel1.Controls.Add(panel63, 4, 11);
-            tableLayoutPanel1.Controls.Add(panel64, 0, 12);
-            tableLayoutPanel1.Controls.Add(panel65, 1, 12);
-            tableLayoutPanel1.Controls.Add(panel66, 2, 12);
-            tableLayoutPanel1.Controls.Add(panel67, 3, 12);
-            tableLayoutPanel1.Controls.Add(panel68, 4, 12);
+            tableLayoutPanel1.Controls.Add(panel54, 0, 9);
+            tableLayoutPanel1.Controls.Add(panel55, 1, 9);
+            tableLayoutPanel1.Controls.Add(panel56, 2, 9);
+            tableLayoutPanel1.Controls.Add(panel57, 3, 9);
+            tableLayoutPanel1.Controls.Add(panel58, 4, 9);
+            tableLayoutPanel1.Controls.Add(panel60, 1, 10);
+            tableLayoutPanel1.Controls.Add(panel61, 2, 10);
+            tableLayoutPanel1.Controls.Add(panel62, 3, 10);
+            tableLayoutPanel1.Controls.Add(panel63, 4, 10);
+            tableLayoutPanel1.Controls.Add(panel64, 0, 11);
+            tableLayoutPanel1.Controls.Add(panel65, 1, 11);
+            tableLayoutPanel1.Controls.Add(panel66, 2, 11);
+            tableLayoutPanel1.Controls.Add(panel67, 3, 11);
+            tableLayoutPanel1.Controls.Add(panel68, 4, 11);
             tableLayoutPanel1.Controls.Add(panel69, 0, 1);
             tableLayoutPanel1.Location = new Point(12, 84);
             tableLayoutPanel1.Name = "tableLayoutPanel1";
-            tableLayoutPanel1.RowCount = 13;
+            tableLayoutPanel1.RowCount = 12;
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 38F));
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 38F));
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 38F));
@@ -938,8 +881,8 @@
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 38F));
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 38F));
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 38F));
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 38F));
-            tableLayoutPanel1.Size = new Size(1042, 529);
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
+            tableLayoutPanel1.Size = new Size(1042, 493);
             tableLayoutPanel1.TabIndex = 4;
             // 
             // panel73
@@ -1025,7 +968,7 @@
             // panel59
             // 
             panel59.Controls.Add(label6);
-            panel59.Location = new Point(4, 455);
+            panel59.Location = new Point(4, 416);
             panel59.Name = "panel59";
             panel59.Size = new Size(200, 32);
             panel59.TabIndex = 6;
@@ -1038,24 +981,6 @@
             label6.Size = new Size(90, 15);
             label6.TabIndex = 2;
             label6.Text = "Сброс ошибок";
-            // 
-            // panel49
-            // 
-            panel49.Controls.Add(label4);
-            panel49.Dock = DockStyle.Fill;
-            panel49.Location = new Point(4, 377);
-            panel49.Name = "panel49";
-            panel49.Size = new Size(201, 32);
-            panel49.TabIndex = 6;
-            // 
-            // label4
-            // 
-            label4.AutoSize = true;
-            label4.Location = new Point(30, 7);
-            label4.Name = "label4";
-            label4.Size = new Size(137, 15);
-            label4.TabIndex = 2;
-            label4.Text = "Актуальная координата";
             // 
             // panel5
             // 
@@ -1590,47 +1515,11 @@
             btnFixate3.Text = "Расфиксировать двигатель";
             btnFixate3.UseVisualStyleBackColor = true;
             // 
-            // panel50
-            // 
-            panel50.Controls.Add(tbActPos0);
-            panel50.Dock = DockStyle.Fill;
-            panel50.Location = new Point(212, 377);
-            panel50.Name = "panel50";
-            panel50.Size = new Size(201, 32);
-            panel50.TabIndex = 40;
-            // 
-            // panel51
-            // 
-            panel51.Controls.Add(tbActPos1);
-            panel51.Dock = DockStyle.Fill;
-            panel51.Location = new Point(420, 377);
-            panel51.Name = "panel51";
-            panel51.Size = new Size(201, 32);
-            panel51.TabIndex = 41;
-            // 
-            // panel52
-            // 
-            panel52.Controls.Add(tbActPos2);
-            panel52.Dock = DockStyle.Fill;
-            panel52.Location = new Point(628, 377);
-            panel52.Name = "panel52";
-            panel52.Size = new Size(201, 32);
-            panel52.TabIndex = 42;
-            // 
-            // panel53
-            // 
-            panel53.Controls.Add(tbActPos3);
-            panel53.Dock = DockStyle.Fill;
-            panel53.Location = new Point(836, 377);
-            panel53.Name = "panel53";
-            panel53.Size = new Size(202, 32);
-            panel53.TabIndex = 43;
-            // 
             // panel54
             // 
             panel54.Controls.Add(label5);
             panel54.Dock = DockStyle.Fill;
-            panel54.Location = new Point(4, 416);
+            panel54.Location = new Point(4, 377);
             panel54.Name = "panel54";
             panel54.Size = new Size(201, 32);
             panel54.TabIndex = 44;
@@ -1648,7 +1537,7 @@
             // 
             panel55.Controls.Add(tbState0);
             panel55.Dock = DockStyle.Fill;
-            panel55.Location = new Point(212, 416);
+            panel55.Location = new Point(212, 377);
             panel55.Name = "panel55";
             panel55.Size = new Size(201, 32);
             panel55.TabIndex = 45;
@@ -1657,7 +1546,7 @@
             // 
             panel56.Controls.Add(tbState1);
             panel56.Dock = DockStyle.Fill;
-            panel56.Location = new Point(420, 416);
+            panel56.Location = new Point(420, 377);
             panel56.Name = "panel56";
             panel56.Size = new Size(201, 32);
             panel56.TabIndex = 46;
@@ -1666,7 +1555,7 @@
             // 
             panel57.Controls.Add(tbState2);
             panel57.Dock = DockStyle.Fill;
-            panel57.Location = new Point(628, 416);
+            panel57.Location = new Point(628, 377);
             panel57.Name = "panel57";
             panel57.Size = new Size(201, 32);
             panel57.TabIndex = 47;
@@ -1675,7 +1564,7 @@
             // 
             panel58.Controls.Add(tbState3);
             panel58.Dock = DockStyle.Fill;
-            panel58.Location = new Point(836, 416);
+            panel58.Location = new Point(836, 377);
             panel58.Name = "panel58";
             panel58.Size = new Size(202, 32);
             panel58.TabIndex = 48;
@@ -1683,7 +1572,7 @@
             // panel60
             // 
             panel60.Controls.Add(btnResetErrors0);
-            panel60.Location = new Point(212, 455);
+            panel60.Location = new Point(212, 416);
             panel60.Name = "panel60";
             panel60.Size = new Size(200, 32);
             panel60.TabIndex = 49;
@@ -1700,7 +1589,7 @@
             // panel61
             // 
             panel61.Controls.Add(btnResetErrors1);
-            panel61.Location = new Point(420, 455);
+            panel61.Location = new Point(420, 416);
             panel61.Name = "panel61";
             panel61.Size = new Size(200, 32);
             panel61.TabIndex = 50;
@@ -1717,7 +1606,7 @@
             // panel62
             // 
             panel62.Controls.Add(btnResetErrors2);
-            panel62.Location = new Point(628, 455);
+            panel62.Location = new Point(628, 416);
             panel62.Name = "panel62";
             panel62.Size = new Size(200, 32);
             panel62.TabIndex = 51;
@@ -1734,7 +1623,7 @@
             // panel63
             // 
             panel63.Controls.Add(btnResetErrors3);
-            panel63.Location = new Point(836, 455);
+            panel63.Location = new Point(836, 416);
             panel63.Name = "panel63";
             panel63.Size = new Size(200, 32);
             panel63.TabIndex = 52;
@@ -1752,9 +1641,9 @@
             // 
             panel64.Controls.Add(label8);
             panel64.Dock = DockStyle.Fill;
-            panel64.Location = new Point(4, 494);
+            panel64.Location = new Point(4, 455);
             panel64.Name = "panel64";
-            panel64.Size = new Size(201, 32);
+            panel64.Size = new Size(201, 34);
             panel64.TabIndex = 53;
             // 
             // label8
@@ -1770,9 +1659,9 @@
             // 
             panel65.Controls.Add(btnBasing0);
             panel65.Dock = DockStyle.Fill;
-            panel65.Location = new Point(212, 494);
+            panel65.Location = new Point(212, 455);
             panel65.Name = "panel65";
-            panel65.Size = new Size(201, 32);
+            panel65.Size = new Size(201, 34);
             panel65.TabIndex = 54;
             // 
             // btnBasing0
@@ -1789,9 +1678,9 @@
             // 
             panel66.Controls.Add(btnBasing1);
             panel66.Dock = DockStyle.Fill;
-            panel66.Location = new Point(420, 494);
+            panel66.Location = new Point(420, 455);
             panel66.Name = "panel66";
-            panel66.Size = new Size(201, 32);
+            panel66.Size = new Size(201, 34);
             panel66.TabIndex = 55;
             // 
             // btnBasing1
@@ -1808,9 +1697,9 @@
             // 
             panel67.Controls.Add(btnBasing2);
             panel67.Dock = DockStyle.Fill;
-            panel67.Location = new Point(628, 494);
+            panel67.Location = new Point(628, 455);
             panel67.Name = "panel67";
-            panel67.Size = new Size(201, 32);
+            panel67.Size = new Size(201, 34);
             panel67.TabIndex = 56;
             // 
             // btnBasing2
@@ -1826,9 +1715,9 @@
             // 
             panel68.Controls.Add(btnBasing3);
             panel68.Dock = DockStyle.Fill;
-            panel68.Location = new Point(836, 494);
+            panel68.Location = new Point(836, 455);
             panel68.Name = "panel68";
-            panel68.Size = new Size(202, 32);
+            panel68.Size = new Size(202, 34);
             panel68.TabIndex = 57;
             // 
             // btnBasing3
@@ -1968,8 +1857,6 @@
             ((System.ComponentModel.ISupportInitialize)ndVelLow0).EndInit();
             panel59.ResumeLayout(false);
             panel59.PerformLayout();
-            panel49.ResumeLayout(false);
-            panel49.PerformLayout();
             panel5.ResumeLayout(false);
             panel5.PerformLayout();
             panel6.ResumeLayout(false);
@@ -2032,14 +1919,6 @@
             panel44.ResumeLayout(false);
             panel48.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)pbOut43).EndInit();
-            panel50.ResumeLayout(false);
-            panel50.PerformLayout();
-            panel51.ResumeLayout(false);
-            panel51.PerformLayout();
-            panel52.ResumeLayout(false);
-            panel52.PerformLayout();
-            panel53.ResumeLayout(false);
-            panel53.PerformLayout();
             panel54.ResumeLayout(false);
             panel54.PerformLayout();
             panel55.ResumeLayout(false);
@@ -2110,10 +1989,6 @@
         private Label lblAcc;
         private Label lblMaxCoord;
         private Label lblJerk;
-        private TextBox tbActPos3;
-        private TextBox tbActPos1;
-        private TextBox tbActPos2;
-        private TextBox tbActPos0;
         private System.Windows.Forms.Timer adjustmentsTimer;
         private TextBox tbState1;
         private TextBox tbState2;
@@ -2184,12 +2059,6 @@
         private Label label3;
         private Label label2;
         private PictureBox pictureBox2;
-        private Panel panel49;
-        private Label label4;
-        private Panel panel50;
-        private Panel panel51;
-        private Panel panel52;
-        private Panel panel53;
         private Panel panel54;
         private Label label5;
         private Panel panel55;

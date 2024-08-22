@@ -14,7 +14,6 @@ namespace DutyCycle.Forms
         private readonly RadioButton[] rbT;
         private readonly RadioButton[] rbS;
         private readonly NumericUpDown[] ndMaxCoord;
-        private readonly TextBox[] tbActPos;
         private readonly TextBox[] tbState;
         private readonly PictureBox[] pbOuts;
         private readonly Button[] btnsFixate;
@@ -39,7 +38,6 @@ namespace DutyCycle.Forms
             rbT = [rbT0, rbT1, rbT2, rbT3];
             rbS = [rbS0, rbS1, rbS2, rbS3];
             ndMaxCoord = [ndMaxCoord0, ndMaxCoord1, ndMaxCoord2, ndMaxCoord3];
-            tbActPos = [tbActPos0, tbActPos1, tbActPos2, tbActPos3];
             tbState = [tbState0, tbState1, tbState2, tbState3];
             pbOuts = [pbOut40, pbOut41, pbOut42, pbOut43];
             btnsFixate = [btnFixate0, btnFixate1, btnFixate2, btnFixate3];
@@ -65,8 +63,6 @@ namespace DutyCycle.Forms
                 btnsBasing[i].Click += ehBasing;
             }
         }
-
-
 
         private void ParseParams(bool loadVels)
         {
@@ -186,22 +182,14 @@ MessageBoxIcon.Information);
 
         private void adjustmentsTimer_Tick(object sender, EventArgs e)
         {
-            double[] actPos = Singleton.GetInstance().Board.BoardGetActPos();
-
             for (int i = 0; i < board.AxesCount; i++)
-            {
-                tbActPos[i].Text = actPos[i].ToString();
-                //tbState[i].Text = ((AxisState)Singleton.GetInstance().Board.GetAxisState(i)).();
                 tbState[i].Text = ((AxisState)Singleton.GetInstance().Board.GetAxisState(i)).ToString();
-            }
 
             foreach (var btn in btnsBasingWithoutZ)
-            {
                 if (Basing.AxisZBasingDone)
                     btn.Enabled = true;
                 else
                     btn.Enabled = false;
-            }
         }
 
         #region FIXATE DRIVERS
