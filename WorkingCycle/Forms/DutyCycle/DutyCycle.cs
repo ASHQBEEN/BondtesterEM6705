@@ -317,7 +317,6 @@ MessageBoxIcon.Information);
 
         private void btnLockLowerBond_Click(object sender, EventArgs e) => TurnOutput(pbOut7, 7, 3);
 
-
         private void TurnOutput(PictureBox pictureBoxDO, ushort channel, int axisIndex)
         {
             byte DoValue;
@@ -327,8 +326,6 @@ MessageBoxIcon.Information);
                 DoValue = 0;
             board.SetAxisOutputBit(axisIndex, channel, DoValue);
         }
-
-
 
         private void cmbTests_SelectedIndexChanged(object sender, EventArgs e)
         {
