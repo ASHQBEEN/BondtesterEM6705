@@ -17,6 +17,6 @@
 
         public abstract void TerminateTest();
 
-        public override string ToString() => $"{Id}, {Name} {Date:HH:mm:ss} ";
+        public override string ToString() => $"{Id}. {Name} {Date:HH:mm:ss} ";
     }
 }

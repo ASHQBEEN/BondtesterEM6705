@@ -198,7 +198,7 @@
             // 
             // btnGain
             // 
-            btnGain.Location = new Point(320, 833);
+            btnGain.Location = new Point(320, 817);
             btnGain.Name = "btnGain";
             btnGain.Size = new Size(121, 23);
             btnGain.TabIndex = 21;
