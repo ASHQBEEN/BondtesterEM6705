@@ -39,16 +39,12 @@
             label3 = new Label();
             label1 = new Label();
             flowLayoutPanel1 = new FlowLayoutPanel();
-            menuWorker = new FlowLayoutPanel();
-            panel2 = new Panel();
-            btnWorkerMenu = new Button();
-            panel3 = new Panel();
+            panel4 = new Panel();
             btnDutyCycle = new Button();
-            panel8 = new Panel();
-            button1 = new Button();
-            menuAdjustments = new FlowLayoutPanel();
-            panel7 = new Panel();
-            btnAdjustmentMenu = new Button();
+            panel5 = new Panel();
+            btnAdjustments = new Button();
+            panel6 = new Panel();
+            btnReference = new Button();
             panel9 = new Panel();
             tableLayoutPanel1 = new TableLayoutPanel();
             panel13 = new Panel();
@@ -81,12 +77,9 @@
             ((System.ComponentModel.ISupportInitialize)pbClose).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             flowLayoutPanel1.SuspendLayout();
-            menuWorker.SuspendLayout();
-            panel2.SuspendLayout();
-            panel3.SuspendLayout();
-            panel8.SuspendLayout();
-            menuAdjustments.SuspendLayout();
-            panel7.SuspendLayout();
+            panel4.SuspendLayout();
+            panel5.SuspendLayout();
+            panel6.SuspendLayout();
             panel9.SuspendLayout();
             tableLayoutPanel1.SuspendLayout();
             panel13.SuspendLayout();
@@ -204,139 +197,92 @@
             // flowLayoutPanel1
             // 
             flowLayoutPanel1.BackColor = SystemColors.ControlDark;
-            flowLayoutPanel1.Controls.Add(menuWorker);
-            flowLayoutPanel1.Controls.Add(menuAdjustments);
+            flowLayoutPanel1.BorderStyle = BorderStyle.FixedSingle;
+            flowLayoutPanel1.Controls.Add(panel4);
+            flowLayoutPanel1.Controls.Add(panel5);
+            flowLayoutPanel1.Controls.Add(panel6);
             flowLayoutPanel1.Dock = DockStyle.Left;
             flowLayoutPanel1.Location = new Point(0, 84);
             flowLayoutPanel1.Name = "flowLayoutPanel1";
-            flowLayoutPanel1.Size = new Size(218, 940);
+            flowLayoutPanel1.Size = new Size(90, 940);
             flowLayoutPanel1.TabIndex = 1;
             // 
-            // menuWorker
+            // panel4
             // 
-            menuWorker.Controls.Add(panel2);
-            menuWorker.Controls.Add(panel3);
-            menuWorker.Controls.Add(panel8);
-            menuWorker.Location = new Point(0, 0);
-            menuWorker.Margin = new Padding(0);
-            menuWorker.Name = "menuWorker";
-            menuWorker.Size = new Size(280, 172);
-            menuWorker.TabIndex = 1;
-            // 
-            // panel2
-            // 
-            panel2.Controls.Add(btnWorkerMenu);
-            panel2.Location = new Point(0, 0);
-            panel2.Margin = new Padding(0);
-            panel2.Name = "panel2";
-            panel2.Size = new Size(280, 84);
-            panel2.TabIndex = 2;
-            // 
-            // btnWorkerMenu
-            // 
-            btnWorkerMenu.Font = new Font("Segoe UI", 14F, FontStyle.Bold, GraphicsUnit.Point, 204);
-            btnWorkerMenu.Image = (Image)resources.GetObject("btnWorkerMenu.Image");
-            btnWorkerMenu.ImageAlign = ContentAlignment.MiddleLeft;
-            btnWorkerMenu.Location = new Point(-30, -34);
-            btnWorkerMenu.Margin = new Padding(0);
-            btnWorkerMenu.Name = "btnWorkerMenu";
-            btnWorkerMenu.Padding = new Padding(30, 0, 0, 0);
-            btnWorkerMenu.Size = new Size(329, 162);
-            btnWorkerMenu.TabIndex = 0;
-            btnWorkerMenu.Text = "Оператору";
-            btnWorkerMenu.UseVisualStyleBackColor = true;
-            btnWorkerMenu.Click += btnWorkerMenu_Click;
-            // 
-            // panel3
-            // 
-            panel3.Controls.Add(btnDutyCycle);
-            panel3.Location = new Point(0, 84);
-            panel3.Margin = new Padding(0);
-            panel3.Name = "panel3";
-            panel3.Size = new Size(284, 44);
-            panel3.TabIndex = 2;
+            panel4.BorderStyle = BorderStyle.FixedSingle;
+            panel4.Controls.Add(btnDutyCycle);
+            panel4.Location = new Point(0, 0);
+            panel4.Margin = new Padding(0);
+            panel4.Name = "panel4";
+            panel4.Size = new Size(90, 125);
+            panel4.TabIndex = 3;
             // 
             // btnDutyCycle
             // 
-            btnDutyCycle.Font = new Font("Segoe UI", 13F, FontStyle.Regular, GraphicsUnit.Point, 204);
+            btnDutyCycle.Font = new Font("Segoe UI Semibold", 14F, FontStyle.Bold, GraphicsUnit.Point, 204);
             btnDutyCycle.Image = (Image)resources.GetObject("btnDutyCycle.Image");
-            btnDutyCycle.ImageAlign = ContentAlignment.MiddleLeft;
-            btnDutyCycle.Location = new Point(-14, -16);
-            btnDutyCycle.Margin = new Padding(0);
+            btnDutyCycle.ImageAlign = ContentAlignment.TopCenter;
+            btnDutyCycle.Location = new Point(-22, -1);
             btnDutyCycle.Name = "btnDutyCycle";
-            btnDutyCycle.Padding = new Padding(15, 0, 0, 0);
-            btnDutyCycle.Size = new Size(319, 75);
+            btnDutyCycle.Size = new Size(122, 189);
             btnDutyCycle.TabIndex = 0;
-            btnDutyCycle.Text = "       Рабочий цикл";
-            btnDutyCycle.TextAlign = ContentAlignment.MiddleLeft;
+            btnDutyCycle.Text = " Рабочий\r\n  цикл";
             btnDutyCycle.UseVisualStyleBackColor = true;
             btnDutyCycle.Click += btnDutyCycle_Click;
             // 
-            // panel8
+            // panel5
             // 
-            panel8.Controls.Add(button1);
-            panel8.Location = new Point(0, 128);
-            panel8.Margin = new Padding(0);
-            panel8.Name = "panel8";
-            panel8.Size = new Size(284, 44);
-            panel8.TabIndex = 2;
+            panel5.BorderStyle = BorderStyle.FixedSingle;
+            panel5.Controls.Add(btnAdjustments);
+            panel5.Location = new Point(0, 125);
+            panel5.Margin = new Padding(0);
+            panel5.Name = "panel5";
+            panel5.Size = new Size(90, 125);
+            panel5.TabIndex = 5;
             // 
-            // button1
+            // btnAdjustments
             // 
-            button1.Font = new Font("Segoe UI", 13F, FontStyle.Regular, GraphicsUnit.Point, 204);
-            button1.Image = (Image)resources.GetObject("button1.Image");
-            button1.ImageAlign = ContentAlignment.MiddleLeft;
-            button1.Location = new Point(-14, -16);
-            button1.Margin = new Padding(0);
-            button1.Name = "button1";
-            button1.Padding = new Padding(15, 0, 0, 0);
-            button1.Size = new Size(319, 75);
-            button1.TabIndex = 0;
-            button1.Text = "       Справка";
-            button1.TextAlign = ContentAlignment.MiddleLeft;
-            button1.UseVisualStyleBackColor = true;
+            btnAdjustments.Font = new Font("Segoe UI Semibold", 14F, FontStyle.Bold, GraphicsUnit.Point, 204);
+            btnAdjustments.Image = (Image)resources.GetObject("btnAdjustments.Image");
+            btnAdjustments.ImageAlign = ContentAlignment.TopCenter;
+            btnAdjustments.Location = new Point(-22, -1);
+            btnAdjustments.Name = "btnAdjustments";
+            btnAdjustments.Size = new Size(122, 183);
+            btnAdjustments.TabIndex = 0;
+            btnAdjustments.Text = "  Наладка";
+            btnAdjustments.UseVisualStyleBackColor = true;
+            btnAdjustments.Click += btnAdjustments_Click;
             // 
-            // menuAdjustments
+            // panel6
             // 
-            menuAdjustments.Controls.Add(panel7);
-            menuAdjustments.Location = new Point(0, 172);
-            menuAdjustments.Margin = new Padding(0);
-            menuAdjustments.Name = "menuAdjustments";
-            menuAdjustments.Size = new Size(280, 84);
-            menuAdjustments.TabIndex = 1;
+            panel6.BorderStyle = BorderStyle.FixedSingle;
+            panel6.Controls.Add(btnReference);
+            panel6.Location = new Point(0, 250);
+            panel6.Margin = new Padding(0);
+            panel6.Name = "panel6";
+            panel6.Size = new Size(90, 125);
+            panel6.TabIndex = 4;
             // 
-            // panel7
+            // btnReference
             // 
-            panel7.Controls.Add(btnAdjustmentMenu);
-            panel7.Location = new Point(0, 0);
-            panel7.Margin = new Padding(0);
-            panel7.Name = "panel7";
-            panel7.Size = new Size(284, 84);
-            panel7.TabIndex = 2;
-            // 
-            // btnAdjustmentMenu
-            // 
-            btnAdjustmentMenu.Font = new Font("Segoe UI", 13F, FontStyle.Bold, GraphicsUnit.Point, 204);
-            btnAdjustmentMenu.Image = (Image)resources.GetObject("btnAdjustmentMenu.Image");
-            btnAdjustmentMenu.ImageAlign = ContentAlignment.MiddleLeft;
-            btnAdjustmentMenu.Location = new Point(-30, -44);
-            btnAdjustmentMenu.Margin = new Padding(0);
-            btnAdjustmentMenu.Name = "btnAdjustmentMenu";
-            btnAdjustmentMenu.Padding = new Padding(30, 0, 0, 0);
-            btnAdjustmentMenu.Size = new Size(329, 162);
-            btnAdjustmentMenu.TabIndex = 0;
-            btnAdjustmentMenu.Text = "Наладчику";
-            btnAdjustmentMenu.UseVisualStyleBackColor = true;
-            btnAdjustmentMenu.Click += btnAdjustmentMenu_Click;
+            btnReference.Font = new Font("Segoe UI Semibold", 14F, FontStyle.Bold, GraphicsUnit.Point, 204);
+            btnReference.Image = (Image)resources.GetObject("btnReference.Image");
+            btnReference.ImageAlign = ContentAlignment.TopCenter;
+            btnReference.Location = new Point(-20, -1);
+            btnReference.Name = "btnReference";
+            btnReference.Size = new Size(128, 185);
+            btnReference.TabIndex = 0;
+            btnReference.Text = "Справка";
+            btnReference.UseVisualStyleBackColor = true;
             // 
             // panel9
             // 
             panel9.BorderStyle = BorderStyle.FixedSingle;
             panel9.Controls.Add(tableLayoutPanel1);
             panel9.Dock = DockStyle.Bottom;
-            panel9.Location = new Point(218, 980);
+            panel9.Location = new Point(90, 980);
             panel9.Name = "panel9";
-            panel9.Size = new Size(1062, 44);
+            panel9.Size = new Size(1190, 44);
             panel9.TabIndex = 3;
             // 
             // tableLayoutPanel1
@@ -357,7 +303,7 @@
             tableLayoutPanel1.RowCount = 1;
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
-            tableLayoutPanel1.Size = new Size(1060, 42);
+            tableLayoutPanel1.Size = new Size(1188, 42);
             tableLayoutPanel1.TabIndex = 5;
             // 
             // panel13
@@ -369,10 +315,10 @@
             panel13.Controls.Add(pbPos3);
             panel13.Dock = DockStyle.Fill;
             panel13.Enabled = false;
-            panel13.Location = new Point(793, 1);
+            panel13.Location = new Point(889, 1);
             panel13.Margin = new Padding(0);
             panel13.Name = "panel13";
-            panel13.Size = new Size(266, 40);
+            panel13.Size = new Size(298, 40);
             panel13.TabIndex = 5;
             // 
             // pbNeg3
@@ -437,7 +383,7 @@
             panel10.Location = new Point(1, 1);
             panel10.Margin = new Padding(0);
             panel10.Name = "panel10";
-            panel10.Size = new Size(263, 40);
+            panel10.Size = new Size(295, 40);
             panel10.TabIndex = 5;
             // 
             // lblNeg0
@@ -498,10 +444,10 @@
             panel11.Controls.Add(pbPos1);
             panel11.Controls.Add(pbNeg1);
             panel11.Dock = DockStyle.Fill;
-            panel11.Location = new Point(265, 1);
+            panel11.Location = new Point(297, 1);
             panel11.Margin = new Padding(0);
             panel11.Name = "panel11";
-            panel11.Size = new Size(263, 40);
+            panel11.Size = new Size(295, 40);
             panel11.TabIndex = 5;
             // 
             // lblNeg1
@@ -561,10 +507,10 @@
             panel12.Controls.Add(pbPos2);
             panel12.Controls.Add(pbNeg2);
             panel12.Dock = DockStyle.Fill;
-            panel12.Location = new Point(529, 1);
+            panel12.Location = new Point(593, 1);
             panel12.Margin = new Padding(0);
             panel12.Name = "panel12";
-            panel12.Size = new Size(263, 40);
+            panel12.Size = new Size(295, 40);
             panel12.TabIndex = 5;
             // 
             // lblPos2
@@ -642,12 +588,9 @@
             ((System.ComponentModel.ISupportInitialize)pbClose).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             flowLayoutPanel1.ResumeLayout(false);
-            menuWorker.ResumeLayout(false);
-            panel2.ResumeLayout(false);
-            panel3.ResumeLayout(false);
-            panel8.ResumeLayout(false);
-            menuAdjustments.ResumeLayout(false);
-            panel7.ResumeLayout(false);
+            panel4.ResumeLayout(false);
+            panel5.ResumeLayout(false);
+            panel6.ResumeLayout(false);
             panel9.ResumeLayout(false);
             tableLayoutPanel1.ResumeLayout(false);
             panel13.ResumeLayout(false);
@@ -673,16 +616,6 @@
 
         private Panel panel1;
         private FlowLayoutPanel flowLayoutPanel1;
-        private Panel panel2;
-        private Button btnWorkerMenu;
-        private FlowLayoutPanel menuAdjustments;
-        private Panel panel7;
-        private Button btnAdjustmentMenu;
-        private FlowLayoutPanel menuWorker;
-        private Panel panel3;
-        private Button btnDutyCycle;
-        private Panel panel8;
-        private Button button1;
         private Panel panel9;
         private Label lblNeg2;
         private Label lblPos1;
@@ -717,5 +650,11 @@
         private PictureBox pbClose;
         private PictureBox pbMinimize;
         private TableLayoutPanel tableLayoutPanel1;
+        private Button btnDutyCycle;
+        private Panel panel4;
+        private Panel panel5;
+        private Button btnAdjustments;
+        private Panel panel6;
+        private Button btnReference;
     }
 }

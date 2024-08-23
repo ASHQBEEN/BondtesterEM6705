@@ -122,7 +122,7 @@
             testPlot.Dock = DockStyle.Fill;
             testPlot.Location = new Point(0, 0);
             testPlot.Name = "testPlot";
-            testPlot.Size = new Size(578, 398);
+            testPlot.Size = new Size(648, 398);
             testPlot.TabIndex = 1;
             // 
             // tableLayoutPanel1
@@ -140,7 +140,7 @@
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 55F));
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 45F));
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
-            tableLayoutPanel1.Size = new Size(1062, 896);
+            tableLayoutPanel1.Size = new Size(1190, 896);
             tableLayoutPanel1.TabIndex = 22;
             // 
             // panel1
@@ -150,7 +150,7 @@
             panel1.Dock = DockStyle.Fill;
             panel1.Location = new Point(3, 495);
             panel1.Name = "panel1";
-            panel1.Size = new Size(578, 398);
+            panel1.Size = new Size(648, 398);
             panel1.TabIndex = 0;
             // 
             // tbForceData
@@ -158,7 +158,7 @@
             tbForceData.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             tbForceData.Font = new Font("DSEG7 Modern", 13.999999F, FontStyle.Regular, GraphicsUnit.Point, 0);
             tbForceData.ForeColor = Color.Navy;
-            tbForceData.Location = new Point(475, 3);
+            tbForceData.Location = new Point(545, 3);
             tbForceData.Name = "tbForceData";
             tbForceData.Size = new Size(100, 28);
             tbForceData.TabIndex = 26;
@@ -170,7 +170,7 @@
             pictureBox1.Dock = DockStyle.Fill;
             pictureBox1.Location = new Point(3, 3);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(578, 486);
+            pictureBox1.Size = new Size(648, 486);
             pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
             pictureBox1.TabIndex = 24;
             pictureBox1.TabStop = false;
@@ -182,10 +182,10 @@
             operatorPanel.Controls.Add(label1);
             operatorPanel.Controls.Add(groupBox3);
             operatorPanel.Controls.Add(groupBox4);
-            operatorPanel.Location = new Point(587, 3);
+            operatorPanel.Location = new Point(657, 3);
             operatorPanel.Name = "operatorPanel";
             tableLayoutPanel1.SetRowSpan(operatorPanel, 2);
-            operatorPanel.Size = new Size(472, 890);
+            operatorPanel.Size = new Size(530, 890);
             operatorPanel.TabIndex = 2;
             // 
             // groupBox2
@@ -748,7 +748,7 @@
             // 
             AutoScaleMode = AutoScaleMode.None;
             AutoSize = true;
-            ClientSize = new Size(1062, 896);
+            ClientSize = new Size(1190, 896);
             Controls.Add(tableLayoutPanel1);
             FormBorderStyle = FormBorderStyle.None;
             Margin = new Padding(2);
