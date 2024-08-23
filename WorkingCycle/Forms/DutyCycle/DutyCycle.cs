@@ -530,11 +530,8 @@ MessageBoxIcon.Information);
             }
         }
 
-        public void StartPull()
-        {
-            Singleton.GetInstance().
-Board.StartAxisContinuousMovement(selectedTestAxis, (ushort)(selectedTestAxis == 1 ? 0 : 1));
-        }
+        public void StartPull() => Singleton.GetInstance().
+Board.StartAxisContinuousMovement(selectedTestAxis, 1);
 
         public void StopPull() => Singleton.GetInstance().
 Board.StopAxisEmg(selectedTestAxis);
