@@ -603,6 +603,11 @@ Board.StopAxisEmg(selectedTestAxis);
 
         private void btnOpenCam_Click(object sender, EventArgs e)
         {
+            OpenCamera();   
+        }
+
+        private void OpenCamera()
+        {
             if (camIsActive)
             {
                 try
@@ -624,9 +629,15 @@ Board.StopAxisEmg(selectedTestAxis);
                     else if (cmbCams.SelectedItem == null)
                         throw new Exception("Необходимо выбрать камеру");
                     else if (capture != null)
+                    {
+                        string secondProjectPath = @"Debug\net8.0\CameraSettings.exe";
+                        Process.Start(secondProjectPath);
                         capture.Start();
+                    }
                     else
                     {
+                        string secondProjectPath = @"Debug\net8.0\CameraSettings.exe";
+                        Process.Start(secondProjectPath);
                         selectedCamID = cmbCams.SelectedIndex;
                         capture = new VideoCapture(selectedCamID);
                         capture.ImageGrabbed += Capture_ImageGrabbed;
