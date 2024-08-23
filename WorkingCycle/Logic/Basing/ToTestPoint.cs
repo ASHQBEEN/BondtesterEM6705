@@ -4,6 +4,8 @@ namespace DutyCycle.Logic
 {
     public static partial class Basing
     {
+        public static bool InTestPoint = false;
+
         private static void ToTestPoint(double positionX, double positionY, double positionZ)
         {
             switch (state)
@@ -26,8 +28,9 @@ namespace DutyCycle.Logic
                 case 4:
                     if (CheckReboundInProgress(2)) break; //STA_AX_PTP_MOT
                     state++; break;
-                    case 5:
+                case 5:
                     EndBasing();
+                    InTestPoint = true;
                     break;
             }
         }

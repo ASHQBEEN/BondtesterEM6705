@@ -12,6 +12,7 @@ using ScottPlot.Plottables;
 using System.Diagnostics;
 using System.Windows.Forms;
 using static DutyCycle.Scripts.KeyboardControls;
+using static Emgu.Util.Platform;
 
 
 namespace DutyCycle.Forms.DutyCycle
@@ -79,6 +80,8 @@ namespace DutyCycle.Forms.DutyCycle
             LoadTestVelocities();
 
             UpdateCamerasList();
+
+            SetupXYGroup();
         }
 
         #region Plot
@@ -200,8 +203,9 @@ namespace DutyCycle.Forms.DutyCycle
         }
 
         public void StartBasing() => Basing.Start([DisableInterface, () => board.BoardSetHighVelocity(parameters.BasingVelocities)], [Tare, EnableInterface], []);
-
         #endregion
+
+
 
         private void btnStartTest_Click(object sender, EventArgs e)
         {
@@ -218,10 +222,27 @@ MessageBoxIcon.Information);
                 return;
             }
 
-            var actualPoint = board.BoardGetCommandPositions();
-            var testPoints = Singleton.GetInstance().TestConditions.TestPoints;
-            var actTestPoint = rbBreakTest.Checked ? rbShearTest.Checked ? testPoints.Shear : testPoints.Stretch : testPoints.Break;
-            if (!((actualPoint[0] == actTestPoint[0]) && (actualPoint[1] == actTestPoint[1]) && (actualPoint[2] == actTestPoint[2]))) return;
+            if (!Basing.InTestPoint)
+            {
+                DialogResult result = MessageBox.Show(
+    "Для начала теста необходимо находиться в точке теста, совершить перемещение?",
+    "Приезд в точку теста не совершён",
+    MessageBoxButtons.YesNo,
+    MessageBoxIcon.Information);
+                if (result == DialogResult.Yes)
+                {
+                    double[] pos = new double[3];
+                    if (rbBreakTest.Checked)
+                        pos = testConditions.TestPoints.Break;
+                    else if (rbStretchTest.Checked)
+                        pos = testConditions.TestPoints.Stretch;
+                    else if (rbShearTest.Checked)
+                        pos = testConditions.TestPoints.Shear;
+
+                    Basing.Start([DisableInterface, () => board.BoardSetHighVelocity(parameters.BasingVelocities)], [Tare, EnableInterface], [], pos[0], pos[1], pos[2]);
+                }
+                return;
+            }
 
             testInProgress = true;
 
@@ -253,13 +274,15 @@ MessageBoxIcon.Information);
 
         private void ChooseTestType()
         {
+            Basing.InTestPoint = false;
+
             TestPoints testPoints = Singleton.GetInstance().TestConditions.TestPoints;
 
             selectedTestList = rbBreakTest.Checked ? breakTests :
                 rbStretchTest.Checked ? stretchTests : shearTests;
 
             selectedTestAxis = rbBreakTest.Checked ? 2 :
-                rbStretchTest.Checked ? 2 : 1;
+                rbStretchTest.Checked ? 2 : 0;
 
             selectedTestPoint = rbBreakTest.Checked ? testPoints.Break :
                 rbStretchTest.Checked ? testPoints.Stretch : testPoints.Shear;
@@ -510,7 +533,7 @@ MessageBoxIcon.Information);
         public void StartPull()
         {
             Singleton.GetInstance().
-Board.StartAxisContinuousMovement(selectedTestAxis, (ushort)(selectedTestAxis == 1 ?  0 : 1));
+Board.StartAxisContinuousMovement(selectedTestAxis, (ushort)(selectedTestAxis == 1 ? 0 : 1));
         }
 
         public void StopPull() => Singleton.GetInstance().
@@ -685,7 +708,7 @@ MessageBoxButtons.YesNo,
 MessageBoxIcon.Information);
                 if (result == DialogResult.Yes)
                 {
-                    Basing.Start([DisableInterface, () => board.BoardSetHighVelocity(parameters.BasingVelocities)], [() => Basing.Start([DisableInterface, SetupXYGroup], [Tare, EnableInterface], [], pos[0], pos[1], pos[2]), Tare, EnableInterface], []);
+                    Basing.Start([DisableInterface, () => board.BoardSetHighVelocity(parameters.BasingVelocities)], [() => Basing.Start([DisableInterface], [Tare, EnableInterface], [], pos[0], pos[1], pos[2]), Tare, EnableInterface], []);
                 }
             }
             else
