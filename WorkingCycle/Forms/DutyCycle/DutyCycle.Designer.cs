@@ -36,7 +36,6 @@
             tbForceData = new TextBox();
             pictureBox1 = new PictureBox();
             operatorPanel = new Panel();
-            btnGain = new Button();
             groupBox2 = new GroupBox();
             groupBox6 = new GroupBox();
             btnStartTest = new Button();
@@ -86,9 +85,6 @@
             btnLoadTests = new Button();
             cmbTests = new ComboBox();
             lblTestId = new Label();
-            btnOpenCam = new Button();
-            cmbCams = new ComboBox();
-            btnUpdateCamList = new Button();
             outsTimer = new System.Windows.Forms.Timer(components);
             calibrationTimer = new System.Windows.Forms.Timer(components);
             tableLayoutPanel1.SuspendLayout();
@@ -181,31 +177,16 @@
             // 
             // operatorPanel
             // 
-            operatorPanel.Controls.Add(btnGain);
             operatorPanel.Controls.Add(groupBox2);
             operatorPanel.Controls.Add(groupBox1);
             operatorPanel.Controls.Add(label1);
             operatorPanel.Controls.Add(groupBox3);
             operatorPanel.Controls.Add(groupBox4);
-            operatorPanel.Controls.Add(btnOpenCam);
-            operatorPanel.Controls.Add(cmbCams);
-            operatorPanel.Controls.Add(btnUpdateCamList);
             operatorPanel.Location = new Point(587, 3);
             operatorPanel.Name = "operatorPanel";
             tableLayoutPanel1.SetRowSpan(operatorPanel, 2);
             operatorPanel.Size = new Size(472, 890);
             operatorPanel.TabIndex = 2;
-            // 
-            // btnGain
-            // 
-            btnGain.Location = new Point(320, 817);
-            btnGain.Name = "btnGain";
-            btnGain.Size = new Size(121, 23);
-            btnGain.TabIndex = 21;
-            btnGain.Text = "Усиление камеры";
-            btnGain.UseVisualStyleBackColor = true;
-            btnGain.Visible = false;
-            btnGain.Click += btnGain_Click;
             // 
             // groupBox2
             // 
@@ -515,7 +496,6 @@
             label1.Size = new Size(144, 25);
             label1.TabIndex = 20;
             label1.Text = "Рабочий цикл";
-            label1.Click += label1_Click;
             // 
             // groupBox3
             // 
@@ -754,38 +734,6 @@
             lblTestId.TabIndex = 16;
             lblTestId.Text = "№ Измерения";
             // 
-            // btnOpenCam
-            // 
-            btnOpenCam.Location = new Point(135, 837);
-            btnOpenCam.Name = "btnOpenCam";
-            btnOpenCam.Size = new Size(87, 41);
-            btnOpenCam.TabIndex = 0;
-            btnOpenCam.Text = "Начать просмотр";
-            btnOpenCam.UseVisualStyleBackColor = true;
-            btnOpenCam.Visible = false;
-            btnOpenCam.Click += btnOpenCam_Click;
-            // 
-            // cmbCams
-            // 
-            cmbCams.DropDownStyle = ComboBoxStyle.DropDownList;
-            cmbCams.FormattingEnabled = true;
-            cmbCams.Location = new Point(320, 859);
-            cmbCams.Name = "cmbCams";
-            cmbCams.Size = new Size(121, 23);
-            cmbCams.TabIndex = 1;
-            cmbCams.Visible = false;
-            // 
-            // btnUpdateCamList
-            // 
-            btnUpdateCamList.Location = new Point(227, 833);
-            btnUpdateCamList.Name = "btnUpdateCamList";
-            btnUpdateCamList.Size = new Size(87, 53);
-            btnUpdateCamList.TabIndex = 0;
-            btnUpdateCamList.Text = "Обновить список камер";
-            btnUpdateCamList.UseVisualStyleBackColor = true;
-            btnUpdateCamList.Visible = false;
-            btnUpdateCamList.Click += btnUpdateCamList_Click;
-            // 
             // outsTimer
             // 
             outsTimer.Enabled = true;
@@ -877,9 +825,6 @@
         private ComboBox cmbReferenceWeights;
         private Button btnLockUpperBond;
         private Button btnHome;
-        private ComboBox cmbCams;
-        private Button btnOpenCam;
-        private Button btnUpdateCamList;
         private Button btnMoveToStart;
         private GroupBox groupBox4;
         private GroupBox groupBox3;
@@ -904,6 +849,5 @@
         private GroupBox groupBox6;
         private CheckBox cbBoundSet;
         private Label label1;
-        private Button btnGain;
     }
 }

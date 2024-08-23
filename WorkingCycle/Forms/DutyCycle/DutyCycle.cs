@@ -1,5 +1,4 @@
 ﻿using ashqTech;
-using DirectShowLib;
 using DutyCycle.Csv;
 using DutyCycle.Logic;
 using DutyCycle.Models;
@@ -10,9 +9,7 @@ using Emgu.CV.Structure;
 using ScottPlot;
 using ScottPlot.Plottables;
 using System.Diagnostics;
-using System.Windows.Forms;
 using static DutyCycle.Scripts.KeyboardControls;
-using static Emgu.Util.Platform;
 
 
 namespace DutyCycle.Forms.DutyCycle
@@ -79,7 +76,7 @@ namespace DutyCycle.Forms.DutyCycle
             UpdateMaximumVelocity();
             LoadTestVelocities();
 
-            UpdateCamerasList();
+            OpenCamera();
 
             SetupXYGroup();
         }
@@ -569,25 +566,7 @@ Board.StopAxisEmg(selectedTestAxis);
 
         #region Camera
         private VideoCapture? capture;
-        private DsDevice[] webCams = null;
         bool camIsActive = false;
-        int selectedCamID = new();
-
-        private void UpdateCamerasList()
-        {
-            try
-            {
-                webCams = DsDevice.GetDevicesOfCat(FilterCategory.VideoInputDevice);
-                cmbCams.Items.Clear();
-                for (int i = 0; i < webCams.Length; i++)
-                    cmbCams.Items.Add(webCams[i].Name);
-                cmbCams.SelectedIndex = 0;
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Не обнаружено камер подключенных камер\n" + ex.Message);
-            }
-        }
 
         private void CloseCam()
         {
@@ -598,12 +577,7 @@ Board.StopAxisEmg(selectedTestAxis);
             pictureBox1.Image?.Dispose();
             pictureBox1.Image = null;
             camIsActive = false;
-            btnOpenCam.Text = "Начать просмотр";
-        }
-
-        private void btnOpenCam_Click(object sender, EventArgs e)
-        {
-            OpenCamera();   
+            //btnOpenCam.Text = "Начать просмотр";
         }
 
         private void OpenCamera()
@@ -624,11 +598,7 @@ Board.StopAxisEmg(selectedTestAxis);
             {
                 try
                 {
-                    if (webCams.Length == 0)
-                        throw new Exception("Нет доступных камер");
-                    else if (cmbCams.SelectedItem == null)
-                        throw new Exception("Необходимо выбрать камеру");
-                    else if (capture != null)
+                    if (capture != null)
                     {
                         string secondProjectPath = @"Debug\net8.0\CameraSettings.exe";
                         Process.Start(secondProjectPath);
@@ -638,12 +608,11 @@ Board.StopAxisEmg(selectedTestAxis);
                     {
                         string secondProjectPath = @"Debug\net8.0\CameraSettings.exe";
                         Process.Start(secondProjectPath);
-                        selectedCamID = cmbCams.SelectedIndex;
-                        capture = new VideoCapture(selectedCamID);
+                        capture = new VideoCapture(0);
                         capture.ImageGrabbed += Capture_ImageGrabbed;
                         capture.Start();
                         camIsActive = true;
-                        btnOpenCam.Text = "Закончить просмотр";
+                        //btnOpenCam.Text = "Закончить просмотр";
                     }
                 }
                 catch (Exception ex)
@@ -670,8 +639,6 @@ Board.StopAxisEmg(selectedTestAxis);
                 Invoke(new Action(Update));
             }
         }
-
-        private void btnUpdateCamList_Click(object sender, EventArgs e) => UpdateCamerasList();
         #endregion
 
         #region Servo
@@ -762,34 +729,6 @@ MessageBoxIcon.Information);
             }
         }
 
-        private void DutyCycleForm_Load(object sender, EventArgs e)
-        {
-            BasingOnStartUp();
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-            btnOpenCam.Visible = !btnOpenCam.Visible;
-            btnUpdateCamList.Visible = !btnUpdateCamList.Visible;
-            cmbCams.Visible = !cmbCams.Visible;
-            btnGain.Visible = !btnGain.Visible;
-        }
-
-        private void btnGain_Click(object sender, EventArgs e)
-        {
-            // Укажите путь к файлу, который нужно открыть
-            string filePath = @"CameraSettings\CameraSettings.exe";
-
-            try
-            {
-                // Открываем файл
-                Process.Start(filePath);
-            }
-            catch (Exception ex)
-            {
-                // Обработка ошибок, если файл не найден или произошла другая ошибка
-                MessageBox.Show($"Не удалось открыть файл: {ex.Message}");
-            }
-        }
+        private void DutyCycleForm_Load(object sender, EventArgs e) => BasingOnStartUp();
     }
 }
