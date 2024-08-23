@@ -7,9 +7,8 @@ namespace DutyCycle.Forms
 {
     public partial class MainMenu : Form
     {
-        private bool isWorkerMenuExpanded = false;
-        private DutyCycleForm dutyCycle;
         private Board board;
+        private DutyCycleForm dutyCycle;
         private DriverSettings velocitySettings;
 
         PictureBox[] pbNeg;
@@ -26,8 +25,6 @@ namespace DutyCycle.Forms
 
             InitializeComponent();
 
-            CollapseSubMenusOnStartup();
-
             pbNeg = [pbNeg0, pbNeg1, pbNeg2, pbNeg3];
             pbPos = [pbPos0, pbPos1, pbPos2, pbPos3];
             tbCmdPos = [tbCmdPos0, tbCmdPos1, tbCmdPos2, tbCmdPos3];
@@ -41,13 +38,7 @@ namespace DutyCycle.Forms
             board = Singleton.GetInstance().Board;
         }
 
-        private void CollapseSubMenusOnStartup()
-        {
-            menuAdjustments.Height = 84;
-            menuWorker.Height = 84;
-        }
-
-        private void btnAdjustmentMenu_Click(object sender, EventArgs e)
+        private void btnAdjustments_Click(object sender, EventArgs e)
         {
             velocitySettings ??= new();
             velocitySettings.MdiParent = this;
@@ -55,20 +46,6 @@ namespace DutyCycle.Forms
             velocitySettings.Show();
             velocitySettings?.Activate();
             Basing.AxisZBasingDone = false;
-        }
-
-        private void btnWorkerMenu_Click(object sender, EventArgs e)
-        {
-            if (!isWorkerMenuExpanded)
-            {
-                menuWorker.Height = 172;
-                isWorkerMenuExpanded = true;
-            }
-            else
-            {
-                menuWorker.Height = 84;
-                isWorkerMenuExpanded = false;
-            }
         }
 
         private void btnDutyCycle_Click(object sender, EventArgs e)
