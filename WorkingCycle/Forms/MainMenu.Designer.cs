@@ -222,9 +222,10 @@
             btnDutyCycle.Font = new Font("Segoe UI Semibold", 14F, FontStyle.Bold, GraphicsUnit.Point, 204);
             btnDutyCycle.Image = (Image)resources.GetObject("btnDutyCycle.Image");
             btnDutyCycle.ImageAlign = ContentAlignment.TopCenter;
-            btnDutyCycle.Location = new Point(-22, -1);
+            btnDutyCycle.Location = new Point(-22, -6);
             btnDutyCycle.Name = "btnDutyCycle";
-            btnDutyCycle.Size = new Size(122, 189);
+            btnDutyCycle.Padding = new Padding(0, 8, 0, 0);
+            btnDutyCycle.Size = new Size(122, 190);
             btnDutyCycle.TabIndex = 0;
             btnDutyCycle.Text = " Рабочий\r\n  цикл";
             btnDutyCycle.UseVisualStyleBackColor = true;
@@ -245,8 +246,9 @@
             btnAdjustments.Font = new Font("Segoe UI Semibold", 14F, FontStyle.Bold, GraphicsUnit.Point, 204);
             btnAdjustments.Image = (Image)resources.GetObject("btnAdjustments.Image");
             btnAdjustments.ImageAlign = ContentAlignment.TopCenter;
-            btnAdjustments.Location = new Point(-22, -1);
+            btnAdjustments.Location = new Point(-22, -6);
             btnAdjustments.Name = "btnAdjustments";
+            btnAdjustments.Padding = new Padding(0, 8, 0, 0);
             btnAdjustments.Size = new Size(122, 183);
             btnAdjustments.TabIndex = 0;
             btnAdjustments.Text = "  Наладка";
@@ -268,8 +270,9 @@
             btnReference.Font = new Font("Segoe UI Semibold", 14F, FontStyle.Bold, GraphicsUnit.Point, 204);
             btnReference.Image = (Image)resources.GetObject("btnReference.Image");
             btnReference.ImageAlign = ContentAlignment.TopCenter;
-            btnReference.Location = new Point(-20, -1);
+            btnReference.Location = new Point(-20, -6);
             btnReference.Name = "btnReference";
+            btnReference.Padding = new Padding(0, 8, 0, 0);
             btnReference.Size = new Size(128, 185);
             btnReference.TabIndex = 0;
             btnReference.Text = "Справка";
