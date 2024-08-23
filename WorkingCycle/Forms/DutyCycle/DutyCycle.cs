@@ -218,6 +218,11 @@ MessageBoxIcon.Information);
                 return;
             }
 
+            var actualPoint = board.BoardGetCommandPositions();
+            var testPoints = Singleton.GetInstance().TestConditions.TestPoints;
+            var actTestPoint = rbBreakTest.Checked ? rbShearTest.Checked ? testPoints.Shear : testPoints.Stretch : testPoints.Break;
+            if (!((actualPoint[0] == actTestPoint[0]) && (actualPoint[1] == actTestPoint[1]) && (actualPoint[2] == actTestPoint[2]))) return;
+
             testInProgress = true;
 
             KeyboardControl.blockControls = false;
