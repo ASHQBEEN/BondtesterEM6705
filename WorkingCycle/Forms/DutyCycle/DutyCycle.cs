@@ -608,6 +608,7 @@ Board.StopAxisEmg(selectedTestAxis);
                     {
                         string secondProjectPath = @"Debug\net8.0\CameraSettings.exe";
                         Process.Start(secondProjectPath);
+                        Thread.Sleep(1000);
                         capture = new VideoCapture(0);
                         capture.ImageGrabbed += Capture_ImageGrabbed;
                         capture.Start();
