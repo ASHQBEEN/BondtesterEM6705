@@ -30,7 +30,17 @@ namespace DutyCycle.Models
             }
         }
 
-        public void TareScale() => port.Write("t;");
+        public void TareScale()
+        {
+            try
+            {
+                port.Write("t;");
+            }
+            catch (Exception)
+            {
+                //throw;
+            }
+        }
         public void Calibrate() => port.Write("c;");
         public void SendReferenceWeight(int weight) => port.Write(weight.ToString());
         public void Close() => port.Close();
