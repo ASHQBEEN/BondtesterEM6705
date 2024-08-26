@@ -625,13 +625,13 @@ Board.StopAxisEmg(selectedTestAxis);
 
         private void Capture_ImageGrabbed(object? sender, EventArgs? e)
         {
-            using (Image<Gray, Single> image = new Image<Gray, Single>(1000, 800))
+            using (Image<Gray, Single> image = new(1000, 800))
             {
                 //try
                 //{
-                Mat m = new Mat();
+                Mat m = new();
                 capture?.Retrieve(m);
-                pictureBox1.Image = m.ToImage<Bgr, byte>().Flip(Emgu.CV.CvEnum.FlipType.Horizontal).ToBitmap();
+                pictureBox1.Image = m.ToImage<Bgr, byte>().ToBitmap();
                 //}
                 //catch (Exception ex)
                 //{

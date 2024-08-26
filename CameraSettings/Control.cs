@@ -90,12 +90,19 @@ namespace CameraSettings
 
         public static void ApplyParameters()
         {
-            featureControl?.GetFloatFeature("Gain").SetValue(parameters.Gain);
-            featureControl?.GetFloatFeature("ExposureTime").SetValue(parameters.ExposureTime);
-            featureControl?.GetEnumFeature("BlackLevelAuto").SetValue(parameters.BlackLevelAuto);
-            featureControl?.GetEnumFeature("BlackLevelSelector").SetValue(parameters.BlackLevelSelector);
-            featureControl?.GetFloatFeature("BlackLevel").SetValue(parameters.BlackLevel);
-            featureControl?.GetIntFeature("ADCLevel").SetValue(parameters.ADCLevel);
+            try
+            {
+                featureControl?.GetFloatFeature("Gain").SetValue(parameters.Gain);
+                featureControl?.GetFloatFeature("ExposureTime").SetValue(parameters.ExposureTime);
+                featureControl?.GetEnumFeature("BlackLevelAuto").SetValue(parameters.BlackLevelAuto);
+                featureControl?.GetEnumFeature("BlackLevelSelector").SetValue(parameters.BlackLevelSelector);
+                featureControl?.GetFloatFeature("BlackLevel").SetValue(parameters.BlackLevel);
+                featureControl?.GetIntFeature("ADCLevel").SetValue(parameters.ADCLevel);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message); ;
+            }
         }
     }
 }
