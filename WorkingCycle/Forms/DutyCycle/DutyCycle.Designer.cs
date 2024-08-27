@@ -87,6 +87,7 @@
             lblTestId = new Label();
             outsTimer = new System.Windows.Forms.Timer(components);
             calibrationTimer = new System.Windows.Forms.Timer(components);
+            groupBox7 = new GroupBox();
             tableLayoutPanel1.SuspendLayout();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pbCamera).BeginInit();
@@ -108,6 +109,7 @@
             gbTestVelocity.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)nudTestSpeed).BeginInit();
             groupBox4.SuspendLayout();
+            groupBox7.SuspendLayout();
             SuspendLayout();
             // 
             // testTimer
@@ -195,7 +197,7 @@
             groupBox2.Controls.Add(gbMagnets);
             groupBox2.Controls.Add(gpForceData);
             groupBox2.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            groupBox2.Location = new Point(33, 247);
+            groupBox2.Location = new Point(33, 227);
             groupBox2.Name = "groupBox2";
             groupBox2.Size = new Size(466, 259);
             groupBox2.TabIndex = 1;
@@ -432,14 +434,12 @@
             // 
             // groupBox1
             // 
-            groupBox1.Controls.Add(lblReferenceLoad);
+            groupBox1.Controls.Add(groupBox7);
             groupBox1.Controls.Add(btnTare);
-            groupBox1.Controls.Add(btnCalibrate);
-            groupBox1.Controls.Add(cmbReferenceWeights);
             groupBox1.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            groupBox1.Location = new Point(91, 527);
+            groupBox1.Location = new Point(33, 524);
             groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(362, 85);
+            groupBox1.Size = new Size(466, 85);
             groupBox1.TabIndex = 0;
             groupBox1.TabStop = false;
             groupBox1.Text = "Весы/сенсор";
@@ -448,7 +448,7 @@
             // 
             lblReferenceLoad.AutoSize = true;
             lblReferenceLoad.Font = new Font("Segoe UI", 9F);
-            lblReferenceLoad.Location = new Point(118, 22);
+            lblReferenceLoad.Location = new Point(137, 20);
             lblReferenceLoad.Name = "lblReferenceLoad";
             lblReferenceLoad.Size = new Size(87, 15);
             lblReferenceLoad.TabIndex = 12;
@@ -457,7 +457,7 @@
             // btnTare
             // 
             btnTare.Font = new Font("Segoe UI", 9F);
-            btnTare.Location = new Point(6, 22);
+            btnTare.Location = new Point(48, 23);
             btnTare.Name = "btnTare";
             btnTare.Size = new Size(105, 44);
             btnTare.TabIndex = 4;
@@ -468,9 +468,9 @@
             // btnCalibrate
             // 
             btnCalibrate.Font = new Font("Segoe UI", 9F);
-            btnCalibrate.Location = new Point(229, 22);
+            btnCalibrate.Location = new Point(9, 17);
             btnCalibrate.Name = "btnCalibrate";
-            btnCalibrate.Size = new Size(122, 41);
+            btnCalibrate.Size = new Size(122, 44);
             btnCalibrate.TabIndex = 11;
             btnCalibrate.Text = "Калибровка";
             btnCalibrate.UseVisualStyleBackColor = true;
@@ -482,7 +482,7 @@
             cmbReferenceWeights.Font = new Font("Segoe UI", 9F);
             cmbReferenceWeights.FormattingEnabled = true;
             cmbReferenceWeights.Items.AddRange(new object[] { "5", "10", "15", "20", "25", "50" });
-            cmbReferenceWeights.Location = new Point(118, 40);
+            cmbReferenceWeights.Location = new Point(137, 38);
             cmbReferenceWeights.Name = "cmbReferenceWeights";
             cmbReferenceWeights.Size = new Size(105, 23);
             cmbReferenceWeights.TabIndex = 13;
@@ -685,9 +685,9 @@
             groupBox4.Controls.Add(cmbTests);
             groupBox4.Controls.Add(lblTestId);
             groupBox4.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            groupBox4.Location = new Point(91, 633);
+            groupBox4.Location = new Point(33, 649);
             groupBox4.Name = "groupBox4";
-            groupBox4.Size = new Size(362, 75);
+            groupBox4.Size = new Size(466, 75);
             groupBox4.TabIndex = 3;
             groupBox4.TabStop = false;
             groupBox4.Text = "Прошлые измерения";
@@ -695,9 +695,9 @@
             // btnSaveTests
             // 
             btnSaveTests.Font = new Font("Segoe UI", 8F, FontStyle.Regular, GraphicsUnit.Point, 204);
-            btnSaveTests.Location = new Point(89, 18);
+            btnSaveTests.Location = new Point(316, 22);
             btnSaveTests.Name = "btnSaveTests";
-            btnSaveTests.Size = new Size(75, 41);
+            btnSaveTests.Size = new Size(105, 41);
             btnSaveTests.TabIndex = 23;
             btnSaveTests.Text = "Сохранить \r\nтесты";
             btnSaveTests.UseVisualStyleBackColor = true;
@@ -706,9 +706,9 @@
             // btnLoadTests
             // 
             btnLoadTests.Font = new Font("Segoe UI", 8F, FontStyle.Regular, GraphicsUnit.Point, 204);
-            btnLoadTests.Location = new Point(6, 18);
+            btnLoadTests.Location = new Point(48, 22);
             btnLoadTests.Name = "btnLoadTests";
-            btnLoadTests.Size = new Size(77, 41);
+            btnLoadTests.Size = new Size(105, 41);
             btnLoadTests.TabIndex = 22;
             btnLoadTests.Text = "Загрузить \r\nтесты";
             btnLoadTests.UseVisualStyleBackColor = true;
@@ -718,7 +718,7 @@
             // 
             cmbTests.Font = new Font("Segoe UI", 9F);
             cmbTests.FormattingEnabled = true;
-            cmbTests.Location = new Point(170, 37);
+            cmbTests.Location = new Point(184, 40);
             cmbTests.Name = "cmbTests";
             cmbTests.Size = new Size(105, 23);
             cmbTests.TabIndex = 15;
@@ -728,7 +728,7 @@
             // 
             lblTestId.AutoSize = true;
             lblTestId.Font = new Font("Segoe UI", 9F);
-            lblTestId.Location = new Point(170, 19);
+            lblTestId.Location = new Point(184, 22);
             lblTestId.Name = "lblTestId";
             lblTestId.Size = new Size(85, 15);
             lblTestId.TabIndex = 16;
@@ -743,6 +743,18 @@
             // 
             calibrationTimer.Interval = 1000;
             calibrationTimer.Tick += calibrationTimer_Tick;
+            // 
+            // groupBox7
+            // 
+            groupBox7.Controls.Add(cmbReferenceWeights);
+            groupBox7.Controls.Add(lblReferenceLoad);
+            groupBox7.Controls.Add(btnCalibrate);
+            groupBox7.Location = new Point(179, 11);
+            groupBox7.Name = "groupBox7";
+            groupBox7.Size = new Size(250, 68);
+            groupBox7.TabIndex = 21;
+            groupBox7.TabStop = false;
+            groupBox7.Text = "Калибровка";
             // 
             // DutyCycleForm
             // 
@@ -772,7 +784,6 @@
             gpForceData.ResumeLayout(false);
             gpForceData.PerformLayout();
             groupBox1.ResumeLayout(false);
-            groupBox1.PerformLayout();
             groupBox3.ResumeLayout(false);
             groupBox5.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)nudBreakDelay).EndInit();
@@ -786,6 +797,8 @@
             ((System.ComponentModel.ISupportInitialize)nudTestSpeed).EndInit();
             groupBox4.ResumeLayout(false);
             groupBox4.PerformLayout();
+            groupBox7.ResumeLayout(false);
+            groupBox7.PerformLayout();
             ResumeLayout(false);
         }
 
@@ -849,5 +862,6 @@
         private GroupBox groupBox6;
         private CheckBox cbBoundSet;
         private Label label1;
+        private GroupBox groupBox7;
     }
 }
