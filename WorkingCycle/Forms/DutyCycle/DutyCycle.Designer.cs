@@ -34,7 +34,7 @@
             tableLayoutPanel1 = new TableLayoutPanel();
             panel1 = new Panel();
             tbForceData = new TextBox();
-            pictureBox1 = new PictureBox();
+            pbCamera = new PictureBox();
             operatorPanel = new Panel();
             groupBox2 = new GroupBox();
             groupBox6 = new GroupBox();
@@ -89,7 +89,7 @@
             calibrationTimer = new System.Windows.Forms.Timer(components);
             tableLayoutPanel1.SuspendLayout();
             panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pbCamera).BeginInit();
             operatorPanel.SuspendLayout();
             groupBox2.SuspendLayout();
             groupBox6.SuspendLayout();
@@ -131,7 +131,7 @@
             tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 55F));
             tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 45F));
             tableLayoutPanel1.Controls.Add(panel1, 0, 1);
-            tableLayoutPanel1.Controls.Add(pictureBox1, 0, 0);
+            tableLayoutPanel1.Controls.Add(pbCamera, 0, 0);
             tableLayoutPanel1.Controls.Add(operatorPanel, 1, 0);
             tableLayoutPanel1.Dock = DockStyle.Fill;
             tableLayoutPanel1.Location = new Point(0, 0);
@@ -164,16 +164,16 @@
             tbForceData.TabIndex = 26;
             tbForceData.Text = "0";
             // 
-            // pictureBox1
+            // pbCamera
             // 
-            pictureBox1.BorderStyle = BorderStyle.FixedSingle;
-            pictureBox1.Dock = DockStyle.Fill;
-            pictureBox1.Location = new Point(3, 3);
-            pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(648, 486);
-            pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
-            pictureBox1.TabIndex = 24;
-            pictureBox1.TabStop = false;
+            pbCamera.BorderStyle = BorderStyle.FixedSingle;
+            pbCamera.Dock = DockStyle.Fill;
+            pbCamera.Location = new Point(3, 3);
+            pbCamera.Name = "pbCamera";
+            pbCamera.Size = new Size(648, 486);
+            pbCamera.SizeMode = PictureBoxSizeMode.Zoom;
+            pbCamera.TabIndex = 24;
+            pbCamera.TabStop = false;
             // 
             // operatorPanel
             // 
@@ -195,7 +195,7 @@
             groupBox2.Controls.Add(gbMagnets);
             groupBox2.Controls.Add(gpForceData);
             groupBox2.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            groupBox2.Location = new Point(3, 247);
+            groupBox2.Location = new Point(33, 247);
             groupBox2.Name = "groupBox2";
             groupBox2.Size = new Size(466, 259);
             groupBox2.TabIndex = 1;
@@ -437,7 +437,7 @@
             groupBox1.Controls.Add(btnCalibrate);
             groupBox1.Controls.Add(cmbReferenceWeights);
             groupBox1.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            groupBox1.Location = new Point(61, 527);
+            groupBox1.Location = new Point(91, 527);
             groupBox1.Name = "groupBox1";
             groupBox1.Size = new Size(362, 85);
             groupBox1.TabIndex = 0;
@@ -491,7 +491,7 @@
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI", 14F, FontStyle.Bold, GraphicsUnit.Point, 204);
-            label1.Location = new Point(164, 6);
+            label1.Location = new Point(194, 6);
             label1.Name = "label1";
             label1.Size = new Size(144, 25);
             label1.TabIndex = 20;
@@ -504,7 +504,7 @@
             groupBox3.Controls.Add(gbTestType);
             groupBox3.Controls.Add(gbTestVelocity);
             groupBox3.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            groupBox3.Location = new Point(3, 34);
+            groupBox3.Location = new Point(33, 34);
             groupBox3.Name = "groupBox3";
             groupBox3.Size = new Size(466, 160);
             groupBox3.TabIndex = 2;
@@ -685,7 +685,7 @@
             groupBox4.Controls.Add(cmbTests);
             groupBox4.Controls.Add(lblTestId);
             groupBox4.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            groupBox4.Location = new Point(61, 633);
+            groupBox4.Location = new Point(91, 633);
             groupBox4.Name = "groupBox4";
             groupBox4.Size = new Size(362, 75);
             groupBox4.TabIndex = 3;
@@ -759,7 +759,7 @@
             tableLayoutPanel1.ResumeLayout(false);
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pbCamera).EndInit();
             operatorPanel.ResumeLayout(false);
             operatorPanel.PerformLayout();
             groupBox2.ResumeLayout(false);
@@ -794,7 +794,7 @@
         private System.Windows.Forms.Timer testTimer;
         private ScottPlot.WinForms.FormsPlot testPlot;
         private TableLayoutPanel tableLayoutPanel1;
-        private PictureBox pictureBox1;
+        private PictureBox pbCamera;
         private RadioButton rbShearTest;
         private RadioButton rbStretchTest;
         private Button btnSaveTests;

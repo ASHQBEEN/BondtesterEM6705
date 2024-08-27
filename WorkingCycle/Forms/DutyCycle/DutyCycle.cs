@@ -4,11 +4,8 @@ using DutyCycle.Logic;
 using DutyCycle.Models;
 using DutyCycle.Models.BondTest;
 using DutyCycle.Models.Machine;
-using Emgu.CV;
-using Emgu.CV.Structure;
 using ScottPlot;
 using ScottPlot.Plottables;
-using System.Diagnostics;
 using static DutyCycle.Scripts.KeyboardControls;
 
 
@@ -76,7 +73,9 @@ namespace DutyCycle.Forms.DutyCycle
             UpdateMaximumVelocity();
             LoadTestVelocities();
 
-            OpenCamera();
+            OpenGxDevice();
+            ApplyParameters();
+            StartGxDevice();
 
             SetupXYGroup();
         }
@@ -411,7 +410,7 @@ rbStretchTest.Checked ? new StretchTest() : new ShearTest();
 
         private void BondTestForm_FormClosed(object sender, FormClosedEventArgs e)
         {
-            CloseCam();
+            CloseGxDevice();
             StopTest();
             port.Close();
 
@@ -563,84 +562,6 @@ Board.StopAxisEmg(selectedTestAxis);
             else
                 return;
         }
-
-        #region Camera
-        private VideoCapture? capture;
-        bool camIsActive = false;
-
-        private void CloseCam()
-        {
-            //capture.Pause();
-            //cbEnCross.Checked = false;
-            capture?.Dispose();
-            capture = null;
-            pictureBox1.Image?.Dispose();
-            pictureBox1.Image = null;
-            camIsActive = false;
-            //btnOpenCam.Text = "Начать просмотр";
-        }
-
-        private void OpenCamera()
-        {
-            if (camIsActive)
-            {
-                try
-                {
-                    if (capture != null)
-                        CloseCam();
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.Message, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-            }
-            else
-            {
-                try
-                {
-                    if (capture != null)
-                    {
-                        string secondProjectPath = @"Debug\net8.0\CameraSettings.exe";
-                        Process.Start(secondProjectPath);
-                        capture.Start();
-                    }
-                    else
-                    {
-                        string secondProjectPath = @"Debug\net8.0\CameraSettings.exe";
-                        Process.Start(secondProjectPath);
-                        Thread.Sleep(1000);
-                        capture = new VideoCapture(0);
-                        capture.ImageGrabbed += Capture_ImageGrabbed;
-                        capture.Start();
-                        camIsActive = true;
-                        //btnOpenCam.Text = "Закончить просмотр";
-                    }
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.Message, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-            }
-        }
-
-        private void Capture_ImageGrabbed(object? sender, EventArgs? e)
-        {
-            using (Image<Gray, Single> image = new(1000, 800))
-            {
-                //try
-                //{
-                Mat m = new();
-                capture?.Retrieve(m);
-                pictureBox1.Image = m.ToImage<Bgr, byte>().ToBitmap();
-                //}
-                //catch (Exception ex)
-                //{
-                //    MessageBox.Show(ex.Message, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                //}
-                Invoke(new Action(Update));
-            }
-        }
-        #endregion
 
         #region Servo
         bool driversBlocked = false;  // Controls servo state
