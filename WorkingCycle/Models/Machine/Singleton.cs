@@ -28,7 +28,7 @@ namespace DutyCycle.Models.Machine
         {
             LowVelocity = [20, 20, 20, 20],
             SlowVelocity = [500, 500, 500, 500],
-            FastVelocity = [2000, 2000, 2000, 2000],
+            FastVelocity = [20000, 20000, 5000, 2000],
             DriverVelocity = [50000, 50000, 50000, 50000],
             Acceleration = [1000000, 1000000, 1000000, 1000000],
             Jerk = [0, 0, 0, 0],
@@ -46,10 +46,20 @@ namespace DutyCycle.Models.Machine
             },
             TestPoints = new TestPoints
             {
-                Break = [1501, 1502, 1503],
-                Stretch = [1504, 1505, 1506],
-                Shear = [1507, 1508, 1509]
+                Break = [50000, 50000, 5000],
+                Stretch = [40000, 40000, 4000],
+                Shear = [30000, 30000, 3000]
             }
+        };
+
+        public CameraParameters CameraParameters { get; set; } = new CameraParameters
+        {
+            Gain = 63,
+            ExposureTime = 39000,
+            BlackLevelAuto = "Off",
+            BlackLevelSelector = "All",
+            BlackLevel = 20,
+            ADCLevel = 1
         };
 
         public string advantechConfigurationPath;
@@ -83,7 +93,8 @@ namespace DutyCycle.Models.Machine
                 DeviceType = instance.deviceType,
                 Parameters = instance.Parameters,
                 TestConditions = instance.TestConditions,
-                advantechConfigurationPath = instance.advantechConfigurationPath
+                advantechConfigurationPath = instance.advantechConfigurationPath,
+                CameraParameters = instance.CameraParameters
             };
         }
 
@@ -104,6 +115,7 @@ namespace DutyCycle.Models.Machine
                     instance.Parameters = dto.Parameters;
                     instance.TestConditions = dto.TestConditions;
                     instance.advantechConfigurationPath = dto.advantechConfigurationPath;
+                    instance.CameraParameters = dto.CameraParameters;
                 }
                 else
                 {

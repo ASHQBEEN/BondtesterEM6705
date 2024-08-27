@@ -9,6 +9,7 @@ namespace DutyCycle.Models.Machine
         [JsonInclude] public required int AxesCount;
         [JsonInclude] public required MachineParameters Parameters;
         [JsonInclude] public required TestConditions TestConditions;
+        [JsonInclude] public required CameraParameters CameraParameters;
         [JsonInclude] public required string advantechConfigurationPath;
     }
 }
