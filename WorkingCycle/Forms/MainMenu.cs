@@ -73,6 +73,7 @@ namespace DutyCycle.Forms
 
                 if (i == 3) continue;
 
+                //LMT POS XYZ
                 uint ioStatus = DriverControl.GetIOStatus(board[i]);
                 if ((ioStatus & (uint)AxisIO.AX_MOTION_IO_LMTP) > 0)
                 {
@@ -82,6 +83,7 @@ namespace DutyCycle.Forms
                 else 
                     pbPos[i].BackColor = Color.Gray;
 
+                //LMT NEG XYZ
                 if ((ioStatus & (uint)AxisIO.AX_MOTION_IO_LMTN) > 0)
                 {
                     pbNeg[i].BackColor = Color.Red;
@@ -91,6 +93,7 @@ namespace DutyCycle.Forms
                     pbNeg[i].BackColor = Color.Gray;
             }
 
+            //LMT PHI
             if(board.GetDiBit(3, 1) == 0)
             {
                 pbNeg[3].BackColor = Color.Red;
