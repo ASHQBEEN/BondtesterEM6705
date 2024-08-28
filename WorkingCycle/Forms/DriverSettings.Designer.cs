@@ -37,10 +37,10 @@
             ndFastVel1 = new NumericUpDown();
             ndFastVel2 = new NumericUpDown();
             ndFastVel3 = new NumericUpDown();
-            ndDrVel0 = new NumericUpDown();
-            ndDrVel1 = new NumericUpDown();
-            ndDrVel2 = new NumericUpDown();
-            ndDrVel3 = new NumericUpDown();
+            ndBasingVel0 = new NumericUpDown();
+            ndBasingVel1 = new NumericUpDown();
+            ndBasingVel2 = new NumericUpDown();
+            ndBasingVel3 = new NumericUpDown();
             ndAcc0 = new NumericUpDown();
             ndAcc1 = new NumericUpDown();
             ndAcc2 = new NumericUpDown();
@@ -66,7 +66,7 @@
             btnLoadParameters = new Button();
             lblSlowVel = new Label();
             lblFastVel = new Label();
-            lblDrVel = new Label();
+            lblDrBasing = new Label();
             lblAcc = new Label();
             lblMaxCoord = new Label();
             lblJerk = new Label();
@@ -188,10 +188,10 @@
             ((System.ComponentModel.ISupportInitialize)ndFastVel1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)ndFastVel2).BeginInit();
             ((System.ComponentModel.ISupportInitialize)ndFastVel3).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)ndDrVel0).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)ndDrVel1).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)ndDrVel2).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)ndDrVel3).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)ndBasingVel0).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)ndBasingVel1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)ndBasingVel2).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)ndBasingVel3).BeginInit();
             ((System.ComponentModel.ISupportInitialize)ndAcc0).BeginInit();
             ((System.ComponentModel.ISupportInitialize)ndAcc1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)ndAcc2).BeginInit();
@@ -378,53 +378,53 @@
             ndFastVel3.ThousandsSeparator = true;
             ndFastVel3.Value = new decimal(new int[] { 30, 0, 0, 0 });
             // 
-            // ndDrVel0
+            // ndBasingVel0
             // 
-            ndDrVel0.Increment = new decimal(new int[] { 1000, 0, 0, 0 });
-            ndDrVel0.Location = new Point(54, 6);
-            ndDrVel0.Maximum = new decimal(new int[] { 300000, 0, 0, 0 });
-            ndDrVel0.Minimum = new decimal(new int[] { 30, 0, 0, 0 });
-            ndDrVel0.Name = "ndDrVel0";
-            ndDrVel0.Size = new Size(120, 23);
-            ndDrVel0.TabIndex = 0;
-            ndDrVel0.ThousandsSeparator = true;
-            ndDrVel0.Value = new decimal(new int[] { 30, 0, 0, 0 });
+            ndBasingVel0.Increment = new decimal(new int[] { 1000, 0, 0, 0 });
+            ndBasingVel0.Location = new Point(54, 6);
+            ndBasingVel0.Maximum = new decimal(new int[] { 300000, 0, 0, 0 });
+            ndBasingVel0.Minimum = new decimal(new int[] { 30, 0, 0, 0 });
+            ndBasingVel0.Name = "ndBasingVel0";
+            ndBasingVel0.Size = new Size(120, 23);
+            ndBasingVel0.TabIndex = 0;
+            ndBasingVel0.ThousandsSeparator = true;
+            ndBasingVel0.Value = new decimal(new int[] { 30, 0, 0, 0 });
             // 
-            // ndDrVel1
+            // ndBasingVel1
             // 
-            ndDrVel1.Increment = new decimal(new int[] { 1000, 0, 0, 0 });
-            ndDrVel1.Location = new Point(54, 6);
-            ndDrVel1.Maximum = new decimal(new int[] { 300000, 0, 0, 0 });
-            ndDrVel1.Minimum = new decimal(new int[] { 30, 0, 0, 0 });
-            ndDrVel1.Name = "ndDrVel1";
-            ndDrVel1.Size = new Size(120, 23);
-            ndDrVel1.TabIndex = 0;
-            ndDrVel1.ThousandsSeparator = true;
-            ndDrVel1.Value = new decimal(new int[] { 30, 0, 0, 0 });
+            ndBasingVel1.Increment = new decimal(new int[] { 1000, 0, 0, 0 });
+            ndBasingVel1.Location = new Point(54, 6);
+            ndBasingVel1.Maximum = new decimal(new int[] { 300000, 0, 0, 0 });
+            ndBasingVel1.Minimum = new decimal(new int[] { 30, 0, 0, 0 });
+            ndBasingVel1.Name = "ndBasingVel1";
+            ndBasingVel1.Size = new Size(120, 23);
+            ndBasingVel1.TabIndex = 0;
+            ndBasingVel1.ThousandsSeparator = true;
+            ndBasingVel1.Value = new decimal(new int[] { 30, 0, 0, 0 });
             // 
-            // ndDrVel2
+            // ndBasingVel2
             // 
-            ndDrVel2.Increment = new decimal(new int[] { 1000, 0, 0, 0 });
-            ndDrVel2.Location = new Point(54, 6);
-            ndDrVel2.Maximum = new decimal(new int[] { 300000, 0, 0, 0 });
-            ndDrVel2.Minimum = new decimal(new int[] { 30, 0, 0, 0 });
-            ndDrVel2.Name = "ndDrVel2";
-            ndDrVel2.Size = new Size(120, 23);
-            ndDrVel2.TabIndex = 0;
-            ndDrVel2.ThousandsSeparator = true;
-            ndDrVel2.Value = new decimal(new int[] { 30, 0, 0, 0 });
+            ndBasingVel2.Increment = new decimal(new int[] { 1000, 0, 0, 0 });
+            ndBasingVel2.Location = new Point(54, 6);
+            ndBasingVel2.Maximum = new decimal(new int[] { 300000, 0, 0, 0 });
+            ndBasingVel2.Minimum = new decimal(new int[] { 30, 0, 0, 0 });
+            ndBasingVel2.Name = "ndBasingVel2";
+            ndBasingVel2.Size = new Size(120, 23);
+            ndBasingVel2.TabIndex = 0;
+            ndBasingVel2.ThousandsSeparator = true;
+            ndBasingVel2.Value = new decimal(new int[] { 30, 0, 0, 0 });
             // 
-            // ndDrVel3
+            // ndBasingVel3
             // 
-            ndDrVel3.Increment = new decimal(new int[] { 1000, 0, 0, 0 });
-            ndDrVel3.Location = new Point(54, 6);
-            ndDrVel3.Maximum = new decimal(new int[] { 300000, 0, 0, 0 });
-            ndDrVel3.Minimum = new decimal(new int[] { 30, 0, 0, 0 });
-            ndDrVel3.Name = "ndDrVel3";
-            ndDrVel3.Size = new Size(120, 23);
-            ndDrVel3.TabIndex = 0;
-            ndDrVel3.ThousandsSeparator = true;
-            ndDrVel3.Value = new decimal(new int[] { 30, 0, 0, 0 });
+            ndBasingVel3.Increment = new decimal(new int[] { 1000, 0, 0, 0 });
+            ndBasingVel3.Location = new Point(54, 6);
+            ndBasingVel3.Maximum = new decimal(new int[] { 300000, 0, 0, 0 });
+            ndBasingVel3.Minimum = new decimal(new int[] { 30, 0, 0, 0 });
+            ndBasingVel3.Name = "ndBasingVel3";
+            ndBasingVel3.Size = new Size(120, 23);
+            ndBasingVel3.TabIndex = 0;
+            ndBasingVel3.ThousandsSeparator = true;
+            ndBasingVel3.Value = new decimal(new int[] { 30, 0, 0, 0 });
             // 
             // ndAcc0
             // 
@@ -679,14 +679,14 @@
             lblFastVel.TabIndex = 2;
             lblFastVel.Text = "Манип. быстрая, мк/c";
             // 
-            // lblDrVel
+            // lblDrBasing
             // 
-            lblDrVel.AutoSize = true;
-            lblDrVel.Location = new Point(46, 7);
-            lblDrVel.Name = "lblDrVel";
-            lblDrVel.Size = new Size(140, 15);
-            lblDrVel.TabIndex = 2;
-            lblDrVel.Text = "Скорость привода, мк/c";
+            lblDrBasing.AutoSize = true;
+            lblDrBasing.Location = new Point(30, 8);
+            lblDrBasing.Name = "lblDrBasing";
+            lblDrBasing.Size = new Size(165, 15);
+            lblDrBasing.TabIndex = 2;
+            lblDrBasing.Text = "Скорость базирования, мк/c";
             // 
             // lblAcc
             // 
@@ -1134,7 +1134,7 @@
             // 
             // panel20
             // 
-            panel20.Controls.Add(lblDrVel);
+            panel20.Controls.Add(lblDrBasing);
             panel20.Dock = DockStyle.Fill;
             panel20.Location = new Point(4, 160);
             panel20.Name = "panel20";
@@ -1143,7 +1143,7 @@
             // 
             // panel21
             // 
-            panel21.Controls.Add(ndDrVel0);
+            panel21.Controls.Add(ndBasingVel0);
             panel21.Dock = DockStyle.Fill;
             panel21.Location = new Point(237, 160);
             panel21.Name = "panel21";
@@ -1152,7 +1152,7 @@
             // 
             // panel22
             // 
-            panel22.Controls.Add(ndDrVel1);
+            panel22.Controls.Add(ndBasingVel1);
             panel22.Dock = DockStyle.Fill;
             panel22.Location = new Point(470, 160);
             panel22.Name = "panel22";
@@ -1161,7 +1161,7 @@
             // 
             // panel23
             // 
-            panel23.Controls.Add(ndDrVel2);
+            panel23.Controls.Add(ndBasingVel2);
             panel23.Dock = DockStyle.Fill;
             panel23.Location = new Point(703, 160);
             panel23.Name = "panel23";
@@ -1170,7 +1170,7 @@
             // 
             // panel24
             // 
-            panel24.Controls.Add(ndDrVel3);
+            panel24.Controls.Add(ndBasingVel3);
             panel24.Dock = DockStyle.Fill;
             panel24.Location = new Point(936, 160);
             panel24.Name = "panel24";
@@ -1836,10 +1836,10 @@
             ((System.ComponentModel.ISupportInitialize)ndFastVel1).EndInit();
             ((System.ComponentModel.ISupportInitialize)ndFastVel2).EndInit();
             ((System.ComponentModel.ISupportInitialize)ndFastVel3).EndInit();
-            ((System.ComponentModel.ISupportInitialize)ndDrVel0).EndInit();
-            ((System.ComponentModel.ISupportInitialize)ndDrVel1).EndInit();
-            ((System.ComponentModel.ISupportInitialize)ndDrVel2).EndInit();
-            ((System.ComponentModel.ISupportInitialize)ndDrVel3).EndInit();
+            ((System.ComponentModel.ISupportInitialize)ndBasingVel0).EndInit();
+            ((System.ComponentModel.ISupportInitialize)ndBasingVel1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)ndBasingVel2).EndInit();
+            ((System.ComponentModel.ISupportInitialize)ndBasingVel3).EndInit();
             ((System.ComponentModel.ISupportInitialize)ndAcc0).EndInit();
             ((System.ComponentModel.ISupportInitialize)ndAcc1).EndInit();
             ((System.ComponentModel.ISupportInitialize)ndAcc2).EndInit();
@@ -1966,10 +1966,10 @@
         private NumericUpDown ndFastVel1;
         private NumericUpDown ndFastVel2;
         private NumericUpDown ndFastVel3;
-        private NumericUpDown ndDrVel0;
-        private NumericUpDown ndDrVel1;
-        private NumericUpDown ndDrVel2;
-        private NumericUpDown ndDrVel3;
+        private NumericUpDown ndBasingVel0;
+        private NumericUpDown ndBasingVel1;
+        private NumericUpDown ndBasingVel2;
+        private NumericUpDown ndBasingVel3;
         private NumericUpDown ndAcc0;
         private NumericUpDown ndAcc1;
         private NumericUpDown ndAcc2;
@@ -1995,7 +1995,7 @@
         private Button btnLoadParameters;
         private Label lblSlowVel;
         private Label lblFastVel;
-        private Label lblDrVel;
+        private Label lblDrBasing;
         private Label lblAcc;
         private Label lblMaxCoord;
         private Label lblJerk;

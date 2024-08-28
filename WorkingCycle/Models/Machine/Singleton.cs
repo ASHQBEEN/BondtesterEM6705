@@ -29,7 +29,6 @@ namespace DutyCycle.Models.Machine
             LowVelocity = [20, 20, 20, 20],
             SlowVelocity = [500, 500, 500, 500],
             FastVelocity = [20000, 20000, 5000, 2000],
-            DriverVelocity = [50000, 50000, 50000, 50000],
             Acceleration = [1000000, 1000000, 1000000, 1000000],
             Jerk = [0, 0, 0, 0],
             MaxCoordinate = [0, 0, 64000, 0],

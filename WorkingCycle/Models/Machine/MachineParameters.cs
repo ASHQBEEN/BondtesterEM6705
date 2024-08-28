@@ -9,7 +9,6 @@ namespace DutyCycle.Models.Machine
         public required double[] LowVelocity { get; set; }
         public required double[] SlowVelocity { get; set; }
         public required double[] FastVelocity { get; set; }
-        public required double[] DriverVelocity { get; set; }
         public required double[] Acceleration { get; set; }
         public required double[] Jerk { get; set; }
         public required double[] MaxCoordinate { get; set; }

@@ -11,8 +11,6 @@ namespace DutyCycle.Forms.DutyCycle
 
         private void LoadTestVelocities()
         {
-            //nudTestSpeed.Maximum = fastVelocity after load
-
             var machineTestVelocities = Singleton.GetInstance().TestConditions.Velocities;
 
             var fastVelocities = Singleton.GetInstance().Parameters.FastVelocity;
@@ -39,7 +37,6 @@ namespace DutyCycle.Forms.DutyCycle
                 nudTestSpeed.Value = (decimal)testVelocities.Stretch;
             else if (rbShearTest.Checked)
                 nudTestSpeed.Value = (decimal)testVelocities.Shear;
-
         }
 
         //Нужен для обновления максимума в случае если мы обновили FastVelocity и начали изменять значение в nud

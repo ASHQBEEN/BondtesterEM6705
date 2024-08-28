@@ -9,7 +9,7 @@ namespace DutyCycle.Forms
     {
         private readonly NumericUpDown[] ndSlowVel;
         private readonly NumericUpDown[] ndFastVel;
-        private readonly NumericUpDown[] ndDrVel;
+        private readonly NumericUpDown[] ndBasingVel;
         private readonly NumericUpDown[] ndAcc;
         private readonly RadioButton[] rbT;
         private readonly RadioButton[] rbS;
@@ -33,7 +33,7 @@ namespace DutyCycle.Forms
 
             ndSlowVel = [ndSlowVel0, ndSlowVel1, ndSlowVel2, ndSlowVel3];
             ndFastVel = [ndFastVel0, ndFastVel1, ndFastVel2, ndFastVel3];
-            ndDrVel = [ndDrVel0, ndDrVel1, ndDrVel2, ndDrVel3];
+            ndBasingVel = [ndBasingVel0, ndBasingVel1, ndBasingVel2, ndBasingVel3];
             ndAcc = [ndAcc0, ndAcc1, ndAcc2, ndAcc3];
             rbT = [rbT0, rbT1, rbT2, rbT3];
             rbS = [rbS0, rbS1, rbS2, rbS3];
@@ -51,8 +51,8 @@ namespace DutyCycle.Forms
                 int index = i;
                 EventHandler ehFastToSlow = (o, ea) => ndSlowVel[index].Maximum = ndFastVel[index].Value;
                 ndFastVel[i].ValueChanged += ehFastToSlow;
-                EventHandler ehDrToFast = (o, ea) => ndFastVel[index].Maximum = ndDrVel[index].Value;
-                ndDrVel[i].ValueChanged += ehDrToFast;
+                EventHandler ehDrToFast = (o, ea) => ndFastVel[index].Maximum = ndBasingVel[index].Value;
+                ndBasingVel[i].ValueChanged += ehDrToFast;
                 EventHandler ehSlowToLow = (o, ea) => ndVelLow[index].Maximum = ndSlowVel[index].Value - 1;
                 ndSlowVel[i].ValueChanged += ehSlowToLow;
                 EventHandler ehFixateDrivers = (o, ea) => FixateDriver(index);
@@ -78,7 +78,7 @@ namespace DutyCycle.Forms
                 ndSlowVel[i].Value = (decimal)parameters.SlowVelocity[i];
                 ndFastVel[i].Value = (decimal)parameters.FastVelocity[i];
                 ndAcc[i].Value = (decimal)parameters.Acceleration[i];
-                ndDrVel[i].Value = (decimal)parameters.DriverVelocity[i];
+                ndBasingVel[i].Value = (decimal)parameters.BasingVelocities[i];
                 ndMaxCoord[i].Value = (decimal)parameters.MaxCoordinate[i];
                 ndVelLow[i].Value = (decimal)parameters.LowVelocity[i];
                 if (parameters.Jerk[i] == 0) rbT[i].Checked = true;
@@ -132,7 +132,7 @@ MessageBoxIcon.Information);
             MachineParameters parameters = Singleton.GetInstance().Parameters;
             //buffer values
             double[] jerk = new double[axesCount];
-            double[] velDr = new double[axesCount];
+            double[] velBasing = new double[axesCount];
             double[] acc = new double[axesCount];
             double[] velManFast = new double[axesCount];
             double[] velManSlow = new double[axesCount];
@@ -144,7 +144,7 @@ MessageBoxIcon.Information);
                 if (rbT[i].Checked == true) jerk[i] = 0;
                 else jerk[i] = 1;
                 acc[i] = Convert.ToDouble(ndAcc[i].Value);
-                velDr[i] = Convert.ToDouble(ndDrVel[i].Value);
+                velBasing[i] = Convert.ToDouble(ndBasingVel[i].Value);
                 velManSlow[i] = Convert.ToDouble(ndSlowVel[i].Value);
                 velManFast[i] = Convert.ToDouble(ndFastVel[i].Value);
                 maxCoord[i] = Convert.ToDouble(ndMaxCoord[i].Value);
@@ -155,7 +155,7 @@ MessageBoxIcon.Information);
             parameters.Acceleration = acc;
             parameters.SlowVelocity = velManSlow;
             parameters.FastVelocity = velManFast;
-            parameters.DriverVelocity = velDr;
+            parameters.BasingVelocities = velBasing;
             parameters.MaxCoordinate = maxCoord;
             parameters.LowVelocity = velLow;
 
