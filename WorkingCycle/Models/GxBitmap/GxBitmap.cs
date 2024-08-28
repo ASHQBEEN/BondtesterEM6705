@@ -1,5 +1,8 @@
-﻿using System.Drawing.Imaging;
+﻿using System.Drawing.Drawing2D;
+using System.Drawing.Imaging;
+using System.Reflection.Metadata;
 using System.Runtime.InteropServices;
+using DutyCycle.Forms.DutyCycle;
 using GxIAPINET;
 
 namespace DutyCycle.Models.GxBitmap
@@ -13,7 +16,7 @@ namespace DutyCycle.Models.GxBitmap
         byte[] m_byMonoBuffer = null;                           ///<Black and white camera buffer
         byte[] m_byColorBuffer = null;                          ///<Color camera buffer
         int m_nWidth = 0;                   ///<Image width
-        int m_nHeigh = 0;                   ///<Image height
+        int m_nHeight = 0;                   ///<Image height
         Bitmap m_bitmapForSave = null;                ///<bitmap object
         const uint PIXEL_FORMATE_BIT = 0x00FF0000;              ///<Used to AND the current data format to get the current data bits
         const uint GX_PIXEL_8BIT = 0x00080000;                  ///<8-bit data image format
@@ -40,17 +43,17 @@ namespace DutyCycle.Models.GxBitmap
             {
                 //Get image data
                 m_nWidth = (int)objIGXDevice.GetRemoteFeatureControl().GetIntFeature("Width").GetValue();
-                m_nHeigh = (int)objIGXDevice.GetRemoteFeatureControl().GetIntFeature("Height").GetValue();
+                m_nHeight = (int)objIGXDevice.GetRemoteFeatureControl().GetIntFeature("Height").GetValue();
 
                 //Gets whether it is a color camera
                 __IsSupportColor(ref m_bIsColor);
             }
 
             //Apply buffer to cache image data
-            m_byMonoBuffer = new byte[__GetStride(m_nWidth, m_bIsColor) * m_nHeigh];
-            m_byColorBuffer = new byte[__GetStride(m_nWidth, m_bIsColor) * m_nHeigh];
+            m_byMonoBuffer = new byte[__GetStride(m_nWidth, m_bIsColor) * m_nHeight];
+            m_byColorBuffer = new byte[__GetStride(m_nWidth, m_bIsColor) * m_nHeight];
 
-            __CreateBitmap(out m_bitmapForSave, m_nWidth, m_nHeigh, m_bIsColor);
+            __CreateBitmap(out m_bitmapForSave, m_nWidth, m_nHeight, m_bIsColor);
 
             m_objGC = m_pic_ShowImage.CreateGraphics();
             m_pHDC = m_objGC.GetHdc();
@@ -58,7 +61,7 @@ namespace DutyCycle.Models.GxBitmap
             {
                 m_objBitmapInfo.bmiHeader.biSize = (uint)Marshal.SizeOf(typeof(CWin32Bitmaps.BITMAPINFOHEADER));
                 m_objBitmapInfo.bmiHeader.biWidth = m_nWidth;
-                m_objBitmapInfo.bmiHeader.biHeight = m_nHeigh;
+                m_objBitmapInfo.bmiHeader.biHeight = m_nHeight;
                 m_objBitmapInfo.bmiHeader.biPlanes = 1;
                 m_objBitmapInfo.bmiHeader.biBitCount = 24;
                 m_objBitmapInfo.bmiHeader.biCompression = 0;
@@ -72,7 +75,7 @@ namespace DutyCycle.Models.GxBitmap
             {
                 m_objBitmapInfo.bmiHeader.biSize = (uint)Marshal.SizeOf(typeof(CWin32Bitmaps.BITMAPINFOHEADER));
                 m_objBitmapInfo.bmiHeader.biWidth = m_nWidth;
-                m_objBitmapInfo.bmiHeader.biHeight = m_nHeigh;
+                m_objBitmapInfo.bmiHeader.biHeight = m_nHeight;
                 m_objBitmapInfo.bmiHeader.biPlanes = 1;
                 m_objBitmapInfo.bmiHeader.biBitCount = 8;
                 m_objBitmapInfo.bmiHeader.biCompression = 0;
@@ -116,7 +119,7 @@ namespace DutyCycle.Models.GxBitmap
                     if (m_bIsColor)
                     {
                         nint pBufferColor = objIBaseData.ConvertToRGB24(emValidBits, GX_BAYER_CONVERT_TYPE_LIST.GX_RAW2RGB_NEIGHBOUR, true);
-                        Marshal.Copy(pBufferColor, m_byColorBuffer, 0, __GetStride(m_nWidth, m_bIsColor) * m_nHeigh);
+                        Marshal.Copy(pBufferColor, m_byColorBuffer, 0, __GetStride(m_nWidth, m_bIsColor) * m_nHeight);
                         __ShowImage(m_byColorBuffer);
                     }
                     else
@@ -131,13 +134,13 @@ namespace DutyCycle.Models.GxBitmap
                             pBufferMono = objIBaseData.ConvertToRaw8(emValidBits);
                         }
 
-                        byte[] byMonoBufferTmp = new byte[__GetStride(m_nWidth, m_bIsColor) * m_nHeigh];
-                        Marshal.Copy(pBufferMono, byMonoBufferTmp, 0, __GetStride(m_nWidth, m_bIsColor) * m_nHeigh);
+                        byte[] byMonoBufferTmp = new byte[__GetStride(m_nWidth, m_bIsColor) * m_nHeight];
+                        Marshal.Copy(pBufferMono, byMonoBufferTmp, 0, __GetStride(m_nWidth, m_bIsColor) * m_nHeight);
 
                         // Black and white cameras need to flip the data before displaying
-                        for (int i = 0; i < m_nHeigh; i++)
+                        for (int i = 0; i < m_nHeight; i++)
                         {
-                            Buffer.BlockCopy(byMonoBufferTmp, (m_nHeigh - i - 1) * m_nWidth, m_byMonoBuffer, i * m_nWidth, m_nWidth);
+                            Buffer.BlockCopy(byMonoBufferTmp, (m_nHeight - i - 1) * m_nWidth, m_byMonoBuffer, i * m_nWidth, m_nWidth);
                         }
 
                         __ShowImage(m_byMonoBuffer);
@@ -154,22 +157,22 @@ namespace DutyCycle.Models.GxBitmap
         {
             if (null != objIBaseData)
             {
-                if (__IsCompatible(m_bitmapForSave, m_nWidth, m_nHeigh, m_bIsColor))
+                if (__IsCompatible(m_bitmapForSave, m_nWidth, m_nHeight, m_bIsColor))
                 {
                     m_nWidth = (int)objIBaseData.GetWidth();
-                    m_nHeigh = (int)objIBaseData.GetHeight();
+                    m_nHeight = (int)objIBaseData.GetHeight();
                 }
                 else
                 {
                     m_nWidth = (int)objIBaseData.GetWidth();
-                    m_nHeigh = (int)objIBaseData.GetHeight();
+                    m_nHeight = (int)objIBaseData.GetHeight();
 
-                    m_byMonoBuffer = new byte[__GetStride(m_nWidth, m_bIsColor) * m_nHeigh];
-                    m_byColorBuffer = new byte[__GetStride(m_nWidth, m_bIsColor) * m_nHeigh];
+                    m_byMonoBuffer = new byte[__GetStride(m_nWidth, m_bIsColor) * m_nHeight];
+                    m_byColorBuffer = new byte[__GetStride(m_nWidth, m_bIsColor) * m_nHeight];
 
                     //Update BitmapInfo
                     m_objBitmapInfo.bmiHeader.biWidth = m_nWidth;
-                    m_objBitmapInfo.bmiHeader.biHeight = m_nHeigh;
+                    m_objBitmapInfo.bmiHeader.biHeight = m_nHeight;
                     Marshal.StructureToPtr(m_objBitmapInfo, m_pBitmapInfo, false);
                 }
             }
@@ -178,48 +181,100 @@ namespace DutyCycle.Models.GxBitmap
         /// <summary>
         /// Display image
         /// </summary>
-        /// <param name="byBuffer">Image data buffer</param>
+        /// <param name = "byBuffer" > Image data buffer</param>
         private void __ShowImage(byte[] byBuffer)
         {
             if (null != m_pic_ShowImage)
             {
-                CWin32Bitmaps.SetStretchBltMode(m_pHDC, COLORONCOLOR);
-
-                float aspectRatio = (float)m_nWidth / m_nHeigh;
-
-                int destWidth = m_pic_ShowImage.Width;
-                int destHeight = m_pic_ShowImage.Height;
-                int destX;
-                int destY;
-
-                if (m_pic_ShowImage.Width / aspectRatio <= m_pic_ShowImage.Height)
+                //fullscreen picturebox size 1190x896
+                //default size 648x486
+                if (DutyCycleForm.fullscreenCamera)
                 {
-                    destHeight = (int)(m_pic_ShowImage.Width / aspectRatio);
+                    CWin32Bitmaps.SetStretchBltMode(m_pHDC, COLORONCOLOR);
+
+                    float aspectRatio = (float)m_nWidth / m_nHeight;
+
+                    int destWidth = m_pic_ShowImage.Width;
+                    int destHeight = m_pic_ShowImage.Height;
+                    int destX;
+                    int destY;
+
+                    if (m_pic_ShowImage.Width / aspectRatio <= m_pic_ShowImage.Height)
+                    {
+                        destHeight = (int)(m_pic_ShowImage.Width / aspectRatio);
+                    }
+                    else
+                    {
+                        destWidth = (int)(m_pic_ShowImage.Height * aspectRatio);
+                    }
+
+                    destX = m_pic_ShowImage.Width / 2 - destWidth / 2;
+                    destY = m_pic_ShowImage.Height / 2 - destHeight / 2;
+
+                    CWin32Bitmaps.StretchDIBits(
+                                m_pHDC,
+                                destX,
+                                destY,
+                                destWidth,
+                                destHeight,
+                                0,
+                                0,
+                                m_nWidth,
+                                m_nHeight,
+                                byBuffer,
+                                m_pBitmapInfo,
+                                DIB_RGB_COLORS,
+                                SRCCOPY);
                 }
                 else
                 {
-                    destWidth = (int)(m_pic_ShowImage.Height * aspectRatio);
+                    // Создайте новый Bitmap с нужными размерами
+                    Bitmap bmp = new Bitmap(m_nWidth, m_nHeight, PixelFormat.Format8bppIndexed);
+
+                    // Установите палитру для 8-битного изображения
+                    ColorPalette palette = bmp.Palette;
+                    for (int i = 0; i < 256; i++)
+                    {
+                        palette.Entries[i] = Color.FromArgb(i, i, i); // Заполните палитру градациями серого
+                    }
+                    bmp.Palette = palette;
+
+                    // Заблокируйте биты Bitmap для записи
+                    BitmapData bmpData = bmp.LockBits(new Rectangle(0, 0, bmp.Width, bmp.Height), ImageLockMode.WriteOnly, bmp.PixelFormat);
+                    Marshal.Copy(byBuffer, 0, bmpData.Scan0, byBuffer.Length);
+                    bmp.UnlockBits(bmpData);
+
+                    // Измените размер изображения для вмещения в PictureBox
+                    float aspectRatio = (float)m_nWidth / m_nHeight;
+                    int destWidth = m_pic_ShowImage.Width;
+                    int destHeight = m_pic_ShowImage.Height;
+
+                    if (m_pic_ShowImage.Width / aspectRatio <= m_pic_ShowImage.Height)
+                    {
+                        destHeight = (int)(m_pic_ShowImage.Width / aspectRatio);
+                    }
+                    else
+                    {
+                        destWidth = (int)(m_pic_ShowImage.Height * aspectRatio);
+                    }
+
+                    // Создайте новый Bitmap для конечного отображения с нужным размером
+                    Bitmap resizedBmp = new Bitmap(destWidth, destHeight);
+
+                    using (Graphics g = Graphics.FromImage(resizedBmp))
+                    {
+                        g.InterpolationMode = InterpolationMode.HighQualityBicubic;
+                        g.PixelOffsetMode = PixelOffsetMode.HighQuality;
+                        g.DrawImage(bmp, 0, 0, destWidth, destHeight);
+                    }
+
+                    // Отобразите масштабированное изображение в PictureBox
+                    m_pic_ShowImage.Image = resizedBmp;
                 }
-
-                destX = m_pic_ShowImage.Width/2 - destWidth/2;
-                destY = m_pic_ShowImage.Height/2 - destHeight/2;
-
-                CWin32Bitmaps.StretchDIBits(
-                            m_pHDC,
-                            destX,
-                            destY,
-                            destWidth,
-                            destHeight,
-                            0,
-                            0,
-                            m_nWidth,
-                            m_nHeigh,
-                            byBuffer,
-                            m_pBitmapInfo,
-                            DIB_RGB_COLORS,
-                            SRCCOPY);
             }
         }
+
+
 
         /// <summary>
         ///  Check whether the PixelFormat is 8 bit

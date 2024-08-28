@@ -82,7 +82,7 @@ namespace DutyCycle.Forms.DutyCycle
             KeyDown += FForFullscreenCamera;
         }
 
-        private bool fullscreenCamera = false;
+        public static bool fullscreenCamera = false;
 
         private void FForFullscreenCamera(object? sender, KeyEventArgs? e)
         {
