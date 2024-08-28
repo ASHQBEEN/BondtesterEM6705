@@ -100,7 +100,6 @@ namespace DutyCycle.Forms.DutyCycle
                 //__InitUI();
 
                 bitmap = new GxBitmap(device, pbCamera);
-
                 // Update the flag that indicates whether the device has been opened.
                 //m_bIsOpen = true;
 

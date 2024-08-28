@@ -78,6 +78,27 @@ namespace DutyCycle.Forms.DutyCycle
             StartGxDevice();
 
             SetupXYGroup();
+
+            KeyDown += FForFullscreenCamera;
+        }
+
+        private bool fullscreenCamera = false;
+
+        private void FForFullscreenCamera(object? sender, KeyEventArgs? e)
+        {
+            if(e.KeyCode == Keys.F)
+            {
+                fullscreenCamera = !fullscreenCamera;
+                if (fullscreenCamera)
+                {
+                    pbCamera.Parent = this;
+                    pbCamera.BringToFront();
+                }
+                else
+                {
+                    tableLayoutPanel1.Controls.Add(pbCamera, 0, 0);
+                }
+            }
         }
 
         #region Plot
