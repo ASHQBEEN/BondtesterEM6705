@@ -23,6 +23,7 @@ namespace DutyCycle.Models.Machine
         private int axesCount = 4;
 
         public bool AxisZBasingDone { get; set; } = false;
+        public bool CameraIsFullscreen { get; set; } = false;
 
         public MachineParameters Parameters { get; set; } = new MachineParameters
         {
@@ -167,7 +168,7 @@ namespace DutyCycle.Models.Machine
             else
                 MessageBox.Show("Не удалось загрузить скорости теста, файл конфгурации не обнаружен.");
         }
-    
+
 
         public void OverrideConfig()
         {

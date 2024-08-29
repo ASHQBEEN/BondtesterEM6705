@@ -3,6 +3,7 @@ using System.Drawing.Imaging;
 using System.Reflection.Metadata;
 using System.Runtime.InteropServices;
 using DutyCycle.Forms.DutyCycle;
+using DutyCycle.Models.Machine;
 using GxIAPINET;
 
 namespace DutyCycle.Models.GxBitmap
@@ -188,7 +189,7 @@ namespace DutyCycle.Models.GxBitmap
             {
                 //fullscreen picturebox size 1190x896
                 //default size 648x486
-                if (DutyCycleForm.fullscreenCamera)
+                if (Singleton.GetInstance().CameraIsFullscreen)
                 {
                     CWin32Bitmaps.SetStretchBltMode(m_pHDC, COLORONCOLOR);
 

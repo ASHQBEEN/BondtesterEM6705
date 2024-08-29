@@ -82,14 +82,12 @@ namespace DutyCycle.Forms.DutyCycle
             KeyDown += FForFullscreenCamera;
         }
 
-        public static bool fullscreenCamera = false;
-
         private void FForFullscreenCamera(object? sender, KeyEventArgs? e)
         {
             if(e.KeyCode == Keys.F)
             {
-                fullscreenCamera = !fullscreenCamera;
-                if (fullscreenCamera)
+                Singleton.GetInstance().CameraIsFullscreen = !Singleton.GetInstance().CameraIsFullscreen;
+                if (Singleton.GetInstance().CameraIsFullscreen)
                 {
                     pbCamera.Parent = this;
                     pbCamera.BringToFront();
