@@ -896,6 +896,7 @@
             // 
             // ndVelLow3
             // 
+            ndVelLow3.Enabled = false;
             ndVelLow3.Increment = new decimal(new int[] { 100, 0, 0, 0 });
             ndVelLow3.Location = new Point(54, 6);
             ndVelLow3.Maximum = new decimal(new int[] { 300000, 0, 0, 0 });
@@ -917,6 +918,7 @@
             // 
             // ndVelLow2
             // 
+            ndVelLow2.Enabled = false;
             ndVelLow2.Increment = new decimal(new int[] { 100, 0, 0, 0 });
             ndVelLow2.Location = new Point(54, 6);
             ndVelLow2.Maximum = new decimal(new int[] { 300000, 0, 0, 0 });
@@ -938,6 +940,7 @@
             // 
             // ndVelLow1
             // 
+            ndVelLow1.Enabled = false;
             ndVelLow1.Increment = new decimal(new int[] { 100, 0, 0, 0 });
             ndVelLow1.Location = new Point(54, 6);
             ndVelLow1.Maximum = new decimal(new int[] { 300000, 0, 0, 0 });
@@ -959,6 +962,7 @@
             // 
             // ndVelLow0
             // 
+            ndVelLow0.Enabled = false;
             ndVelLow0.Increment = new decimal(new int[] { 100, 0, 0, 0 });
             ndVelLow0.Location = new Point(54, 6);
             ndVelLow0.Maximum = new decimal(new int[] { 300000, 0, 0, 0 });
@@ -1795,7 +1799,7 @@
             // cbMemCfg
             // 
             cbMemCfg.AutoSize = true;
-            cbMemCfg.Location = new Point(901, 770);
+            cbMemCfg.Location = new Point(895, 791);
             cbMemCfg.Name = "cbMemCfg";
             cbMemCfg.Size = new Size(227, 34);
             cbMemCfg.TabIndex = 8;
@@ -1804,11 +1808,11 @@
             // 
             // btnLoadCfg
             // 
-            btnLoadCfg.Location = new Point(948, 712);
+            btnLoadCfg.Location = new Point(942, 714);
             btnLoadCfg.Name = "btnLoadCfg";
-            btnLoadCfg.Size = new Size(128, 52);
+            btnLoadCfg.Size = new Size(128, 71);
             btnLoadCfg.TabIndex = 7;
-            btnLoadCfg.Text = "Загрузить новый файл конфигурации";
+            btnLoadCfg.Text = "Загрузить новый файл конфигурации для Advantech";
             btnLoadCfg.UseVisualStyleBackColor = true;
             btnLoadCfg.Click += btnLoadCfg_Click;
             // 
