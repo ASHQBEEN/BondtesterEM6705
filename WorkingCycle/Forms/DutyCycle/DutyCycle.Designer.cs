@@ -460,7 +460,7 @@
             cmbReferenceWeights.DropDownStyle = ComboBoxStyle.DropDownList;
             cmbReferenceWeights.Font = new Font("Segoe UI", 9F);
             cmbReferenceWeights.FormattingEnabled = true;
-            cmbReferenceWeights.Items.AddRange(new object[] { "5", "10", "15", "20", "25", "50" });
+            cmbReferenceWeights.Items.AddRange(new object[] { "1", "2", "5", "10", "20", "50", "100", "200", "500" });
             cmbReferenceWeights.Location = new Point(137, 38);
             cmbReferenceWeights.Name = "cmbReferenceWeights";
             cmbReferenceWeights.Size = new Size(105, 23);

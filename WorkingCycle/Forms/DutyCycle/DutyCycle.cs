@@ -557,8 +557,10 @@ Board.StopAxisEmg(selectedTestAxis);
 
         private void btnLoadTests_Click(object sender, EventArgs e)
         {
-            OpenFileDialog ofd = new();
-            ofd.Filter = "CSV files (*.csv)|*.csv";
+            OpenFileDialog ofd = new()
+            {
+                Filter = "CSV files (*.csv)|*.csv"
+            };
             if (ofd.ShowDialog() == DialogResult.OK)
             {
                 List<BondTest> list = CsvConverter.LoadFromCsv(ofd.FileName);
@@ -566,16 +568,19 @@ Board.StopAxisEmg(selectedTestAxis);
                 if (firstTestName is BreakTest)
                 {
                     breakTests = list;
+                    rbBreakTest.Checked = false;
                     rbBreakTest.Checked = true;
                 }
                 else if (firstTestName is StretchTest)
                 {
                     stretchTests = list;
+                    rbStretchTest.Checked = false;
                     rbStretchTest.Checked = true;
                 }
                 else if (firstTestName is ShearTest)
                 {
                     shearTests = list;
+                    rbStretchTest.Checked = false;
                     rbStretchTest.Checked = true;
                 }
                 if (cmbTests.Items.Count >= 0) cmbTests.SelectedIndex = 0;
