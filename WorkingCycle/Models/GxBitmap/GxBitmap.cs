@@ -187,31 +187,26 @@ namespace DutyCycle.Models.GxBitmap
         {
             if (null != m_pic_ShowImage)
             {
+                float aspectRatio = (float)m_nWidth / m_nHeight;
+
+                int destWidth = m_pic_ShowImage.Width;
+                int destHeight = m_pic_ShowImage.Height;
+
+                if (m_pic_ShowImage.Width / aspectRatio <= m_pic_ShowImage.Height)
+                    destHeight = (int)(m_pic_ShowImage.Width / aspectRatio);
+                else
+                    destWidth = (int)(m_pic_ShowImage.Height * aspectRatio);
+
                 //fullscreen picturebox size 1190x896
                 //default size 648x486
                 if (Singleton.GetInstance().CameraIsFullscreen)
                 {
-                    CWin32Bitmaps.SetStretchBltMode(m_pHDC, COLORONCOLOR);
-
-                    float aspectRatio = (float)m_nWidth / m_nHeight;
-
-                    int destWidth = m_pic_ShowImage.Width;
-                    int destHeight = m_pic_ShowImage.Height;
                     int destX;
                     int destY;
-
-                    if (m_pic_ShowImage.Width / aspectRatio <= m_pic_ShowImage.Height)
-                    {
-                        destHeight = (int)(m_pic_ShowImage.Width / aspectRatio);
-                    }
-                    else
-                    {
-                        destWidth = (int)(m_pic_ShowImage.Height * aspectRatio);
-                    }
-
                     destX = m_pic_ShowImage.Width / 2 - destWidth / 2;
                     destY = m_pic_ShowImage.Height / 2 - destHeight / 2;
 
+                    CWin32Bitmaps.SetStretchBltMode(m_pHDC, COLORONCOLOR);
                     CWin32Bitmaps.StretchDIBits(
                                 m_pHDC,
                                 destX,
@@ -230,7 +225,7 @@ namespace DutyCycle.Models.GxBitmap
                 else
                 {
                     // Создайте новый Bitmap с нужными размерами
-                    Bitmap bmp = new Bitmap(m_nWidth, m_nHeight, PixelFormat.Format8bppIndexed);
+                    Bitmap bmp = new(m_nWidth, m_nHeight, PixelFormat.Format8bppIndexed);
 
                     // Установите палитру для 8-битного изображения
                     ColorPalette palette = bmp.Palette;
@@ -245,22 +240,8 @@ namespace DutyCycle.Models.GxBitmap
                     Marshal.Copy(byBuffer, 0, bmpData.Scan0, byBuffer.Length);
                     bmp.UnlockBits(bmpData);
 
-                    // Измените размер изображения для вмещения в PictureBox
-                    float aspectRatio = (float)m_nWidth / m_nHeight;
-                    int destWidth = m_pic_ShowImage.Width;
-                    int destHeight = m_pic_ShowImage.Height;
-
-                    if (m_pic_ShowImage.Width / aspectRatio <= m_pic_ShowImage.Height)
-                    {
-                        destHeight = (int)(m_pic_ShowImage.Width / aspectRatio);
-                    }
-                    else
-                    {
-                        destWidth = (int)(m_pic_ShowImage.Height * aspectRatio);
-                    }
-
                     // Создайте новый Bitmap для конечного отображения с нужным размером
-                    Bitmap resizedBmp = new Bitmap(destWidth, destHeight);
+                    Bitmap resizedBmp = new(destWidth, destHeight);
 
                     using (Graphics g = Graphics.FromImage(resizedBmp))
                     {
