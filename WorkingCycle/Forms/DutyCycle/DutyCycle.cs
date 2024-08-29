@@ -444,10 +444,7 @@ rbStretchTest.Checked ? new StretchTest() : new ShearTest();
             testTimer.Start();
         }
 
-        private void btnTare_Click(object sender, EventArgs e)
-        {
-            Tare();
-        }
+        private void btnTare_Click(object sender, EventArgs e) => Tare();
 
         private bool IsForceBoundReached() => cbBoundSet.Checked &&
             (double)nudLoadBound.Value <= testValue;
