@@ -84,7 +84,7 @@ namespace DutyCycle.Forms.DutyCycle
 
         private void FForFullscreenCamera(object? sender, KeyEventArgs? e)
         {
-            if(e.KeyCode == Keys.F)
+            if (e.KeyCode == Keys.F)
             {
                 Singleton.GetInstance().CameraIsFullscreen = !Singleton.GetInstance().CameraIsFullscreen;
                 if (Singleton.GetInstance().CameraIsFullscreen)
@@ -396,7 +396,7 @@ rbStretchTest.Checked ? new StretchTest() : new ShearTest();
                 tick += dataIntervalInMilliseconds;
                 ticks.Add(tick);
             }
-            testValues = test.Values;
+            testValues = new List<double>(test.Values);
             NewPlotScatter();
             plot.Axes.AutoScale();
             testPlot.Refresh();
