@@ -20,8 +20,6 @@ namespace DutyCycle
             keyboardControl.PreInitialize();
 
             Application.Run(new MainMenu());
-
-            keyboardControl.Initialize();
         }
     }
 }
