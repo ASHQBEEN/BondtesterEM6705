@@ -18,8 +18,6 @@ namespace DutyCycle.Models.Machine
         #endregion
 
         public Board Board { get; private set; }
-        private uint deviceType = 167;
-        private uint boardID = 1;
         private int axesCount = 4;
 
         public bool AxisZBasingDone { get; set; } = false;
@@ -62,14 +60,11 @@ namespace DutyCycle.Models.Machine
             ADCLevel = 1
         };
 
-        public string advantechConfigurationPath;
+        public string advantechConfigurationPath { get; set; } = string.Empty;
         public readonly string configurationJsonPath = "Configuration.json";
         public static JsonSerializerOptions serializerOptions = new() { WriteIndented = true };
 
-        public void InitializeBoard()
-        {
-            instance.Board = new(deviceType, boardID, axesCount);
-        }
+        public void InitializeBoard() => instance.Board = new(axesCount);
 
         public void SaveParameters()
         {
@@ -89,8 +84,6 @@ namespace DutyCycle.Models.Machine
             return new MachineDto
             {
                 AxesCount = instance.axesCount,
-                BoardID = instance.boardID,
-                DeviceType = instance.deviceType,
                 Parameters = instance.Parameters,
                 TestConditions = instance.TestConditions,
                 advantechConfigurationPath = instance.advantechConfigurationPath,
@@ -109,8 +102,6 @@ namespace DutyCycle.Models.Machine
                     var dto = JsonSerializer.Deserialize<MachineDto>(loadedJsonData);
                     if (dto == null)
                         throw new ArgumentNullException(nameof(dto));
-                    instance.deviceType = dto.DeviceType;
-                    instance.boardID = dto.BoardID;
                     instance.axesCount = dto.AxesCount;
                     instance.Parameters = dto.Parameters;
                     instance.TestConditions = dto.TestConditions;
@@ -155,7 +146,8 @@ namespace DutyCycle.Models.Machine
                 {
                     oldMachineData = File.ReadAllText(configurationJsonPath);
                     var newMachineData = JsonSerializer.Deserialize<MachineDto>(oldMachineData);
-                    newMachineData.advantechConfigurationPath = instance.advantechConfigurationPath;
+  
+                    newMachineData.advantechConfigurationPath = GetInstance().advantechConfigurationPath;
                     string jsonData = JsonSerializer.Serialize(newMachineData, serializerOptions);
                     File.WriteAllText(configurationJsonPath, jsonData);
                 }
@@ -172,7 +164,7 @@ namespace DutyCycle.Models.Machine
 
         public void OverrideConfig()
         {
-            LoadAllModulesParameters();
+            //LoadAllModulesParameters();
             //Since Acceleration = Deceleration (requirement)
             Board.BoardSetDec(Parameters.Acceleration);
             Board.BoardSetLowVelocity(Parameters.LowVelocity);

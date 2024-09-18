@@ -387,13 +387,6 @@
                 DriverControl.SetAxisOutputBit(board[i], chanell, bitData);
         }
 
-        /// <param name="bit">STOP_DISABLE = 0, STOP_ENABLE = 1</param>
-        public static void SetIn1StopEnableBit(this Board board, int axisIndex, int bit)
-        {
-            if (!board.IsOpen) throw new Exception("Board needs to be opened before any operations");
-            DriverControl.SetIn1StopEnableBit(board[axisIndex], bit);
-        }
-
         public static byte GetDiBit(this Board board, int axisIndex, ushort chanell)
         {
             if (!board.IsOpen) throw new Exception("Board needs to be opened before any operations");

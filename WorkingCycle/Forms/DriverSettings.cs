@@ -89,6 +89,11 @@ namespace DutyCycle.Forms
         private void VelocitySettings_Load(object sender, EventArgs e)
         {
             MachineParameters parameters = Singleton.GetInstance().Parameters;
+            if (Singleton.GetInstance().advantechConfigurationPath != null)
+                tbPath.Text = Singleton.GetInstance().advantechConfigurationPath;
+            else
+                tbPath.Text = "Файл конфигурации не обнаружен.";
+            tbBoardName.Text = Singleton.GetInstance().Board.DeviceName;
             if (parameters.ParametersBeenSet)
             {
                 ParseParams(false);
@@ -251,21 +256,25 @@ MessageBoxIcon.Information);
 
         private void btnLoadCfg_Click(object sender, EventArgs e)
         {
-            OpenFileDialog openFileConfig = new OpenFileDialog();
+            OpenFileDialog openFileConfig = new();
             if (openFileConfig.ShowDialog() == DialogResult.OK)
             {
-                if (cbMemCfg.Checked)
-                {
-                    Singleton.GetInstance().advantechConfigurationPath = openFileConfig.FileName;
+                DialogResult result = MessageBox.Show(
+"Загружать этот файл конфигурации в будущем?",
+"Запомнить файл конфигурации?",
+MessageBoxButtons.YesNo,
+MessageBoxIcon.Information);
+
+                Singleton.GetInstance().advantechConfigurationPath = openFileConfig.FileName;
+                Singleton.GetInstance().LoadOverridedConfig();
+                if (result == DialogResult.Yes)
                     Singleton.GetInstance().SaveAdvantechConfiguration();
-                    Singleton.GetInstance().LoadOverridedConfig();
-                }
-                else
-                {
-                    Singleton.GetInstance().LoadOverridedConfig();
-                }
-                cbMemCfg.Checked = false;
+                tbPath.Text = Singleton.GetInstance().advantechConfigurationPath;
+
+
+
             }
+
         }
     }
 }

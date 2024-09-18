@@ -178,8 +178,18 @@
             button3 = new Button();
             groupBox1 = new GroupBox();
             label7 = new Label();
-            cbMemCfg = new CheckBox();
             btnLoadCfg = new Button();
+            label4 = new Label();
+            tableLayoutPanel2 = new TableLayoutPanel();
+            panel51 = new Panel();
+            tbBoardName = new TextBox();
+            panel50 = new Panel();
+            label15 = new Label();
+            panel49 = new Panel();
+            label14 = new Label();
+            panel52 = new Panel();
+            tbPath = new TextBox();
+            label16 = new Label();
             ((System.ComponentModel.ISupportInitialize)ndSlowVel0).BeginInit();
             ((System.ComponentModel.ISupportInitialize)ndSlowVel1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)ndSlowVel2).BeginInit();
@@ -280,6 +290,11 @@
             panel68.SuspendLayout();
             panel69.SuspendLayout();
             groupBox1.SuspendLayout();
+            tableLayoutPanel2.SuspendLayout();
+            panel51.SuspendLayout();
+            panel50.SuspendLayout();
+            panel49.SuspendLayout();
+            panel52.SuspendLayout();
             SuspendLayout();
             // 
             // ndSlowVel0
@@ -866,7 +881,7 @@
             tableLayoutPanel1.Controls.Add(panel67, 3, 11);
             tableLayoutPanel1.Controls.Add(panel68, 4, 11);
             tableLayoutPanel1.Controls.Add(panel69, 0, 1);
-            tableLayoutPanel1.Location = new Point(12, 84);
+            tableLayoutPanel1.Location = new Point(12, 198);
             tableLayoutPanel1.Name = "tableLayoutPanel1";
             tableLayoutPanel1.RowCount = 12;
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 38F));
@@ -1790,44 +1805,149 @@
             // 
             label7.AutoSize = true;
             label7.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 204);
-            label7.Location = new Point(496, 42);
+            label7.Location = new Point(496, 156);
             label7.Name = "label7";
             label7.Size = new Size(183, 21);
             label7.TabIndex = 2;
             label7.Text = "Параметры приводов";
             // 
-            // cbMemCfg
-            // 
-            cbMemCfg.AutoSize = true;
-            cbMemCfg.Location = new Point(895, 791);
-            cbMemCfg.Name = "cbMemCfg";
-            cbMemCfg.Size = new Size(227, 34);
-            cbMemCfg.TabIndex = 8;
-            cbMemCfg.Text = "Автоматически загружать этот файл\r\n конфигурации в будущем\r\n";
-            cbMemCfg.UseVisualStyleBackColor = true;
-            // 
             // btnLoadCfg
             // 
-            btnLoadCfg.Location = new Point(942, 714);
+            btnLoadCfg.Location = new Point(717, 6);
             btnLoadCfg.Name = "btnLoadCfg";
-            btnLoadCfg.Size = new Size(128, 71);
+            btnLoadCfg.Size = new Size(205, 23);
             btnLoadCfg.TabIndex = 7;
-            btnLoadCfg.Text = "Загрузить новый файл конфигурации для Advantech";
+            btnLoadCfg.Text = "Новый файл конфигурации";
             btnLoadCfg.UseVisualStyleBackColor = true;
             btnLoadCfg.Click += btnLoadCfg_Click;
+            // 
+            // label4
+            // 
+            label4.AutoSize = true;
+            label4.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 204);
+            label4.Location = new Point(440, 22);
+            label4.Name = "label4";
+            label4.Size = new Size(295, 21);
+            label4.TabIndex = 2;
+            label4.Text = "Параметры контроллера Advantech";
+            // 
+            // tableLayoutPanel2
+            // 
+            tableLayoutPanel2.CellBorderStyle = TableLayoutPanelCellBorderStyle.Single;
+            tableLayoutPanel2.ColumnCount = 2;
+            tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 20F));
+            tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 80F));
+            tableLayoutPanel2.Controls.Add(panel51, 0, 1);
+            tableLayoutPanel2.Controls.Add(panel50, 1, 0);
+            tableLayoutPanel2.Controls.Add(panel49, 0, 0);
+            tableLayoutPanel2.Controls.Add(panel52, 1, 1);
+            tableLayoutPanel2.Location = new Point(12, 62);
+            tableLayoutPanel2.Name = "tableLayoutPanel2";
+            tableLayoutPanel2.RowCount = 2;
+            tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Absolute, 38F));
+            tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Absolute, 38F));
+            tableLayoutPanel2.Size = new Size(1166, 79);
+            tableLayoutPanel2.TabIndex = 63;
+            // 
+            // panel51
+            // 
+            panel51.Controls.Add(tbBoardName);
+            panel51.Dock = DockStyle.Fill;
+            panel51.Location = new Point(4, 43);
+            panel51.Name = "panel51";
+            panel51.Size = new Size(226, 32);
+            panel51.TabIndex = 46;
+            // 
+            // tbBoardName
+            // 
+            tbBoardName.Font = new Font("Segoe UI", 9F);
+            tbBoardName.Location = new Point(40, 6);
+            tbBoardName.Margin = new Padding(3, 7, 3, 3);
+            tbBoardName.Name = "tbBoardName";
+            tbBoardName.ReadOnly = true;
+            tbBoardName.Size = new Size(147, 23);
+            tbBoardName.TabIndex = 2;
+            // 
+            // panel50
+            // 
+            panel50.Controls.Add(label15);
+            panel50.Dock = DockStyle.Fill;
+            panel50.Location = new Point(237, 4);
+            panel50.Name = "panel50";
+            panel50.Size = new Size(925, 32);
+            panel50.TabIndex = 6;
+            // 
+            // label15
+            // 
+            label15.AutoSize = true;
+            label15.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
+            label15.Location = new Point(375, 7);
+            label15.Name = "label15";
+            label15.Size = new Size(128, 15);
+            label15.TabIndex = 2;
+            label15.Text = "Файл Конфигурации";
+            // 
+            // panel49
+            // 
+            panel49.Controls.Add(label14);
+            panel49.Dock = DockStyle.Fill;
+            panel49.Location = new Point(4, 4);
+            panel49.Name = "panel49";
+            panel49.Size = new Size(226, 32);
+            panel49.TabIndex = 5;
+            // 
+            // label14
+            // 
+            label14.AutoSize = true;
+            label14.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
+            label14.Location = new Point(60, 7);
+            label14.Name = "label14";
+            label14.Size = new Size(109, 15);
+            label14.TabIndex = 2;
+            label14.Text = "Имя контроллера";
+            // 
+            // panel52
+            // 
+            panel52.Controls.Add(btnLoadCfg);
+            panel52.Controls.Add(tbPath);
+            panel52.Controls.Add(label16);
+            panel52.Dock = DockStyle.Fill;
+            panel52.Location = new Point(237, 43);
+            panel52.Name = "panel52";
+            panel52.Size = new Size(925, 32);
+            panel52.TabIndex = 47;
+            // 
+            // tbPath
+            // 
+            tbPath.Font = new Font("Segoe UI", 9F);
+            tbPath.Location = new Point(45, 6);
+            tbPath.Margin = new Padding(3, 7, 3, 3);
+            tbPath.Name = "tbPath";
+            tbPath.ReadOnly = true;
+            tbPath.Size = new Size(666, 23);
+            tbPath.TabIndex = 2;
+            // 
+            // label16
+            // 
+            label16.AutoSize = true;
+            label16.Location = new Point(5, 9);
+            label16.Name = "label16";
+            label16.Size = new Size(36, 15);
+            label16.TabIndex = 2;
+            label16.Text = "Путь:";
             // 
             // DriverSettings
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1190, 896);
-            Controls.Add(cbMemCfg);
-            Controls.Add(btnLoadCfg);
+            Controls.Add(label4);
             Controls.Add(label7);
             Controls.Add(groupBox1);
             Controls.Add(button3);
             Controls.Add(tableLayoutPanel1);
             Controls.Add(btnSetParams);
+            Controls.Add(tableLayoutPanel2);
             FormBorderStyle = FormBorderStyle.None;
             Name = "DriverSettings";
             Text = "DriverSettings";
@@ -1956,6 +2076,15 @@
             panel69.ResumeLayout(false);
             panel69.PerformLayout();
             groupBox1.ResumeLayout(false);
+            tableLayoutPanel2.ResumeLayout(false);
+            panel51.ResumeLayout(false);
+            panel51.PerformLayout();
+            panel50.ResumeLayout(false);
+            panel50.PerformLayout();
+            panel49.ResumeLayout(false);
+            panel49.PerformLayout();
+            panel52.ResumeLayout(false);
+            panel52.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -2101,7 +2230,6 @@
         private Button btnBasing1;
         private Button btnBasing2;
         private Button btnBasing3;
-        private CheckBox cbMemCfg;
         private Button btnLoadCfg;
         private Panel panel73;
         private NumericUpDown ndVelLow3;
@@ -2113,5 +2241,16 @@
         private NumericUpDown ndVelLow0;
         private Panel panel69;
         private Label label13;
+        private Label label4;
+        private TableLayoutPanel tableLayoutPanel2;
+        private Panel panel49;
+        private Label label14;
+        private Panel panel51;
+        private TextBox tbBoardName;
+        private Panel panel50;
+        private Label label15;
+        private Panel panel52;
+        private TextBox tbPath;
+        private Label label16;
     }
 }

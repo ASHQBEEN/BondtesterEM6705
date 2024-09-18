@@ -6,33 +6,7 @@ namespace ashqTech
     public class DriverControl
     {
         #region DeviceControls
-        /// <summary>
-        /// Получает код (прибора) платы
-        /// </summary>
-        /// <param name="deviceType">Номер платы (прибора) в enum DeviceTypeID</param>
-        /// <param name="boardID">Номер платы в списке подключаемых устройств</param>
-        private static uint GetDeviceNumber(uint deviceType, uint boardID)
-        {
-            uint deviceNumber = new();
-            uint actionResult = Motion.mAcm_GetDevNum(deviceType, boardID, ref deviceNumber);
-            string errorPrefix = "Open Device";
-            CheckAPIError(actionResult, errorPrefix);
-            return deviceNumber;
-        }
-
-        /// <summary>
-        /// Инициализирует обработчик платы
-        /// </summary>
-        /// <param name="deviceNumber">Код прибора</param>
-        public static IntPtr InitializeDeviceHandler(uint deviceType, uint boardID)
-        {
-            uint deviceNumber = GetDeviceNumber(deviceType, boardID);
-            IntPtr deviceHandler = IntPtr.Zero;
-            uint actionResult = Motion.mAcm_DevOpen(deviceNumber, ref deviceHandler);
-            string errorPrefix = "Open Device";
-            CheckAPIError(actionResult, errorPrefix);
-            return deviceHandler;
-        }
+        static DriverControl() => FetchAvailableDevices();
 
         /// <summary>
         /// Инициализирует оси платы
@@ -76,6 +50,38 @@ namespace ashqTech
             string errorPrefix = "Load Config";
             CheckAPIError(actionResult, errorPrefix);
         }
+
+        private static readonly DEV_LIST[] curAvailableDevs = new DEV_LIST[Motion.MAX_DEVICES];
+        private static uint deviceCount = 0;
+
+        public static void FetchAvailableDevices()
+        {
+            uint actionResult = (uint)Motion.mAcm_GetAvailableDevs(curAvailableDevs, Motion.MAX_DEVICES, ref deviceCount);
+            string errorPrefix = "Get Available Devices";
+            CheckAPIError(actionResult, errorPrefix);
+        }
+
+        public static List<string> GetDeviceNames()
+        {
+            List<string> result = [];
+
+            foreach (var device in curAvailableDevs)
+                result.Add(device.DeviceName);
+
+            return result;
+        }
+
+        public static nint OpenDevice(uint deviceNumber, out string deviceName)
+        {
+            nint deviceHandle = nint.Zero;
+            if (deviceCount == 0) throw new Exception("No Advantech devices found to be opened.");
+            uint actionResult = Motion.mAcm_DevOpen(curAvailableDevs[deviceNumber].DeviceNum, ref deviceHandle);
+            deviceName = curAvailableDevs[deviceNumber].DeviceName;
+            string errorPrefix = "Open Board";
+            CheckAPIError(actionResult, errorPrefix);
+            return deviceHandle;
+        }
+
         #endregion
 
         #region SingleAxisControls
