@@ -14,7 +14,7 @@ namespace DutyCycle.Models.Machine
         public void Save()
         {
             var machine = Singleton.GetInstance();
-            string path = machine.configurationJsonPath;
+            string path = machine.ConfigurationJsonPath;
             string oldMachineData;
 
             if (File.Exists(path))
@@ -40,7 +40,7 @@ namespace DutyCycle.Models.Machine
         public void Load()
         {
             var machine = Singleton.GetInstance();
-            string path = machine.configurationJsonPath;
+            string path = machine.ConfigurationJsonPath;
             string loadedMachineData;
 
             if (File.Exists(path))

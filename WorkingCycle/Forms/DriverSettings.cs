@@ -89,8 +89,8 @@ namespace DutyCycle.Forms
         private void VelocitySettings_Load(object sender, EventArgs e)
         {
             MachineParameters parameters = Singleton.GetInstance().Parameters;
-            if (Singleton.GetInstance().advantechConfigurationPath != null)
-                tbPath.Text = Singleton.GetInstance().advantechConfigurationPath;
+            if (Singleton.GetInstance().AdvantechConfigurationPath != null)
+                tbPath.Text = Singleton.GetInstance().AdvantechConfigurationPath;
             else
                 tbPath.Text = "Файл конфигурации не обнаружен.";
             tbBoardName.Text = Singleton.GetInstance().Board.DeviceName;
@@ -100,7 +100,7 @@ namespace DutyCycle.Forms
             }
             else
             {
-                if (File.Exists(Singleton.GetInstance().configurationJsonPath))
+                if (File.Exists(Singleton.GetInstance().ConfigurationJsonPath))
                     ParseParams(true);
                 else
                     ParseParams(false);
@@ -177,7 +177,7 @@ MessageBoxIcon.Information);
 
             if (result == DialogResult.Yes)
             {
-                if (File.Exists(Singleton.GetInstance().configurationJsonPath))
+                if (File.Exists(Singleton.GetInstance().ConfigurationJsonPath))
                 {
                     ParseParams(true);
                 }
@@ -265,11 +265,11 @@ MessageBoxIcon.Information);
 MessageBoxButtons.YesNo,
 MessageBoxIcon.Information);
 
-                Singleton.GetInstance().advantechConfigurationPath = openFileConfig.FileName;
+                Singleton.GetInstance().AdvantechConfigurationPath = openFileConfig.FileName;
                 Singleton.GetInstance().LoadOverridedConfig();
                 if (result == DialogResult.Yes)
                     Singleton.GetInstance().SaveAdvantechConfiguration();
-                tbPath.Text = Singleton.GetInstance().advantechConfigurationPath;
+                tbPath.Text = Singleton.GetInstance().AdvantechConfigurationPath;
 
 
 

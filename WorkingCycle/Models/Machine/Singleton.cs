@@ -60,8 +60,8 @@ namespace DutyCycle.Models.Machine
             ADCLevel = 1
         };
 
-        public string advantechConfigurationPath { get; set; } = string.Empty;
-        public readonly string configurationJsonPath = "Configuration.json";
+        public string AdvantechConfigurationPath { get; set; } = string.Empty;
+        public readonly string ConfigurationJsonPath = "Configuration.json";
         public static JsonSerializerOptions serializerOptions = new() { WriteIndented = true };
 
         public void InitializeBoard() => instance.Board = new(axesCount);
@@ -71,7 +71,7 @@ namespace DutyCycle.Models.Machine
             try
             {
                 string jsonData = JsonSerializer.Serialize(instance.ToDto(), serializerOptions);
-                File.WriteAllText(configurationJsonPath, jsonData);
+                File.WriteAllText(ConfigurationJsonPath, jsonData);
             }
             catch (Exception ex)
             {
@@ -86,7 +86,7 @@ namespace DutyCycle.Models.Machine
                 AxesCount = instance.axesCount,
                 Parameters = instance.Parameters,
                 TestConditions = instance.TestConditions,
-                advantechConfigurationPath = instance.advantechConfigurationPath,
+                advantechConfigurationPath = instance.AdvantechConfigurationPath,
                 CameraParameters = instance.CameraParameters
             };
         }
@@ -95,17 +95,17 @@ namespace DutyCycle.Models.Machine
         {
             try
             {
-                if (File.Exists(configurationJsonPath))
+                if (File.Exists(ConfigurationJsonPath))
                 {
                     string loadedJsonData;
-                    loadedJsonData = File.ReadAllText(configurationJsonPath);
+                    loadedJsonData = File.ReadAllText(ConfigurationJsonPath);
                     var dto = JsonSerializer.Deserialize<MachineDto>(loadedJsonData);
                     if (dto == null)
                         throw new ArgumentNullException(nameof(dto));
                     instance.axesCount = dto.AxesCount;
                     instance.Parameters = dto.Parameters;
                     instance.TestConditions = dto.TestConditions;
-                    instance.advantechConfigurationPath = dto.advantechConfigurationPath;
+                    instance.AdvantechConfigurationPath = dto.advantechConfigurationPath;
                     instance.CameraParameters = dto.CameraParameters;
                 }
                 else
@@ -129,9 +129,9 @@ namespace DutyCycle.Models.Machine
 
         public void LoadConfig()
         {
-            if (File.Exists(advantechConfigurationPath))
+            if (File.Exists(AdvantechConfigurationPath))
             {
-                DriverControl.LoadConfig(Board.deviceHandler, advantechConfigurationPath);
+                DriverControl.LoadConfig(Board.deviceHandler, AdvantechConfigurationPath);
             }
             else MessageBox.Show($"Конфигурационный файл для платы драйвера не был обнаружен.");
         }
@@ -140,16 +140,16 @@ namespace DutyCycle.Models.Machine
         {
             string oldMachineData;
 
-            if (File.Exists(configurationJsonPath))
+            if (File.Exists(ConfigurationJsonPath))
             {
                 try
                 {
-                    oldMachineData = File.ReadAllText(configurationJsonPath);
+                    oldMachineData = File.ReadAllText(ConfigurationJsonPath);
                     var newMachineData = JsonSerializer.Deserialize<MachineDto>(oldMachineData);
   
-                    newMachineData.advantechConfigurationPath = GetInstance().advantechConfigurationPath;
+                    newMachineData.advantechConfigurationPath = GetInstance().AdvantechConfigurationPath;
                     string jsonData = JsonSerializer.Serialize(newMachineData, serializerOptions);
-                    File.WriteAllText(configurationJsonPath, jsonData);
+                    File.WriteAllText(ConfigurationJsonPath, jsonData);
                 }
                 catch (Exception ex)
                 {

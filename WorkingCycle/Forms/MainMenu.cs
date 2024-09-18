@@ -106,7 +106,7 @@ namespace DutyCycle.Forms
         private void MainMenu_Load(object sender, EventArgs e)
         {
             var machine = Singleton.GetInstance();
-            if (File.Exists(machine.advantechConfigurationPath))
+            if (File.Exists(machine.AdvantechConfigurationPath))
                 machine.LoadOverridedConfig();
             else
             {
@@ -117,7 +117,7 @@ namespace DutyCycle.Forms
                     OpenFileDialog openFileConfig = new OpenFileDialog();
                     if (openFileConfig.ShowDialog() == DialogResult.OK)
                     {
-                        machine.advantechConfigurationPath = openFileConfig.FileName;
+                        machine.AdvantechConfigurationPath = openFileConfig.FileName;
                         machine.SaveAdvantechConfiguration();
                         machine.LoadOverridedConfig();
                         Activate();
