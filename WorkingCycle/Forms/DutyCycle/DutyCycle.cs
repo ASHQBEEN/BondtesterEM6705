@@ -356,9 +356,9 @@ MessageBoxIcon.Information);
             DisableInterface();
         }
 
-        private void btnLockUpperBond_Click(object sender, EventArgs e) => TurnOutput(pbOut6, 6, 3);
+        private void btnLockUpperBond_Click(object sender, EventArgs e) => TurnOutput(pbOut7, 7, 3);
 
-        private void btnLockLowerBond_Click(object sender, EventArgs e) => TurnOutput(pbOut7, 7, 3);
+        private void btnLockLowerBond_Click(object sender, EventArgs e) => TurnOutput(pbOut6, 6, 3);
 
         private void TurnOutput(PictureBox pictureBoxDO, ushort channel, int axisIndex)
         {

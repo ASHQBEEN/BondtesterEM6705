@@ -569,6 +569,7 @@
             // 
             // posTimer
             // 
+            posTimer.Interval = 50;
             posTimer.Tick += posTimer_Tick;
             // 
             // MainMenu

@@ -348,7 +348,7 @@
             btnLockUpperBond.Name = "btnLockUpperBond";
             btnLockUpperBond.Size = new Size(65, 25);
             btnLockUpperBond.TabIndex = 14;
-            btnLockUpperBond.Text = "Магнит 1";
+            btnLockUpperBond.Text = "Верхний";
             btnLockUpperBond.UseVisualStyleBackColor = true;
             btnLockUpperBond.Click += btnLockUpperBond_Click;
             // 
@@ -368,7 +368,7 @@
             btnLockLowerBond.Name = "btnLockLowerBond";
             btnLockLowerBond.Size = new Size(65, 25);
             btnLockLowerBond.TabIndex = 22;
-            btnLockLowerBond.Text = "Магнит 2";
+            btnLockLowerBond.Text = "Нижний";
             btnLockLowerBond.UseVisualStyleBackColor = true;
             btnLockLowerBond.Click += btnLockLowerBond_Click;
             // 
