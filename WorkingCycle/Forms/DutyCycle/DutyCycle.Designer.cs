@@ -355,7 +355,7 @@
             // pbOut7
             // 
             pbOut7.BorderStyle = BorderStyle.FixedSingle;
-            pbOut7.Location = new Point(77, 50);
+            pbOut7.Location = new Point(77, 17);
             pbOut7.Name = "pbOut7";
             pbOut7.Size = new Size(26, 26);
             pbOut7.TabIndex = 26;
@@ -375,7 +375,7 @@
             // pbOut6
             // 
             pbOut6.BorderStyle = BorderStyle.FixedSingle;
-            pbOut6.Location = new Point(77, 18);
+            pbOut6.Location = new Point(77, 50);
             pbOut6.Name = "pbOut6";
             pbOut6.Size = new Size(26, 26);
             pbOut6.TabIndex = 26;
