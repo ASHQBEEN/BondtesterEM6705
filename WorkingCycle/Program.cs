@@ -1,6 +1,5 @@
 using DutyCycle.Forms;
-
-using static DutyCycle.Scripts.KeyboardControls;
+using DutyCycle.Logic;
 
 namespace DutyCycle
 {
@@ -16,10 +15,10 @@ namespace DutyCycle
             // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
 
-            var keyboardControl = new KeyboardControl();
-            keyboardControl.PreInitialize();
+            var menu = new MainMenu();
+            Application.AddMessageFilter(new GlobalKeyMessageFilter(menu));
 
-            Application.Run(new MainMenu());
+            Application.Run(menu);
         }
     }
 }

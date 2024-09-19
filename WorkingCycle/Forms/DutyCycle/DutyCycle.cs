@@ -6,12 +6,11 @@ using DutyCycle.Models.BondTest;
 using DutyCycle.Models.Machine;
 using ScottPlot;
 using ScottPlot.Plottables;
-using static DutyCycle.Scripts.KeyboardControls;
 
 
 namespace DutyCycle.Forms.DutyCycle
 {
-    public partial class DutyCycleForm : Form
+    public partial class DutyCycleForm : Form, IGlobalKeyMessageFilter
     {
         private readonly ComPort port;
         private const int DATA_INTERVAL = 250; //minimum arduino data recieve event interval
@@ -178,7 +177,7 @@ namespace DutyCycle.Forms.DutyCycle
             testTime = 0;
             stopTimerTickCounter = 0;
             maxTestValue = 0;
-            KeyboardControl.blockControls = false;
+            GlobalKeyMessageFilter.BlockControls = false;
 
             if (testValues.Count == 0 || test == null)
                 return;
@@ -261,7 +260,7 @@ MessageBoxIcon.Information);
 
             testInProgress = true;
 
-            KeyboardControl.blockControls = false;
+            GlobalKeyMessageFilter.BlockControls = false;
             rtbTestValues.Clear();
             tbTestResult.Clear();
             testValues.Clear();
@@ -333,13 +332,13 @@ MessageBoxIcon.Information);
         private void DisableInterface()
         {
             operatorPanel.Enabled = false;
-            KeyboardControl.blockControls = true;
+            GlobalKeyMessageFilter.BlockControls = true;
         }
 
         private void EnableInterface()
         {
             operatorPanel.Enabled = true;
-            KeyboardControl.blockControls = false;
+            GlobalKeyMessageFilter.BlockControls = false;
         }
 
         private void btnCalibrate_Click(object sender, EventArgs e)
@@ -435,10 +434,13 @@ rbStretchTest.Checked ? new StretchTest() : new ShearTest();
 
         }
 
+        private bool forceStoppedBasing = false;
+
         private void Tare()
         {
             testTimer.Stop();
-            Thread.Sleep(DATA_INTERVAL);
+            if(!forceStoppedBasing)
+                Thread.Sleep(DATA_INTERVAL);
             //очистка буфера: port.port.DiscardInBuffer(); + DiscardOutBuffer()
             port.TareScale();
             testTimer.Start();
@@ -448,20 +450,6 @@ rbStretchTest.Checked ? new StretchTest() : new ShearTest();
 
         private bool IsForceBoundReached() => cbBoundSet.Checked &&
             (double)nudLoadBound.Value <= testValue;
-
-        public void StopBySpaceKey(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Space)
-            {
-                if (test != null)
-                {
-                    StopTest();
-                    test.Terminated = "Да";
-                    if (testValues.Count == 0)
-                        test.TerminateTest();
-                }
-            }
-        }
 
         private void rbBreakTest_CheckedChanged(object sender, EventArgs e) => ChooseTestType();
 
@@ -501,7 +489,6 @@ rbStretchTest.Checked ? new StretchTest() : new ShearTest();
                 rbStretchTest.Checked ? testPoints.Stretch : testPoints.Shear;
 
             ChangeLabelCoords();
-
         }
 
         private void btnLoadTestVelocity_Click(object sender, EventArgs e)
@@ -657,6 +644,7 @@ MessageBoxIcon.Information);
 
         private int calibrationCountdownValue;
         private const int CALIBRATION_COUNTDOWN_VALUE = 11;
+
         private void calibrationTimer_Tick(object sender, EventArgs e)
         {
             if (calibrationCountdownValue > 0)
@@ -676,5 +664,29 @@ MessageBoxIcon.Information);
         {
             if (!Singleton.GetInstance().Board.IsVirtual) BasingOnStartUp();
         }
+
+        public bool OnGlobalKeyDown(Keys key)
+        {
+            if (key == Keys.Back)
+            {
+                forceStoppedBasing = true;
+                StartBasing();
+                return true;
+            }
+            if (key == Keys.Space)
+            {
+                if (test != null)
+                {
+                    StopTest();
+                    test.Terminated = "Да";
+                    if (testValues.Count == 0)
+                        test.TerminateTest();
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        public bool OnGlobalKeyUp(Keys key) => false;
     }
 }

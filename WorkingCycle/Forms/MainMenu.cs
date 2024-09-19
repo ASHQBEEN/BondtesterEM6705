@@ -2,10 +2,11 @@
 using DutyCycle.Forms.DutyCycle;
 using DutyCycle.Models.Machine;
 using DutyCycle.Logic;
+using DutyCycle.Scripts;
 
 namespace DutyCycle.Forms
 {
-    public partial class MainMenu : Form
+    public partial class MainMenu : Form, IGlobalKeyMessageFilter
     {
         private Board board;
         private DutyCycleForm dutyCycle;
@@ -47,24 +48,20 @@ namespace DutyCycle.Forms
 
         private void btnAdjustments_Click(object sender, EventArgs e)
         {
-            velocitySettings ??= new();
             velocitySettings.MdiParent = this;
             velocitySettings.Dock = DockStyle.Fill;
             velocitySettings.Show();
-            velocitySettings?.Activate();
+            velocitySettings.Activate();
             if (!Singleton.GetInstance().Board.IsVirtual)
                 Basing.AxisZBasingDone = false;
         }
 
         private void btnDutyCycle_Click(object sender, EventArgs e)
         {
-            dutyCycle ??= new DutyCycleForm();
             dutyCycle.MdiParent = this;
             dutyCycle.Dock = DockStyle.Fill;
             dutyCycle.Show();
-            dutyCycle?.Activate();
-            KeyDown -= dutyCycle.StopBySpaceKey;
-            KeyDown += dutyCycle.StopBySpaceKey;
+            dutyCycle.Activate();
         }
 
         private void posTimer_Tick(object sender, EventArgs e)
@@ -141,17 +138,22 @@ namespace DutyCycle.Forms
             }
 
             posTimer.Start();
+
+            velocitySettings = new();
+            dutyCycle = new();
+
+            Application.AddMessageFilter(new GlobalKeyMessageFilter(dutyCycle));
+
+            dutyCycle.MdiParent = this;
+            dutyCycle.Dock = DockStyle.Fill;
+            dutyCycle.Show();
+            dutyCycle.Activate();
+
         }
 
-        private void MainMenu_FormClosed(object sender, FormClosedEventArgs e)
-        {
-            board.CloseBoard();
-        }
+        private void MainMenu_FormClosed(object sender, FormClosedEventArgs e) => board.CloseBoard();
 
-        private void pbMinimize_Click(object sender, EventArgs e)
-        {
-            WindowState = FormWindowState.Minimized;
-        }
+        private void pbMinimize_Click(object sender, EventArgs e) => WindowState = FormWindowState.Minimized;
 
         private void pbClose_Click(object sender, EventArgs e)
         {
@@ -163,6 +165,61 @@ namespace DutyCycle.Forms
 
             if (result == DialogResult.Yes)
                 Close();
+        }
+
+        public bool OnGlobalKeyDown(Keys key)
+        {
+            if (key == Keys.Space)
+            {
+                Invoke(Basing.Stop);
+                return false;
+            }
+
+            if (GlobalKeyMessageFilter.BlockControls) return false;
+
+            int axisIndex = GetAxisIndexForKeyboardControls(key);
+            if (axisIndex == -1) return false;
+
+            CtrlSpeedSwitch(axisIndex);
+            ushort direction;
+            const ushort PositiveDirection = 0, NegativeDirection = 1;
+            if (key == Keys.Right || key == Keys.Up || key == Keys.PageUp || key == Keys.Insert)
+                direction = PositiveDirection;
+            else
+                direction = NegativeDirection;
+            board.StartAxisContinuousMovementChecked(axisIndex, direction);
+            return true;
+        }
+
+        public bool OnGlobalKeyUp(Keys key)
+        {
+            int axisIndex = GetAxisIndexForKeyboardControls(key);
+            if (axisIndex == -1) return false;
+            board.StopAxisEmg(axisIndex);
+            return true;
+        }
+
+        private int GetAxisIndexForKeyboardControls(Keys key)
+        {
+            return key switch
+            {
+                Keys.Right or Keys.Left => 0,
+                Keys.Up or Keys.Down => 1,
+                Keys.PageUp or Keys.PageDown => 2,
+                Keys.Insert or Keys.Delete => 3,
+                _ => -1,
+            };
+        }
+
+        private static void CtrlSpeedSwitch(int axisIndex)
+        {
+            var machine = Singleton.GetInstance();
+            double speed;
+            if ((ModifierKeys & Keys.Control) == Keys.Control)
+                speed = machine.Parameters.FastVelocity[axisIndex];
+            else
+                speed = machine.Parameters.SlowVelocity[axisIndex];
+            machine.Board.SetAxisHighVelocity(axisIndex, speed);
         }
     }
 }

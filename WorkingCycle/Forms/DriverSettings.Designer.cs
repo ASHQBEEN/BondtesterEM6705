@@ -652,6 +652,7 @@
             btnSetParams.Name = "btnSetParams";
             btnSetParams.Size = new Size(168, 72);
             btnSetParams.TabIndex = 1;
+            btnSetParams.TabStop = false;
             btnSetParams.Text = "Применить параметры";
             btnSetParams.UseVisualStyleBackColor = true;
             btnSetParams.Click += btnSetParams_Click;
