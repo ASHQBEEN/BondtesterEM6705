@@ -58,7 +58,7 @@ namespace DutyCycle.Models.Machine
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show(ex.Message);
+                    MessageBox.Show("Ошибка десериализации файла конфигурации. Скорее всего он повреждён\n" + ex.Message);
                 }
             }
             else
