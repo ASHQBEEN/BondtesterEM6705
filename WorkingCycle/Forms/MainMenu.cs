@@ -52,7 +52,8 @@ namespace DutyCycle.Forms
             velocitySettings.Dock = DockStyle.Fill;
             velocitySettings.Show();
             velocitySettings?.Activate();
-            Basing.AxisZBasingDone = false;
+            if (!Singleton.GetInstance().Board.IsVirtual)
+                Basing.AxisZBasingDone = false;
         }
 
         private void btnDutyCycle_Click(object sender, EventArgs e)
