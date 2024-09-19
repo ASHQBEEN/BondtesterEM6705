@@ -289,7 +289,7 @@ MessageBoxIcon.Information);
 
         private void ChooseTestType()
         {
-            Basing.InTestPoint = false;
+            if (!Singleton.GetInstance().Board.IsVirtual) Basing.InTestPoint = false;
 
             TestPoints testPoints = Singleton.GetInstance().TestConditions.TestPoints;
 
@@ -672,6 +672,9 @@ MessageBoxIcon.Information);
             }
         }
 
-        private void DutyCycleForm_Load(object sender, EventArgs e) => BasingOnStartUp();
+        private void DutyCycleForm_Load(object sender, EventArgs e)
+        {
+            if (!Singleton.GetInstance().Board.IsVirtual) BasingOnStartUp();
+        }
     }
 }

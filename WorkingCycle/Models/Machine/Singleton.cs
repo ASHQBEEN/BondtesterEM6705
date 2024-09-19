@@ -20,7 +20,6 @@ namespace DutyCycle.Models.Machine
         public Board Board { get; private set; }
         private int axesCount = 4;
 
-        public bool AxisZBasingDone { get; set; } = false;
         public bool CameraIsFullscreen { get; set; } = false;
 
         public MachineParameters Parameters { get; set; } = new MachineParameters

@@ -28,6 +28,13 @@ namespace DutyCycle.Forms
             pbNeg = [pbNeg0, pbNeg1, pbNeg2, pbNeg3];
             pbPos = [pbPos0, pbPos1, pbPos2, pbPos3];
             tbCmdPos = [tbCmdPos0, tbCmdPos1, tbCmdPos2, tbCmdPos3];
+
+            if (Singleton.GetInstance().Board.IsVirtual)
+            {
+                Basing.InTestPoint = true;
+                Basing.BasingOnStartUpDone = true;
+                Basing.AxisZBasingDone = true;
+            }
         }
 
         private void InitializeDriver()
