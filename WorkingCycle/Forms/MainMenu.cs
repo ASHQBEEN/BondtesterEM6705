@@ -42,7 +42,6 @@ namespace DutyCycle.Forms
         {
             Singleton.GetInstance().LoadAllModulesParameters();
             Singleton.GetInstance().InitializeBoard();
-            Singleton.GetInstance().Board.OpenBoard();
             board = Singleton.GetInstance().Board;
         }
 

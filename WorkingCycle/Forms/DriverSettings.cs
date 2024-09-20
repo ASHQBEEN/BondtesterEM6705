@@ -22,7 +22,7 @@ namespace DutyCycle.Forms
         private readonly NumericUpDown[] ndVelLow;
 
         private Board board = Singleton.GetInstance().Board;
-        private int axesCount = Singleton.GetInstance().Board.AxesCount;
+        private uint axesCount = Singleton.GetInstance().Board.AxesCount;
 
         public DriverSettings()
         {

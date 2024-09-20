@@ -1,41 +1,36 @@
 ﻿namespace ashqTech
 {
 
-    /// <summary>
-    /// Конструктор для инициализации платы Advantech и её осей
-    /// </summary>
-    /// <param name="AxesCount">Количество осей, инициализируемых платой</param>
-    ///
-    public class Board(int AxesCount)
+
+    public class Board
     {
         /// <summary>
         /// Количество осей, используемых платой.
         /// </summary>
-        public readonly int AxesCount = AxesCount;
+        public uint AxesCount;
         public IntPtr GroupHandler = IntPtr.Zero;
         public IntPtr deviceHandler = IntPtr.Zero;
         private IntPtr[] axisHandlers = [];
         public string DeviceName = string.Empty;
-        private readonly uint boardNumber = 0;
         public bool IsOpen { get; private set; }
         public bool IsVirtual { get; private set; }
 
         /// <summary>
-        /// Конструктор для инициализации платы Advantech и её осей c учётом 
-        /// порядкового номера платы (для машин с несколькими платами)
+        /// Конструктор для инициализации платы Advantech и её осей
         /// </summary>
-        /// <param name="boardNumber">Порядковый номер платы</param>
-        /// <param name="AxesCount">Количество осей, инициализируемых платой</param>
-        ///
-        public Board(int AxesCount, uint boardNumber) : this(AxesCount) => this.boardNumber = boardNumber;
-
-        public void OpenBoard()
+        /// <param name="axesCount">Количество осей, инициализируемых платой, null - автоопределение</param>
+        /// <param name="boardNumber">Порядковый номер платы в утилите</param>
+        public Board(uint? axesCount = null, uint boardNumber = 0)
         {
             if (!IsOpen)
             {
-                deviceHandler = DriverControl.OpenDevice(boardNumber, out DeviceName);
-                CheckBoardVirtuality();
+                deviceHandler = DriverControl.GetDeviceHandler(boardNumber, out DeviceName);
+                if (axesCount is null)
+                    AxesCount = DriverControl.GetAxesCount(deviceHandler);
+                else
+                    AxesCount = axesCount.Value;
                 axisHandlers = DriverControl.InitializeAxes(AxesCount, deviceHandler);
+                CheckBoardVirtuality();
                 IsOpen = true;
             }
         }

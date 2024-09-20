@@ -18,7 +18,6 @@ namespace DutyCycle.Models.Machine
         #endregion
 
         public Board Board { get; private set; }
-        private int axesCount = 4;
 
         public bool CameraIsFullscreen { get; set; } = false;
 
@@ -63,7 +62,7 @@ namespace DutyCycle.Models.Machine
         public readonly string ConfigurationJsonPath = "Configuration.json";
         public static JsonSerializerOptions serializerOptions = new() { WriteIndented = true };
 
-        public void InitializeBoard() => instance.Board = new(axesCount);
+        public void InitializeBoard() => instance.Board = new();
 
         public void SaveParameters()
         {
@@ -82,7 +81,6 @@ namespace DutyCycle.Models.Machine
         {
             return new MachineDto
             {
-                AxesCount = instance.axesCount,
                 Parameters = instance.Parameters,
                 TestConditions = instance.TestConditions,
                 advantechConfigurationPath = instance.AdvantechConfigurationPath,
@@ -101,7 +99,6 @@ namespace DutyCycle.Models.Machine
                     var dto = JsonSerializer.Deserialize<MachineDto>(loadedJsonData);
                     if (dto == null)
                         throw new ArgumentNullException(nameof(dto));
-                    instance.axesCount = dto.AxesCount;
                     instance.Parameters = dto.Parameters;
                     instance.TestConditions = dto.TestConditions;
                     instance.AdvantechConfigurationPath = dto.advantechConfigurationPath;

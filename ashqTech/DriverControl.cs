@@ -13,7 +13,7 @@ namespace ashqTech
         /// </summary>
         /// <param name="axesCount">Количество осей</param>
         /// <param name="deviceHandler">Обработчик платы</param>
-        public static IntPtr[] InitializeAxes(int axesCount, IntPtr deviceHandler)
+        public static IntPtr[] InitializeAxes(uint axesCount, IntPtr deviceHandler)
         {
             IntPtr[] axesHandler = new IntPtr[axesCount];
             for (int i = 0; i < axesCount; i++)
@@ -53,6 +53,7 @@ namespace ashqTech
 
         private static readonly DEV_LIST[] curAvailableDevs = new DEV_LIST[Motion.MAX_DEVICES];
         private static uint deviceCount = 0;
+        public static uint DeviceCount { get => deviceCount; }
 
         public static void FetchAvailableDevices()
         {
@@ -61,17 +62,7 @@ namespace ashqTech
             CheckAPIError(actionResult, errorPrefix);
         }
 
-        public static List<string> GetDeviceNames()
-        {
-            List<string> result = [];
-
-            foreach (var device in curAvailableDevs)
-                result.Add(device.DeviceName);
-
-            return result;
-        }
-
-        public static nint OpenDevice(uint deviceNumber, out string deviceName)
+        public static nint GetDeviceHandler(uint deviceNumber, out string deviceName)
         {
             nint deviceHandle = nint.Zero;
             if (deviceCount == 0) throw new Exception("No Advantech devices found to be opened.");
@@ -80,6 +71,15 @@ namespace ashqTech
             string errorPrefix = "Open Board";
             CheckAPIError(actionResult, errorPrefix);
             return deviceHandle;
+        }
+
+        public static uint GetAxesCount(nint deviceHandler)
+        {
+            uint AxesPerDev = 0;
+            uint actionResult = Motion.mAcm_GetU32Property(deviceHandler, (uint)PropertyID.FT_DevAxesCount, ref AxesPerDev);
+            string errorPrefix = "Get axes count per device";
+            CheckAPIError(actionResult, errorPrefix);
+            return AxesPerDev;
         }
 
         #endregion

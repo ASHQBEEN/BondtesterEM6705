@@ -226,12 +226,10 @@
         public static double[] BoardGetCommandPositions(this Board board)
         {
             if (!board.IsOpen) throw new Exception("Board needs to be opened before any operations");
-            int axesCount = board.AxesCount;
+            uint axesCount = board.AxesCount;
             double[] result = new double[axesCount];
             for (int i = 0; i < axesCount; i++)
-            {
                 result[i] = DriverControl.GetAxisCommandPosition(board[i]);
-            }
             return result;
         }
 
@@ -243,9 +241,7 @@
         {
             if (!board.IsOpen) throw new Exception("Board needs to be opened before any operations");
             for (int i = 0; i < board.AxesCount; i++)
-            {
                 DriverControl.SetAxisHighVelocity(board[i], velHigh[i]);
-            }
         }
 
         /// <summary>
@@ -256,9 +252,7 @@
         {
             if (!board.IsOpen) throw new Exception("Board needs to be opened before any operations");
             for (int i = 0; i < board.AxesCount; i++)
-            {
                 DriverControl.SetAxisAcceleration(board[i], acc[i]);
-            }
         }
 
         /// <summary>
@@ -269,9 +263,7 @@
         {
             if (!board.IsOpen) throw new Exception("Board needs to be opened before any operations");
             for (int i = 0; i < board.AxesCount; i++)
-            {
-                DriverControl.SetAxisDeceleration(board[i], decs[i]);
-            }
+            DriverControl.SetAxisDeceleration(board[i], decs[i]);
         }
 
         /// <summary>
@@ -282,9 +274,7 @@
         {
             if (!board.IsOpen) throw new Exception("Board needs to be opened before any operations");
             for (int i = 0; i < board.AxesCount; i++)
-            {
-                DriverControl.AxisServoOff(board[i]);
-            }
+            DriverControl.AxisServoOff(board[i]);
         }
 
         /// <summary>
@@ -295,9 +285,7 @@
         {
             if (!board.IsOpen) throw new Exception("Board needs to be opened before any operations");
             for (int i = 0; i < board.AxesCount; i++)
-            {
-                DriverControl.AxisServoOn(board[i]);
-            }
+            DriverControl.AxisServoOn(board[i]);
         }
 
         /// <summary>
@@ -307,9 +295,7 @@
         {
             if (!board.IsOpen) throw new Exception("Board needs to be opened before any operations");
             for (int i = 0; i < board.AxesCount; i++)
-            {
-                DriverControl.StopContinuousMovementEmg(board[i]);
-            }
+            DriverControl.StopContinuousMovementEmg(board[i]);
         }
 
         /// <summary>
@@ -320,9 +306,7 @@
         {
             if (!board.IsOpen) throw new Exception("Board needs to be opened before any operations");
             for (int i = 0; i < board.AxesCount; i++)
-            {
-                DriverControl.ResetAxisError(board[i]);
-            }
+            DriverControl.ResetAxisError(board[i]);
         }
 
         /// <summary>
@@ -333,9 +317,7 @@
         {
             if (!board.IsOpen) throw new Exception("Board needs to be opened before any operations");
             for (int i = 0; i < board.AxesCount; i++)
-            {
-                DriverControl.SetAxisLowVelocity(board[i], velLow[i]);
-            }
+            DriverControl.SetAxisLowVelocity(board[i], velLow[i]);
         }
 
         /// <summary>
@@ -346,9 +328,7 @@
         {
             if (!board.IsOpen) throw new Exception("Board needs to be opened before any operations");
             for (int i = 0; i < board.AxesCount; i++)
-            {
-                DriverControl.SetAxisJerk(board[i], jerks[i]);
-            }
+            DriverControl.SetAxisJerk(board[i], jerks[i]);
         }
 
         /// <summary>
@@ -359,12 +339,10 @@
         public static double[] BoardGetActPos(this Board board)
         {
             if (!board.IsOpen) throw new Exception("Board needs to be opened before any operations");
-            int axesCount = board.AxesCount;
+            uint axesCount = board.AxesCount;
             double[] result = new double[axesCount];
             for (int i = 0; i < axesCount; i++)
-            {
-                result[i] = DriverControl.GetAxisActPosition(board[i]);
-            }
+            result[i] = DriverControl.GetAxisActPosition(board[i]);
             return result;
         }
 
@@ -414,9 +392,7 @@
         {
             if (!board.IsOpen) throw new Exception("Board needs to be opened before any operations");
             for (int i = 0; i < board.AxesCount; i++) //3 = максимальное число осей для интерполяции
-            {
-                DriverControl.RemoveAxisFromGroup(board[i], board.GroupHandler);
-            }
+            DriverControl.RemoveAxisFromGroup(board[i], board.GroupHandler);
         }
 
         /// <summary>
