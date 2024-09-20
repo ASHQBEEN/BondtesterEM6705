@@ -68,9 +68,7 @@ namespace DutyCycle.Forms
             MachineParameters parameters = Singleton.GetInstance().Parameters;
             //getting or loading virtual values
             if (loadVels)
-            {
                 parameters.Load();
-            }
 
             for (int i = 0; i < axesCount; i++)
             {
@@ -269,11 +267,7 @@ MessageBoxIcon.Information);
                 if (result == DialogResult.Yes)
                     Singleton.GetInstance().SaveAdvantechConfiguration();
                 tbPath.Text = Singleton.GetInstance().AdvantechConfigurationPath;
-
-
-
             }
-
         }
     }
 }

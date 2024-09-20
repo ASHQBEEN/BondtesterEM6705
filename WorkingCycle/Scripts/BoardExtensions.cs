@@ -13,6 +13,7 @@ namespace DutyCycle.Scripts
                 if (IfMaximumReached(axisIndex)
                     && direction == 0)
                 {
+                    MessageBox.Show("Достигнут максимум перемещения.");
                     return;
                 }
                 b.StartAxisContinuousMovement(axisIndex, direction);
