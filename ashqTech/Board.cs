@@ -21,7 +21,7 @@
                 deviceHandler = DriverControl.GetDeviceHandler(boardNumber, out deviceName);
                 AxesCount = axesCount ?? DriverControl.GetAxesCount(deviceHandler);
                 axisHandlers = DriverControl.InitializeAxes(AxesCount, deviceHandler);
-                IsVirtual = deviceName[0..2] == "V_";
+                IsVirtual = deviceName[0] == 'V';
                 IsOpen = true;
             }
         }
