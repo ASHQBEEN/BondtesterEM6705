@@ -1,7 +1,5 @@
 ﻿namespace ashqTech
 {
-
-
     public class Board
     {
         /// <summary>
@@ -11,31 +9,40 @@
         public IntPtr GroupHandler = IntPtr.Zero;
         public IntPtr deviceHandler = IntPtr.Zero;
         private IntPtr[] axisHandlers = [];
-        public string DeviceName = string.Empty;
+        private string deviceName = string.Empty;
+        public string BoardName { get => deviceName; }
         public bool IsOpen { get; private set; }
         public bool IsVirtual { get; private set; }
 
-        /// <summary>
-        /// Конструктор для инициализации платы Advantech и её осей
-        /// </summary>
-        /// <param name="axesCount">Количество осей, инициализируемых платой, null - автоопределение</param>
-        /// <param name="boardNumber">Порядковый номер платы в утилите</param>
-        public Board(uint? axesCount = null, uint boardNumber = 0)
+        private void InitializeBoard(uint boardNumber, uint? axesCount = null)
         {
             if (!IsOpen)
             {
-                deviceHandler = DriverControl.GetDeviceHandler(boardNumber, out DeviceName);
-                if (axesCount is null)
-                    AxesCount = DriverControl.GetAxesCount(deviceHandler);
-                else
-                    AxesCount = axesCount.Value;
+                deviceHandler = DriverControl.GetDeviceHandler(boardNumber, out deviceName);
+                AxesCount = axesCount ?? DriverControl.GetAxesCount(deviceHandler);
                 axisHandlers = DriverControl.InitializeAxes(AxesCount, deviceHandler);
-                CheckBoardVirtuality();
+                IsVirtual = deviceName[0..2] == "V_";
                 IsOpen = true;
             }
         }
 
-        private void CheckBoardVirtuality() => IsVirtual = DeviceName[0] == 'V';
+        /// <summary>
+        /// Конструктор для инициализации платы Advantech и её осей (первая плата в утилите с автоопределением осей)
+        /// </summary>
+        public Board() : this(0) { }
+
+        /// <summary>
+        /// Конструктор для инициализации платы Advantech и её осей
+        /// </summary>
+        /// <param name="boardNumber">Порядковый номер платы в утилите</param>
+        public Board(uint boardNumber) => InitializeBoard(boardNumber);
+
+        /// <summary>
+        /// Конструктор для инициализации платы Advantech и её осей
+        /// </summary>
+        /// <param name="boardNumber">Порядковый номер платы в утилите</param>
+        /// <param name="axesCount">Количество осей, инициализируемых платой, null - автоопределение</param>
+        public Board(uint boardNumber, uint axesCount) => InitializeBoard(boardNumber, axesCount);
 
         public void CloseBoard()
         {

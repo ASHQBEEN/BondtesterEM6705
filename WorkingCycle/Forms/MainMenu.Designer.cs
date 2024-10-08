@@ -264,6 +264,7 @@
             panel6.Name = "panel6";
             panel6.Size = new Size(90, 125);
             panel6.TabIndex = 4;
+            panel6.Visible = false;
             // 
             // btnReference
             // 

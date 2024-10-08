@@ -272,7 +272,7 @@ namespace ashqTech
         /// <returns>Значение высокой (конечной) скорости</returns>
         public static double GetAxisHighVelocity(IntPtr axisHandler)
         {
-            double vel = new();
+            double vel = 0;
             uint actionResult = Motion.mAcm_GetF64Property(axisHandler, (uint)PropertyID.PAR_AxVelHigh, ref vel);
             string errorPrefix = "get vel high";
             CheckAPIError(actionResult, errorPrefix);
@@ -367,6 +367,33 @@ namespace ashqTech
             string errorPrefix = "Get DI bit";
             CheckAPIError(actionResult, errorPrefix);
             return bit;
+        }
+
+        public static double GetAxisLowVelocity(IntPtr axisHandler)
+        {
+            double vel = new();
+            uint actionResult = Motion.mAcm_GetF64Property(axisHandler, (uint)PropertyID.PAR_AxVelLow, ref vel);
+            string errorPrefix = "get vel low";
+            CheckAPIError(actionResult, errorPrefix);
+            return vel;
+        }
+
+        public static double GetAxisAcc(IntPtr axisHandler)
+        {
+            double acc = new();
+            uint actionResult = Motion.mAcm_GetF64Property(axisHandler, (uint)PropertyID.PAR_AxAcc, ref acc);
+            string errorPrefix = "get acc";
+            CheckAPIError(actionResult, errorPrefix);
+            return acc;
+        }
+
+        public static double GetAxisJerk(IntPtr axisHandler)
+        {
+            double jerk = new();
+            uint actionResult = Motion.mAcm_GetF64Property(axisHandler, (uint)PropertyID.PAR_AxJerk, ref jerk);
+            string errorPrefix = "get jerk";
+            CheckAPIError(actionResult, errorPrefix);
+            return jerk;
         }
 
         #endregion

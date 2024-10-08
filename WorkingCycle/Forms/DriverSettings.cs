@@ -86,11 +86,11 @@ namespace DutyCycle.Forms
         private void VelocitySettings_Load(object sender, EventArgs e)
         {
             MachineParameters parameters = Singleton.GetInstance().Parameters;
-            if (Singleton.GetInstance().AdvantechConfigurationPath != null)
+            if (Singleton.GetInstance().AdvantechConfigurationPath != "")
                 tbPath.Text = Singleton.GetInstance().AdvantechConfigurationPath;
             else
                 tbPath.Text = "Файл конфигурации не обнаружен.";
-            tbBoardName.Text = Singleton.GetInstance().Board.DeviceName;
+            tbBoardName.Text = Singleton.GetInstance().Board.BoardName;
             if (parameters.ParametersBeenSet)
             {
                 ParseParams(false);
