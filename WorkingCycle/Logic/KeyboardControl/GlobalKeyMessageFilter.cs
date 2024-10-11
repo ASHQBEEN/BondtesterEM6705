@@ -4,8 +4,6 @@
     {
         private readonly IGlobalKeyMessageFilter form = form;
 
-        public static bool BlockControls { get; set; } = false;
-
         public bool PreFilterMessage(ref Message m)
         {
             const int WM_KEYDOWN = 0x0100;

@@ -1,6 +1,7 @@
 ﻿using ashqTech;
 using DutyCycle.Models.Machine;
 using DutyCycle.Logic;
+using DutyCycle.Scripts;
 
 namespace DutyCycle.Forms
 {
@@ -236,13 +237,13 @@ MessageBoxIcon.Information);
         private void EnableInterface()
         {
             tableLayoutPanel1.Enabled = true;
-            GlobalKeyMessageFilter.BlockControls = false;
+            BindControl.BlockControls = false;
         }
 
         private void DisableInterface()
         {
             tableLayoutPanel1.Enabled = false;
-            GlobalKeyMessageFilter.BlockControls = true;
+            BindControl.BlockControls = true;
         }
 
         private void StartBasing(int index)

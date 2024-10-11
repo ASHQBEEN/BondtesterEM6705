@@ -1,5 +1,6 @@
 using DutyCycle.Forms;
 using DutyCycle.Logic;
+using DutyCycle.Scripts;
 
 namespace DutyCycle
 {
@@ -16,6 +17,7 @@ namespace DutyCycle
             ApplicationConfiguration.Initialize();
 
             var menu = new MainMenu();
+            Joystick joystick = new Joystick();
             Application.AddMessageFilter(new GlobalKeyMessageFilter(menu));
 
             Application.Run(menu);

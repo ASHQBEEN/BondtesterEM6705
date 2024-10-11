@@ -4,6 +4,7 @@ using DutyCycle.Logic;
 using DutyCycle.Models;
 using DutyCycle.Models.BondTest;
 using DutyCycle.Models.Machine;
+using DutyCycle.Scripts;
 using ScottPlot;
 using ScottPlot.Plottables;
 
@@ -177,7 +178,7 @@ namespace DutyCycle.Forms.DutyCycle
             testTime = 0;
             stopTimerTickCounter = 0;
             maxTestValue = 0;
-            GlobalKeyMessageFilter.BlockControls = false;
+            BindControl.BlockControls = false;
 
             if (testValues.Count == 0 || test == null)
                 return;
@@ -260,7 +261,7 @@ MessageBoxIcon.Information);
 
             testInProgress = true;
 
-            GlobalKeyMessageFilter.BlockControls = false;
+            BindControl.BlockControls = false;
             rtbTestValues.Clear();
             tbTestResult.Clear();
             testValues.Clear();
@@ -332,13 +333,13 @@ MessageBoxIcon.Information);
         private void DisableInterface()
         {
             operatorPanel.Enabled = false;
-            GlobalKeyMessageFilter.BlockControls = true;
+            BindControl.BlockControls = true;
         }
 
         private void EnableInterface()
         {
             operatorPanel.Enabled = true;
-            GlobalKeyMessageFilter.BlockControls = false;
+            BindControl.BlockControls = false;
         }
 
         private void btnCalibrate_Click(object sender, EventArgs e)

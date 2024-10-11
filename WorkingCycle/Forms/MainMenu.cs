@@ -174,7 +174,7 @@ namespace DutyCycle.Forms
                 return false;
             }
 
-            if (GlobalKeyMessageFilter.BlockControls) return false;
+            if (BindControl.BlockControls) return false;
 
             int axisIndex = GetAxisIndexForKeyboardControls(key);
             if (axisIndex == -1) return false;
