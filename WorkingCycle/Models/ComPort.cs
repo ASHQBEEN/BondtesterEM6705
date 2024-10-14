@@ -22,7 +22,7 @@ namespace DutyCycle.Models
         {
             try
             {
-                port.Write("w;");
+                port.Write("w");
             }
             catch (Exception)
             {
@@ -34,14 +34,14 @@ namespace DutyCycle.Models
         {
             try
             {
-                port.Write("t;");
+                port.Write("t");
             }
             catch (Exception)
             {
                 //throw;
             }
         }
-        public void Calibrate() => port.Write("c;");
+        public void Calibrate() => port.Write("c");
         public void SendReferenceWeight(int weight) => port.Write(weight.ToString());
         public void Close() => port.Close();
         //public string ReadReferenceWeight() => port.ReadLine();
@@ -79,7 +79,7 @@ namespace DutyCycle.Models
             // Read all the data waiting in the buffer
             string receivedValueString = port.ReadLine();
             TestValue = double.Parse(receivedValueString, CultureInfo.InvariantCulture);
-            TestValue = Math.Round(TestValue/10, 1);
+            TestValue = Math.Round(TestValue, 1);
         }
 
         public static string GetLastPortName() => SerialPort.GetPortNames()
