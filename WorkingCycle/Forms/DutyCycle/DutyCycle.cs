@@ -12,7 +12,7 @@ namespace DutyCycle.Forms.DutyCycle
 {
     public partial class DutyCycleForm : Form, IGlobalKeyMessageFilter
     {
-        private readonly Scales scales = Singleton.GetInstance().Scales;
+        private readonly Scales scales = Scales.GetInstance();
         private const int DATA_INTERVAL = 250; //minimum arduino data recieve event interval
         private readonly double dataIntervalInMilliseconds = DATA_INTERVAL / 1000f;
 

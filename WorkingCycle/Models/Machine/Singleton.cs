@@ -18,7 +18,6 @@ namespace DutyCycle.Models.Machine
         #endregion
 
         public Board Board { get; private set; }
-        public readonly Scales Scales = new();
 
         public bool CameraIsFullscreen { get; set; } = false;
 

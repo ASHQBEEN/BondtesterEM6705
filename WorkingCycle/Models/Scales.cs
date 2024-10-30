@@ -1,26 +1,37 @@
-﻿using System.Globalization;
+﻿using DutyCycle.Models.Machine;
+using System.Globalization;
 using System.IO.Ports;
 
 namespace DutyCycle.Models
 {
     public class Scales
     {
+        #region Singleton
+        private static Scales instance;
+
+        private Scales() { }
+
+        public static Scales GetInstance()
+        {
+            if(instance is null)
+                try
+                {
+                    instance = new();
+                    instance.port = new(GetLastPortName(), 115200, Parity.None, 8, StopBits.One);
+                    instance.port.DataReceived += instance.DataReceivedEvent;
+                }
+                catch (Exception)
+                {
+                    MessageBox.Show("Не удалось ИНИЦИАЛИЗИРОВАТЬ COM-порт.",
+                        "Ошибка COM-порта", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                }
+            return instance;
+        }
+        #endregion
+
         public double WeightValue { get; private set; }
 
-        private readonly SerialPort? port;
-
-        public Scales()
-        {
-            try
-            {
-                port = new(GetLastPortName(), 115200, Parity.None, 8, StopBits.One);
-                port.DataReceived += DataReceivedEvent;
-            }
-            catch (Exception) { 
-                MessageBox.Show("Не удалось ИНИЦИАЛИЗИРОВАТЬ COM-порт.", 
-                    "Ошибка COM-порта", MessageBoxButtons.OK, MessageBoxIcon.Stop); 
-            }
-        }
+        private SerialPort? port;
 
         public void ReadTestValue()
         {
@@ -73,7 +84,7 @@ namespace DutyCycle.Models
             WeightValue = Math.Round(WeightValue, 1);
         }
 
-        public string GetLastPortName() => SerialPort.GetPortNames()
+        public static string GetLastPortName() => SerialPort.GetPortNames()
     .OrderBy(a => a.Length > 3 && int.TryParse(a.Substring(3), out int num) ? num : 0)
     .ToArray()
     .Last();
