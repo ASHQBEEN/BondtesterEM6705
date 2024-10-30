@@ -12,7 +12,7 @@ namespace DutyCycle.Forms.DutyCycle
 {
     public partial class DutyCycleForm : Form, IGlobalKeyMessageFilter
     {
-        private readonly Scales scales;
+        private readonly Scales scales = Singleton.GetInstance().Scales;
         private const int DATA_INTERVAL = 250; //minimum arduino data recieve event interval
         private readonly double dataIntervalInMilliseconds = DATA_INTERVAL / 1000f;
 
@@ -48,8 +48,6 @@ namespace DutyCycle.Forms.DutyCycle
             InitializeComponent();
 
             KeyPreview = true;
-
-            scales = new Scales();
             try
             {
                 scales.Open();
@@ -352,7 +350,7 @@ MessageBoxIcon.Information);
             int calibrationWeight = Convert.ToInt32(cmbReferenceWeights.Items[cmbReferenceWeights.SelectedIndex]);
             scales.SendReferenceWeight(calibrationWeight);
             //Thread.Sleep(300);
-            //MessageBox.Show(scales.ReadReferenceWeight());
+            //MessageBox.Show(Scales.ReadReferenceWeight());
             calibrationCountdownValue = CALIBRATION_COUNTDOWN_VALUE; // Сбрасываем значение обратного отсчета
             btnCalibrate.Text = calibrationCountdownValue.ToString(); // Устанавливаем начальное значение текста кнопки
             calibrationTimer.Start(); // Запускаем таймер
@@ -441,7 +439,7 @@ rbStretchTest.Checked ? new StretchTest() : new ShearTest();
             testTimer.Stop();
             if(!forceStoppedBasing)
                 Thread.Sleep(DATA_INTERVAL);
-            //очистка буфера: scales.scales.DiscardInBuffer(); + DiscardOutBuffer()
+            //очистка буфера: Scales.Scales.DiscardInBuffer(); + DiscardOutBuffer()
             scales.TareScale();
             testTimer.Start();
         }

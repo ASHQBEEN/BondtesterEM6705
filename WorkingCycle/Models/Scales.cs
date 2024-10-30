@@ -64,7 +64,7 @@ namespace DutyCycle.Models
 
         private void DataReceivedEvent(object sender, SerialDataReceivedEventArgs e)
         {
-            // If the com scales has been closed, do nothing
+            // If the com Scales has been closed, do nothing
             if (!port.IsOpen) return;
 
             // Read all the data waiting in the buffer
