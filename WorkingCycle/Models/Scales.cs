@@ -20,7 +20,7 @@ namespace DutyCycle.Models
         {
             try
             {
-                port.Write("w");
+                port.Write("r");
             }
             catch (Exception)
             {
