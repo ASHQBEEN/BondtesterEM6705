@@ -1,5 +1,4 @@
-﻿using DutyCycle.Models.Machine;
-using System.Globalization;
+﻿using System.Globalization;
 using System.IO.Ports;
 
 namespace DutyCycle.Models
