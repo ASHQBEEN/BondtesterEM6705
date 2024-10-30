@@ -79,6 +79,8 @@ namespace DutyCycle.Forms.DutyCycle
             SetupXYGroup();
 
             KeyDown += FForFullscreenCamera;
+
+            testTimer.Start();
         }
 
         private void FForFullscreenCamera(object? sender, KeyEventArgs? e)
@@ -346,7 +348,7 @@ MessageBoxIcon.Information);
         private void btnCalibrate_Click(object sender, EventArgs e)
         {
             scales.Calibrate();
-            Thread.Sleep(250);
+            //Thread.Sleep(250);
             int calibrationWeight = Convert.ToInt32(cmbReferenceWeights.Items[cmbReferenceWeights.SelectedIndex]);
             scales.SendReferenceWeight(calibrationWeight);
             //Thread.Sleep(300);

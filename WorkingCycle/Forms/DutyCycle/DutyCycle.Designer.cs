@@ -114,7 +114,6 @@
             // 
             // testTimer
             // 
-            testTimer.Enabled = true;
             testTimer.Interval = 250;
             testTimer.Tick += testTimer_Tick;
             // 

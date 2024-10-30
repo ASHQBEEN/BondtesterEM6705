@@ -7,20 +7,26 @@ namespace DutyCycle.Models
     {
         public double WeightValue { get; private set; }
 
-        private readonly SerialPort port = new(
-            GetLastPortName(),
-            115200,
-            Parity.None,
-            8,
-            StopBits.One);
+        private readonly SerialPort? port;
 
-        public Scales() => port.DataReceived += DataReceivedEvent;
+        public Scales()
+        {
+            try
+            {
+                port = new(GetLastPortName(), 115200, Parity.None, 8, StopBits.One);
+                port.DataReceived += DataReceivedEvent;
+            }
+            catch (Exception) { 
+                MessageBox.Show("Не удалось ИНИЦИАЛИЗИРОВАТЬ COM-порт.", 
+                    "Ошибка COM-порта", MessageBoxButtons.OK, MessageBoxIcon.Stop); 
+            }
+        }
 
         public void ReadTestValue()
         {
             try
             {
-                port.Write("r");
+                port?.Write("r");
             }
             catch (Exception)
             {
@@ -42,14 +48,14 @@ namespace DutyCycle.Models
 
         public void Calibrate() => port.Write("c");
         public void SendReferenceWeight(int weight) => port.Write(weight.ToString());
-        public void Close() => port.Close();
+        public void Close() => port?.Close();
         //public string ReadReferenceWeight() => scales.ReadLine();
 
         public void Open()
         {
             try
             {
-                port.Open();
+                port?.Open();
             }
             catch (Exception)
             {
@@ -72,22 +78,5 @@ namespace DutyCycle.Models
     .OrderBy(a => a.Length > 3 && int.TryParse(a.Substring(3), out int num) ? num : 0)
     .ToArray()
     .Last();
-
-        //    public static string GetLastPortName() 
-        //    {
-        //        string portName = string.Empty;
-        //        try
-        //        {
-        //            portName = SerialPort.GetPortNames()
-        //.OrderBy(a => a.Length > 3 && int.TryParse(a.Substring(3), out int num) ? num : 0)
-        //.ToArray()
-        //.Last();
-        //        }
-        //        catch (Exception)
-        //        {
-        //            MessageBox.Show("Не удалось ОБНАРУЖИТЬ COM-порт.", "Ошибка COM-порта", MessageBoxButtons.OK, MessageBoxIcon.Stop);
-        //        }
-        //        return portName;
-        //    } 
     }
 }
