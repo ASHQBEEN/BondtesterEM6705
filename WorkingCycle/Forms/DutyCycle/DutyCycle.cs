@@ -165,7 +165,7 @@ namespace DutyCycle.Forms.DutyCycle
                 StopTest();
 
             if (test is StretchTest)
-                ((StretchTest)test).EndPosition = board.GetAxisActPosition(selectedTestAxis);
+                ((StretchTest)test).EndPosition = board.GetAxisCommandPosition(selectedTestAxis);
         }
 
         private void StopTest()
@@ -274,7 +274,7 @@ MessageBoxIcon.Information);
             if (test is StretchTest)
             {
                 var board = Singleton.GetInstance().Board;
-                ((StretchTest)test).StartPosition = board.GetAxisActPosition(selectedTestAxis);
+                ((StretchTest)test).StartPosition = board.GetAxisCommandPosition(selectedTestAxis);
                 ((StretchTest)test).TestSpeed = (double)nudTestSpeed.Value;
                 ((StretchTest)test).DelayTimeInSeconds = (double)nudBreakDelay.Value;
             }
