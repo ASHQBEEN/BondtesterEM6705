@@ -49,7 +49,6 @@ namespace DutyCycle.Models
         public void Calibrate() => port.Write("c");
         public void SendReferenceWeight(int weight) => port.Write(weight.ToString());
         public void Close() => port?.Close();
-        //public string ReadReferenceWeight() => scales.ReadLine();
 
         public void Open()
         {
@@ -74,7 +73,7 @@ namespace DutyCycle.Models
             WeightValue = Math.Round(WeightValue, 1);
         }
 
-        public static string GetLastPortName() => SerialPort.GetPortNames()
+        public string GetLastPortName() => SerialPort.GetPortNames()
     .OrderBy(a => a.Length > 3 && int.TryParse(a.Substring(3), out int num) ? num : 0)
     .ToArray()
     .Last();
