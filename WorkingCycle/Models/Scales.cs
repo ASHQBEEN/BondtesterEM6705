@@ -43,7 +43,7 @@ namespace DutyCycle.Models
         public void Calibrate() => port.Write("c");
         public void SendReferenceWeight(int weight) => port.Write(weight.ToString());
         public void Close() => port.Close();
-        //public string ReadReferenceWeight() => port.ReadLine();
+        //public string ReadReferenceWeight() => scales.ReadLine();
 
         public void Open()
         {
@@ -59,7 +59,7 @@ namespace DutyCycle.Models
 
         private void DataReceivedEvent(object sender, SerialDataReceivedEventArgs e)
         {
-            // If the com port has been closed, do nothing
+            // If the com scales has been closed, do nothing
             if (!port.IsOpen) return;
 
             // Read all the data waiting in the buffer

@@ -12,7 +12,7 @@ namespace DutyCycle.Forms.DutyCycle
 {
     public partial class DutyCycleForm : Form, IGlobalKeyMessageFilter
     {
-        private readonly Scales port;
+        private readonly Scales scales;
         private const int DATA_INTERVAL = 250; //minimum arduino data recieve event interval
         private readonly double dataIntervalInMilliseconds = DATA_INTERVAL / 1000f;
 
@@ -49,10 +49,10 @@ namespace DutyCycle.Forms.DutyCycle
 
             KeyPreview = true;
 
-            port = new Scales();
+            scales = new Scales();
             try
             {
-                port.Open();
+                scales.Open();
                 testTimer.Start();
             }
             catch
@@ -134,8 +134,8 @@ namespace DutyCycle.Forms.DutyCycle
 
         private void testTimer_Tick(object sender, EventArgs e)
         {
-            port.ReadTestValue();
-            testValue = port.WeightValue;
+            scales.ReadTestValue();
+            testValue = scales.WeightValue;
             tbForceData.Text = testValue.ToString();
 
             if (!testInProgress) return;
@@ -345,12 +345,12 @@ MessageBoxIcon.Information);
 
         private void btnCalibrate_Click(object sender, EventArgs e)
         {
-            port.Calibrate();
+            scales.Calibrate();
             Thread.Sleep(250);
             int calibrationWeight = Convert.ToInt32(cmbReferenceWeights.Items[cmbReferenceWeights.SelectedIndex]);
-            port.SendReferenceWeight(calibrationWeight);
+            scales.SendReferenceWeight(calibrationWeight);
             //Thread.Sleep(300);
-            //MessageBox.Show(port.ReadReferenceWeight());
+            //MessageBox.Show(scales.ReadReferenceWeight());
             calibrationCountdownValue = CALIBRATION_COUNTDOWN_VALUE; // Сбрасываем значение обратного отсчета
             btnCalibrate.Text = calibrationCountdownValue.ToString(); // Устанавливаем начальное значение текста кнопки
             calibrationTimer.Start(); // Запускаем таймер
@@ -428,7 +428,7 @@ rbStretchTest.Checked ? new StretchTest() : new ShearTest();
         {
             CloseGxDevice();
             StopTest();
-            port.Close();
+            scales.Close();
 
         }
 
@@ -439,8 +439,8 @@ rbStretchTest.Checked ? new StretchTest() : new ShearTest();
             testTimer.Stop();
             if(!forceStoppedBasing)
                 Thread.Sleep(DATA_INTERVAL);
-            //очистка буфера: port.port.DiscardInBuffer(); + DiscardOutBuffer()
-            port.TareScale();
+            //очистка буфера: scales.scales.DiscardInBuffer(); + DiscardOutBuffer()
+            scales.TareScale();
             testTimer.Start();
         }
 
