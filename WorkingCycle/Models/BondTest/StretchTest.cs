@@ -3,7 +3,7 @@
     public class StretchTest : BondTest
     {
         public override string Name => "Растяжение";
-        public override double Result => (EndPosition - StartPosition - TestSpeed * DelayTimeInSeconds) / 1000;
+        public override double Result => (StartPosition - EndPosition - TestSpeed * DelayTimeInSeconds) / 1000;
         public double DelayTimeInSeconds { get; set; }
         public double StartPosition { get; set; }
         public double EndPosition { get; set; }
