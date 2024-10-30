@@ -508,18 +508,17 @@ namespace ashqTech
         #endregion
 
         #region ErrorChecker
-        private static void CheckAPIError(uint errorCode, string errorPrefix)
+        private static void CheckAPIError(uint actionResult, string errorPrefix)
         {
-            string errorMessage = $"{errorPrefix} Failed With Error Code: [0x";
-            if (errorCode != (uint)ErrorCode.SUCCESS)
+            if (actionResult != (uint)ErrorCode.SUCCESS)
             {
-                errorMessage += Convert.ToString(errorCode, 16) + ']';
-                StringBuilder ErrorMsg = new("", 100);
+                string errorMessage = $"{errorPrefix} Failed With Error Code: {actionResult}";
+                StringBuilder ErrorMsg = new(string.Empty, 100);
                 //Get the error message according to error code returned from API
-                Boolean res = Motion.mAcm_GetErrorMessage(errorCode, ErrorMsg, 100);
-                string ErrorMessage = "";
-                if (res) ErrorMessage = ErrorMsg.ToString();
-                throw new Exception(errorMessage + "\r\nError Message:" + ErrorMessage);
+                Motion.mAcm_GetErrorMessage(actionResult, ErrorMsg, 100);
+                string errorDescription = string.Empty;
+                errorDescription = ErrorMsg.ToString();
+                throw new Exception(errorMessage + "\r\nError Message:" + errorDescription);
             }
         }
         #endregion
