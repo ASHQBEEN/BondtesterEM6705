@@ -3,20 +3,18 @@ using System.IO.Ports;
 
 namespace DutyCycle.Models
 {
-    public class ComPort
+    public class Scales
     {
-        public bool IsOpen { get { return port.IsOpen; } }
-        public double TestValue { get; private set; }
-        private readonly SerialPort port = new();
+        public double WeightValue { get; private set; }
 
-        public ComPort()
-        {
-            port.BaudRate = 115200;
-            port.Parity = Parity.None;
-            port.DataBits = 8;
-            port.StopBits = StopBits.One;
-            port.DataReceived += DataReceivedEvent;
-        }
+        private readonly SerialPort port = new(
+            GetLastPortName(),
+            115200,
+            Parity.None,
+            8,
+            StopBits.One);
+
+        public Scales() => port.DataReceived += DataReceivedEvent;
 
         public void ReadTestValue()
         {
@@ -41,29 +39,17 @@ namespace DutyCycle.Models
                 //throw;
             }
         }
+
         public void Calibrate() => port.Write("c");
         public void SendReferenceWeight(int weight) => port.Write(weight.ToString());
         public void Close() => port.Close();
         //public string ReadReferenceWeight() => port.ReadLine();
 
-        public void Open(string portName)
+        public void Open()
         {
             try
             {
-                port.PortName = portName;
-            }
-            catch (Exception)
-            {
-                MessageBox.Show("Не удалось ИНИЦИАЛИЗИРОВАТЬ COM-порт.", "Ошибка COM-порта", MessageBoxButtons.OK, MessageBoxIcon.Stop);
-            }
-            try
-            {
-                if (port.IsOpen)
-                {
-                    port.Close();
-                }
-                else
-                    port.Open();
+                port.Open();
             }
             catch (Exception)
             {
@@ -74,12 +60,12 @@ namespace DutyCycle.Models
         private void DataReceivedEvent(object sender, SerialDataReceivedEventArgs e)
         {
             // If the com port has been closed, do nothing
-            if (!IsOpen) return;
+            if (!port.IsOpen) return;
 
             // Read all the data waiting in the buffer
             string receivedValueString = port.ReadLine();
-            TestValue = double.Parse(receivedValueString, CultureInfo.InvariantCulture);
-            TestValue = Math.Round(TestValue, 1);
+            WeightValue = double.Parse(receivedValueString, CultureInfo.InvariantCulture);
+            WeightValue = Math.Round(WeightValue, 1);
         }
 
         public static string GetLastPortName() => SerialPort.GetPortNames()

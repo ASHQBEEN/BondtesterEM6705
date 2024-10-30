@@ -12,7 +12,7 @@ namespace DutyCycle.Forms.DutyCycle
 {
     public partial class DutyCycleForm : Form, IGlobalKeyMessageFilter
     {
-        private readonly ComPort port;
+        private readonly Scales port;
         private const int DATA_INTERVAL = 250; //minimum arduino data recieve event interval
         private readonly double dataIntervalInMilliseconds = DATA_INTERVAL / 1000f;
 
@@ -49,10 +49,10 @@ namespace DutyCycle.Forms.DutyCycle
 
             KeyPreview = true;
 
-            port = new ComPort();
+            port = new Scales();
             try
             {
-                port.Open(ComPort.GetLastPortName());
+                port.Open();
                 testTimer.Start();
             }
             catch
@@ -135,7 +135,7 @@ namespace DutyCycle.Forms.DutyCycle
         private void testTimer_Tick(object sender, EventArgs e)
         {
             port.ReadTestValue();
-            testValue = port.TestValue;
+            testValue = port.WeightValue;
             tbForceData.Text = testValue.ToString();
 
             if (!testInProgress) return;
