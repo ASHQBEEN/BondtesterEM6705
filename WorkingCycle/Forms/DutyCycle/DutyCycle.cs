@@ -219,7 +219,7 @@ namespace DutyCycle.Forms.DutyCycle
         public void StartBasing() => Basing.Start([DisableInterface, () => board.BoardSetHighVelocity(parameters.BasingVelocities)], [Tare, EnableInterface], []);
         #endregion
 
-
+        int timerTicksToStop;
 
         private void btnStartTest_Click(object sender, EventArgs e)
         {
@@ -259,6 +259,8 @@ MessageBoxIcon.Information);
             }
 
             testInProgress = true;
+
+            timerTicksToStop = (int)((double)nudBreakDelay.Value / dataIntervalInMilliseconds);
 
             GlobalKeyMessageFilter.BlockControls = false;
             rtbTestValues.Clear();
@@ -420,11 +422,7 @@ rbStretchTest.Checked ? new StretchTest() : new ShearTest();
             lblTestPoint2.Text = selectedTestPoint[2].ToString();
         }
 
-        private bool IsBondBroken()
-        {
-            int timerTicksToStop = (int)((double)nudBreakDelay.Value / dataIntervalInMilliseconds);
-            return stopTimerTickCounter == timerTicksToStop;
-        }
+        private bool IsBondBroken() => stopTimerTickCounter == timerTicksToStop;
 
         private void BondTestForm_FormClosed(object sender, FormClosedEventArgs e)
         {
